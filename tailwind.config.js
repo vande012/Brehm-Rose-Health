@@ -15,6 +15,15 @@ module.exports = {
       sans: 'var(--font-sans)',
       serif: 'var(--font-serif)',
     },
+    colors: {
+      'light': '#D8E5E4',
+      'white': '#FFFFFF',
+      'blue': '#004FAA',
+      'teal': '#1AACAC',
+      'green': '#80ED99',
+      'mint': '#C7F9CC',
+    },
   },
+  
   plugins: [require('@tailwindcss/typography')],
 }

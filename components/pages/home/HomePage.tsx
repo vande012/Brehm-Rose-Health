@@ -44,6 +44,7 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
         </div>
       )}
     </div>
+    
   )
 }
 
