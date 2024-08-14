@@ -1,5 +1,6 @@
 import { DocumentIcon, ImageIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
+import { heroSection } from '../objects/hero'; // Import the heroSection schema
 
 export default defineType({
   type: 'document',
@@ -50,6 +51,11 @@ export default defineType({
         }),
       ],
       validation: (rule) => rule.max(155).required(),
+    }),
+    defineField({
+      name: 'hero',
+      title: 'Hero Section',
+      type: 'heroSection', // Reference the heroSection object type
     }),
     defineField({
       type: 'array',

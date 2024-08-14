@@ -1,6 +1,7 @@
 import type { EncodeDataAttributeCallback } from '@sanity/react-loader'
 import Link from 'next/link'
 
+
 import { ProjectListItem } from '@/components/pages/home/ProjectListItem'
 import { Header } from '@/components/shared/Header'
 import { resolveHref } from '@/sanity/lib/utils'
@@ -13,10 +14,35 @@ export interface HomePageProps {
 
 export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { overview = [], showcaseProjects = [], title = '' } = data ?? {}
+  const { overview = [], showcaseProjects = [], title = '', hero } = data ?? {}
 
   return (
     <div className="space-y-20">
+      {/* Hero Section */}
+      
+      {hero && (
+        <section className="hero">
+          <h1>{hero.heading}</h1>
+          <h2>{hero.subheading}</h2>
+          {hero.image && (
+            <img
+              src={hero.image.asset.url}
+              alt={hero.image.alt || 'Hero Image'}
+              className="w-full h-auto"
+            />
+          )}
+          {hero.optionalText && <p>{hero.optionalText}</p>}
+          {Array.isArray(hero?.buttons) && hero.buttons.length > 0 && (
+            <div className="buttons">
+              {hero.buttons.map((button, index) => (
+                <a key={index} href={button.url} className="button">
+                  {button.text}
+                </a>
+              ))}
+            </div>
+          )}
+        </section>
+      )}
       {/* Header */}
       {title && <Header centered title={title} description={overview} />}
       {/* Showcase projects */}

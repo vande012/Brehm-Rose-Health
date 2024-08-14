@@ -59,6 +59,11 @@ export default defineType({
       validation: (rule) => rule.max(155).required(),
     }),
     defineField({
+      name: 'hero',
+      title: 'Hero Section',
+      type: 'heroSection', // Reference the heroSection object type
+    }),
+    defineField({
       name: 'showcaseProjects',
       title: 'Showcase projects',
       description:

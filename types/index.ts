@@ -34,6 +34,21 @@ export interface HomePagePayload {
   overview?: PortableTextBlock[]
   showcaseProjects?: ShowcaseProject[]
   title?: string
+  hero?: {
+    heading?: string
+    subheading?: string
+    image?: {
+      asset: {
+        url: string
+      }
+      alt?: string
+    }
+    optionalText?: string
+    buttons?: Array<{
+      text: string
+      url: string
+    }>
+  }
 }
 
 export interface PagePayload {
@@ -42,6 +57,21 @@ export interface PagePayload {
   overview?: PortableTextBlock[]
   title?: string
   slug?: string
+  hero?: {
+    heading?: string
+    subheading?: string
+    image?: {
+      asset: {
+        url: string
+      }
+      alt?: string
+    }
+    optionalText?: string
+    buttons?: Array<{
+      text: string
+      url: string
+    }>
+  }
 }
 
 export interface ProjectPayload {
@@ -63,4 +93,5 @@ export interface SettingsPayload {
   footer?: PortableTextBlock[]
   menuItems?: MenuItem[]
   ogImage?: Image
+  title?: string
 }

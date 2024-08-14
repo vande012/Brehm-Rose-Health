@@ -13,6 +13,22 @@ export const homePageQuery = groq`
       title,
     },
     title,
+    hero { // Include the hero section
+      heading,
+      subheading,
+      image {
+        asset->{
+          _id,
+          url
+        },
+        alt
+      },
+      optionalText,
+      buttons[]{
+        text,
+        url
+      }
+    },
   }
 `
 
@@ -23,6 +39,22 @@ export const pagesBySlugQuery = groq`
     overview,
     title,
     "slug": slug.current,
+    hero { // Include the hero section
+      heading,
+      subheading,
+      image {
+        asset->{
+          _id,
+          url
+        },
+        alt
+      },
+      optionalText,
+      buttons[]{
+        text,
+        url
+      }
+    },
   }
 `
 
@@ -38,6 +70,7 @@ export const projectBySlugQuery = groq`
     "slug": slug.current,
     tags,
     title,
+    
   }
 `
 
@@ -50,5 +83,7 @@ export const settingsQuery = groq`
       title
     },
     ogImage,
+    title,
+    
   }
 `

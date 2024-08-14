@@ -4,6 +4,10 @@ html {
   overflow-x: hidden;
 }
 
+h1, h2, p {
+  font-family: var(--font-noto), sans-serif;
+}
+
 p:not(:last-child) {
   margin-bottom: 0.875rem;
 }
@@ -15,4 +19,16 @@ ul {
 
 ol {
   list-style-type: disc;
+}
+
+.hero h1{
+  font-family: var(--font-noto);
+  font-size: 2.75rem;
+}
+.hero h2{
+  font-family: var(--font-noto);
+  font-size: 1.2rem;
+}
+.hero p {
+  font-family: var(--font-noto);
 }

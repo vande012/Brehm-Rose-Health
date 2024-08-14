@@ -10,6 +10,13 @@ export default defineType({
   // liveEdit: true,
   fields: [
     defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+      description: 'The title of the website.',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'menuItems',
       title: 'Menu Item list',
       description: 'Links displayed on the header of your site.',
@@ -71,6 +78,9 @@ export default defineType({
     }),
   ],
   preview: {
+    select: {
+      title: 'title',
+    },
     prepare() {
       return {
         title: 'Menu Items',

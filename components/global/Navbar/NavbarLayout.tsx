@@ -69,6 +69,11 @@ export default function Navbar(props: NavbarProps) {
         })}
       </div>
       <div className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'} w-full`}>
+      {isMobileMenuOpen && (
+          <div className="flex justify-center py-2">
+            <h2 className="text-xl font-bold text-black">{data?.title}</h2>
+          </div>
+        )}
         <div className="flex flex-col mt-4">
           {menuItems.map((menuItem, key) => {
             const href = resolveHref(menuItem?._type, menuItem?.slug);

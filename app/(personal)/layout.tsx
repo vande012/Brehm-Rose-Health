@@ -36,13 +36,9 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       images: ogImage ? [ogImage] : [],
     },
+    themeColor: '#000', 
   }
 }
-
-export const viewport: Viewport = {
-  themeColor: '#000',
-}
-
 export default async function IndexRoute({
   children,
 }: {
@@ -54,16 +50,13 @@ export default async function IndexRoute({
         <Suspense>
           <Navbar />
         </Suspense>
-        <Suspense>
-          {/* Body Homepage */}
-        </Suspense>
+        <Suspense>{/* Body Homepage */}</Suspense>
         <div className="projects mt-20 flex-grow px-4 md:px-16 lg:px-32">
           <Suspense>{children}</Suspense>
         </div>
         <Suspense>
           <Footer />
         </Suspense>
-        
       </div>
       {draftMode().isEnabled && <LiveVisualEditing />}
     </>
