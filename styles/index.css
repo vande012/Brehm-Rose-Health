@@ -4,8 +4,8 @@ html {
   overflow-x: hidden;
 }
 
-h1, h2, p {
-  font-family: var(--font-noto), sans-serif;
+h1, h2, p, a {
+  font-family: var(--font-roboto), sans-serif;
 }
 
 p:not(:last-child) {
@@ -22,13 +22,27 @@ ol {
 }
 
 .hero h1{
-  font-family: var(--font-noto);
-  font-size: 2.75rem;
+  font-family: var(--font-roboto);
+  font-size: 3rem;
 }
 .hero h2{
-  font-family: var(--font-noto);
-  font-size: 1.2rem;
+  font-family: var(--font-roboto);
+  font-size: 2rem;
 }
 .hero p {
-  font-family: var(--font-noto);
+  font-family: var(--font-roboto);
+  font-size: 1.3rem;
 }
+
+
+
+.hero-img {
+    height: 30rem ;
+    max-height: '50vh';
+  } /* Adjust the height as needed */
+  @media (max-width: 768px) {
+    .hero-img {
+      height: 10rem; 
+      max-height: 50vh; /* This limits the height to 50% of the viewport height */
+    }
+  }  

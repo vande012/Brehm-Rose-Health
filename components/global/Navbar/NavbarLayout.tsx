@@ -1,26 +1,46 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import Link from 'next/link';
-import logo from '/app/logo.png';
-import { resolveHref } from '@/sanity/lib/utils';
-import type { MenuItem, SettingsPayload } from '@/types';
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import logo from '/app/logo.png'
+import { resolveHref } from '@/sanity/lib/utils'
+import type { MenuItem, SettingsPayload } from '@/types'
 
 interface NavbarProps {
-  data: SettingsPayload;
+  data: SettingsPayload
 }
 
 export default function Navbar(props: NavbarProps) {
-  const { data } = props;
-  const menuItems = data?.menuItems || ([] as MenuItem[]);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { data } = props
+  const menuItems = data?.menuItems || ([] as MenuItem[])
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+  // Handle scroll to change navbar color
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   return (
-    <div className="sticky top-0 z-10 flex flex-wrap items-center justify-between bg-light px-4 py-4 backdrop-blur md:px-16 md:py-5 lg:px-32">
+    <div
+      className={`sticky top-0 z-10 flex flex-wrap items-center justify-between px-4 py-4 backdrop-blur md:px-16 md:py-5 lg:px-32 transition-colors duration-300 ${
+        isScrolled ? 'bg-custom-light' : 'bg-white'
+      }`}
+    >
       <div className="logo w-19 h-18">
         <Link href="/">
           <img src={logo.src} alt="Logo" />
@@ -32,9 +52,9 @@ export default function Navbar(props: NavbarProps) {
           className="text-blue focus:outline-none"
         >
           <svg
-            className="w-6 h-6"
+            className="w-10 h-10"
             fill="none"
-            stroke="currentColor"
+            stroke="blue"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -42,48 +62,57 @@ export default function Navbar(props: NavbarProps) {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
-              d={isMobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'}
+              d={
+                isMobileMenuOpen
+                  ? 'M6 18L18 6M6 6l12 12'
+                  : 'M4 6h16M4 12h16m-7 6h7'
+              }
             />
           </svg>
         </button>
       </div>
-      <div className="hidden md:flex md:flex-grow md:items-center md:justify-center just text-blue">
+      <div className="hidden md:flex md:flex-grow md:items-center md:justify-center just text-custom-blue">
         {menuItems.map((menuItem, key) => {
-          const href = resolveHref(menuItem?._type, menuItem?.slug);
+          const href = resolveHref(menuItem?._type, menuItem?.slug)
           if (!href) {
-            return null;
+            return null
           }
           return (
             <Link
               key={key}
-              className={`block text-lg hover:text-black md:ml-4 md:text-xl ${
+              className={`block text-lg font-bold hover:text-gray-700 md:ml-4 md:text-xl ${
                 menuItem?._type === 'home'
                   ? 'font-extrabold text-black'
-                  : 'text-gray-600'
+                  : 'text-custom-blue'
               }`}
               href={href}
             >
               {menuItem.title}
             </Link>
-          );
+          )
         })}
       </div>
-      <div className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'} w-full`}>
-      {isMobileMenuOpen && (
+      <div
+        className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'} w-full`}
+      >
+        {isMobileMenuOpen && (
           <div className="flex justify-center py-2">
-            <h2 className="text-xl font-bold text-black">{data?.title}</h2>
+            <h2 className="text-3xl py-4 font-bold text-gray-700">
+              Welcome to<br></br>
+              {data?.title}
+            </h2>
           </div>
         )}
-        <div className="flex flex-col mt-4">
+        <div className="flex flex-col mt-4 p-4 items-center">
           {menuItems.map((menuItem, key) => {
-            const href = resolveHref(menuItem?._type, menuItem?.slug);
+            const href = resolveHref(menuItem?._type, menuItem?.slug)
             if (!href) {
-              return null;
+              return null
             }
             return (
               <Link
                 key={key}
-                className={`block py-2 px-4 text-lg hover:bg-blue-700 hover:text-white ${
+                className={`block py-2 px-4 text-xl font-bold text-gray-700  ${
                   menuItem?._type === 'home'
                     ? 'font-extrabold text-black'
                     : 'text-gray-600'
@@ -92,15 +121,15 @@ export default function Navbar(props: NavbarProps) {
               >
                 {menuItem.title}
               </Link>
-            );
+            )
           })}
         </div>
-        
       </div>
-      <button className="hidden md:block bg-blue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-        <a href="/contact">Contact</a>
+      <button className="hidden md:block py-3 px-4 items-center gap-x-2 text-md font-medium rounded-lg border border-transparent bg-custom-blue text-white hover:bg-green-500 focus:outline-none focus:bg-green-700 disabled:opacity-50 disabled:pointer-events-none">
+        <a className="" href="/contact">
+          Contact
+        </a>
       </button>
     </div>
-  );
+  )
 }
-

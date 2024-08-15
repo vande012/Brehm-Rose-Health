@@ -1,6 +1,6 @@
 import './globals.css'
 
-import { IBM_Plex_Mono, Inter, PT_Serif, Noto_Sans } from 'next/font/google'
+import { IBM_Plex_Mono, Inter, PT_Serif, Roboto } from 'next/font/google'
 
 const serif = PT_Serif({
   variable: '--font-serif',
@@ -19,8 +19,8 @@ const mono = IBM_Plex_Mono({
   subsets: ['latin'],
   weight: ['500', '700'],
 })
-const noto = Noto_Sans({
-  variable: '--font-noto',
+const robo = Roboto({
+  variable: '--font-roboto',
   subsets: ['latin'],
   weight: ['400', '700'],
 })
@@ -32,7 +32,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${mono.variable} ${sans.variable} ${serif.variable} ${noto.variable}`}
+      className={`${mono.variable} ${sans.variable} ${serif.variable} ${robo.variable}`}
     >
       <body>{children}</body>
     </html>
