@@ -13,14 +13,12 @@ import { apiVersion, dataset, projectId, studioUrl } from '@/sanity/lib/api'
 import * as resolve from '@/sanity/plugins/resolve'
 import { pageStructure, singletonPlugin } from '@/sanity/plugins/settings'
 import page from '@/sanity/schemas/documents/page'
-import project from '@/sanity/schemas/documents/project'
 import duration from '@/sanity/schemas/objects/duration'
 import milestone from '@/sanity/schemas/objects/milestone'
 import timeline from '@/sanity/schemas/objects/timeline'
 import home from '@/sanity/schemas/singletons/home'
 import settings from '@/sanity/schemas/singletons/settings'
-import { heroSection } from '@/sanity/schemas/objects/hero'
-
+import { assist } from '@sanity/assist'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
@@ -40,14 +38,14 @@ export default defineConfig({
       // Documents
       duration,
       page,
-      project,
       // Objects
       milestone,
       timeline,
-      heroSection,
+      // References
     ],
   },
   plugins: [
+    assist(), //ai assistant tool
     structureTool({
       structure: pageStructure([home, settings]),
     }),

@@ -27,12 +27,9 @@ export interface ShowcaseProject {
   title?: string
 }
 
-// Page payloads
-
 export interface HomePagePayload {
   footer?: PortableTextBlock[]
   overview?: PortableTextBlock[]
-  showcaseProjects?: ShowcaseProject[]
   title?: string
   hero?: {
     heading?: string
@@ -47,8 +44,39 @@ export interface HomePagePayload {
     buttons?: Array<{
       text: string
       url: string
-    }>
-  }
+    }>;
+  };
+  logoBanner?: {
+    header: string;
+    logos: Array<{
+      asset: {
+        url: string;
+        alt?: string;
+        metadata?: {
+          dimensions: {
+            width: number;
+            height: number;
+          };
+        };
+      };
+    }>;
+    backgroundColor?: string;
+  };
+  servicesSection?: {
+    title: string;
+    services: Array<{
+      image: {
+        asset: {
+          url: string;
+        };
+        alt?: string;
+      };
+      title: string;
+      description: string;
+      buttonText: string;
+      buttonUrl: string;
+    }>;
+  };
 }
 
 export interface PagePayload {
@@ -94,4 +122,17 @@ export interface SettingsPayload {
   menuItems?: MenuItem[]
   ogImage?: Image
   title?: string
+}
+
+export interface Logo {
+  asset: {
+    _id: string;
+    url: string;
+    metadata: {
+      dimensions: {
+        width: number;
+        height: number;
+      };
+    };
+  };
 }

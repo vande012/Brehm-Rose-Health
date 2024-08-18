@@ -8,7 +8,6 @@ import { Suspense } from 'react'
 
 import { Footer } from '@/components/global/Footer'
 import { Navbar } from '@/components/global/Navbar'
-import IntroTemplate from '@/intro-template'
 import { urlForOpenGraphImage } from '@/sanity/lib/utils'
 import { loadHomePage, loadSettings } from '@/sanity/loader/loadQuery'
 
@@ -51,7 +50,7 @@ export default async function IndexRoute({
           <Navbar />
         </Suspense>
         <Suspense>{/* Body Homepage */}</Suspense>
-        <div className="projects mt-10 flex-grow px-4 md:px-16 lg:px-32">
+        <div className="mt-10 flex-grow px-4">
           <Suspense>{children}</Suspense>
         </div>
         <Suspense>

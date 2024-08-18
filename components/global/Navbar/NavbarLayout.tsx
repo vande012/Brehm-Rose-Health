@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import logo from '/app/logo.png'
+import name from '/app/name.png'
 import { resolveHref } from '@/sanity/lib/utils'
 import type { MenuItem, SettingsPayload } from '@/types'
 
@@ -41,9 +42,11 @@ export default function Navbar(props: NavbarProps) {
         isScrolled ? 'bg-custom-light' : 'bg-white'
       }`}
     >
-      <div className="logo w-19 h-18">
-        <Link href="/">
+      <div className="flex items-center">
+        <Link href="/" className='flex items-center'>
           <img src={logo.src} alt="Logo" />
+          <img src={name.src} alt="Name" className='pl-3 w-52' />
+         
         </Link>
       </div>
       <div className="flex md:hidden">
@@ -98,12 +101,12 @@ export default function Navbar(props: NavbarProps) {
         {isMobileMenuOpen && (
           <div className="flex justify-center py-2">
             <h2 className="text-3xl py-4 font-bold text-gray-700">
-              Welcome to<br></br>
+              <span className='flex justify-center'>Welcome to</span>
               {data?.title}
             </h2>
           </div>
         )}
-        <div className="flex flex-col mt-4 p-4 items-center">
+        <div className="flex flex-col items-center">
           {menuItems.map((menuItem, key) => {
             const href = resolveHref(menuItem?._type, menuItem?.slug)
             if (!href) {

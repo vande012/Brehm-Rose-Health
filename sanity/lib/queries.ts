@@ -29,6 +29,23 @@ export const homePageQuery = groq`
         url
       }
     },
+    logoBanner {
+      header,
+      logos[] {
+        asset->{
+          _id,
+          url,
+          alt,
+          metadata {
+            dimensions {
+              width,
+              height
+            }
+          }
+        }
+      },
+      backgroundColor
+    },
   }
 `
 
@@ -58,22 +75,6 @@ export const pagesBySlugQuery = groq`
   }
 `
 
-export const projectBySlugQuery = groq`
-  *[_type == "project" && slug.current == $slug][0] {
-    _id,
-    client,
-    coverImage,
-    description,
-    duration,
-    overview,
-    site,
-    "slug": slug.current,
-    tags,
-    title,
-    
-  }
-`
-
 export const settingsQuery = groq`
   *[_type == "settings"][0]{
     footer,
@@ -87,3 +88,38 @@ export const settingsQuery = groq`
     
   }
 `
+
+
+export const sitemapQuery = groq`
+{
+  // Fetch the homepage slug
+  "homePages": *[_type == "home"][0]{
+    "slug": "/"
+  },
+  
+  // Fetch all pages with slugs
+  "pages": *[_type == "page" && defined(slug.current)]{
+    "slug": slug.current
+  },
+}
+`;
+export const servicesSectionQuery = groq`
+  *[_type == "home"][0]{
+    servicesSection {
+      title,
+      services[] {
+        image {
+          asset->{
+            _id,
+            url
+          },
+          alt
+        },
+        title,
+        description,
+        buttonText,
+        buttonUrl
+      }
+    }
+  }
+`;

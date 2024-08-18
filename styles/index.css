@@ -37,12 +37,34 @@ ol {
 
 
 .hero-img {
-    height: 30rem ;
+    height: 40rem ;
     max-height: '50vh';
   } /* Adjust the height as needed */
   @media (max-width: 768px) {
     .hero-img {
-      height: 10rem; 
-      max-height: 50vh; /* This limits the height to 50% of the viewport height */
+      height: 40vh; 
+      max-height: 50vh;
+       /* This limits the height to 50% of the viewport height */
+      
     }
   }  
+  .logo-banner-section .marquee {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+  }
+  
+  .logo-banner-section .marquee-inner {
+    display: flex;
+    animation: marquee 15s linear infinite; /* Adjust the duration for speed */
+  }
+  
+  @keyframes marquee {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
