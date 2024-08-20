@@ -1,14 +1,13 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import type { ServicesPayload } from '@/types';
-
+import Link from 'next/link'
+import Image from 'next/image'
+import type { ServicesPayload } from '@/types'
 
 interface ServicesSectionProps {
-  data: ServicesPayload | null;
+  data: ServicesPayload | null
 }
 
 const ServicesSection: React.FC<ServicesSectionProps> = ({ data }) => {
-  if (!data) return null;
+  if (!data) return null
 
   return (
     <section className="services-section py-8">
@@ -30,17 +29,17 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ data }) => {
               <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
               <p className="text-gray-700 mb-4">{service.description}</p>
               <Link
-                  href={service.buttonUrl}
-                  className="inline-block mt-auto px-6 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded"
-                >
-                  {service.buttonText}
+                href={service.buttonUrl}
+                className="inline-block mt-auto px-6 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded"
+              >
+                {service.buttonText}
               </Link>
             </div>
           ))}
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default ServicesSection;
+export default ServicesSection
