@@ -8,7 +8,6 @@ import {
   homePageQuery,
   pagesBySlugQuery,
   settingsQuery,
-  servicesSectionQuery,
 } from '@/sanity/lib/queries'
 import { token } from '@/sanity/lib/token'
 import {
