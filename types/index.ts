@@ -28,78 +28,21 @@ export interface ShowcaseProject {
 }
 
 export interface HomePagePayload {
-  footer?: PortableTextBlock[]
-  overview?: PortableTextBlock[]
-  title?: string
-  hero?: {
-    heading?: string
-    subheading?: string
-    image?: {
-      asset: {
-        url: string
-      }
-      alt?: string
-    }
-    optionalText?: string
-    buttons?: Array<{
-      text: string
-      url: string
-    }>;
-  };
-  logoBanner?: {
-    header: string;
-    logos: Array<{
-      asset: {
-        url: string;
-        alt?: string;
-        metadata?: {
-          dimensions: {
-            width: number;
-            height: number;
-          };
-        };
-      };
-    }>;
-    backgroundColor?: string;
-  };
-  servicesSection?: {
-    title: string;
-    services: Array<{
-      image: {
-        asset: {
-          url: string;
-        };
-        alt?: string;
-      };
-      title: string;
-      description: string;
-      buttonText: string;
-      buttonUrl: string;
-    }>;
-  };
+  footer?: PortableTextBlock[];
+  overview?: PortableTextBlock[];
+  title?: string;
+  hero?: Hero;
+  logoBanner?: LogoBanner;
+  servicesSection?: ServicesPayload;
 }
 
 export interface PagePayload {
-  body?: PortableTextBlock[]
-  name?: string
-  overview?: PortableTextBlock[]
-  title?: string
-  slug?: string
-  hero?: {
-    heading?: string
-    subheading?: string
-    image?: {
-      asset: {
-        url: string
-      }
-      alt?: string
-    }
-    optionalText?: string
-    buttons?: Array<{
-      text: string
-      url: string
-    }>
-  }
+  body?: PortableTextBlock[];
+  name?: string;
+  overview?: PortableTextBlock[];
+  title?: string;
+  slug?: string;
+  hero?: Hero;
 }
 
 export interface ProjectPayload {
@@ -126,6 +69,7 @@ export interface SettingsPayload {
 
 export interface Logo {
   asset: {
+    alt: string
     _id: string;
     url: string;
     metadata: {
@@ -135,4 +79,41 @@ export interface Logo {
       };
     };
   };
+}
+
+export interface Hero {
+  heading: string;
+  subheading?: string;
+  image: {
+    asset: {
+      url: string;
+    };
+    alt: string;
+  };
+  optionalText?: string;
+  buttons?: Array<{
+    text: string;
+    url: string;
+  }>;
+}
+
+export interface LogoBanner {
+  header: string;
+  logos: Logo[];
+  backgroundColor?: string;
+}
+export interface ServicesPayload {
+  title: string;
+  services: Array<{
+    image: {
+      asset: {
+        url: string;
+      };
+      alt?: string;
+    };
+    title: string;
+    description: string;
+    buttonText: string;
+    buttonUrl: string;
+  }>;
 }

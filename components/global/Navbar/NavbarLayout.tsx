@@ -106,7 +106,7 @@ export default function Navbar(props: NavbarProps) {
             </h2>
           </div>
         )}
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col  items-center">
           {menuItems.map((menuItem, key) => {
             const href = resolveHref(menuItem?._type, menuItem?.slug)
             if (!href) {

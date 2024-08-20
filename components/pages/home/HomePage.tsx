@@ -9,14 +9,13 @@ import ServicesSection from '@/components/shared/ServicesSection'
 
 export interface HomePageProps {
   data: HomePagePayload | null
+  
 }
+
 
 export function HomePage({ data }: HomePageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const { hero, logoBanner, servicesSection } = data ?? {}
-  
-  console.log('Hero data:', hero)
-  console.log('Services Section data:', servicesSection)
 
   return (
     <div className="space-y-6">
@@ -97,19 +96,7 @@ export function HomePage({ data }: HomePageProps) {
           </div>
         </section>
       )}
-      {servicesSection && (
-        <ServicesSection
-          title={servicesSection.title}
-          services={servicesSection.services.map((service) => ({
-            imageUrl: service.image.asset.url,
-            altText: service.image.alt || 'Service Image',
-            title: service.title,
-            description: service.description,
-            buttonText: service.buttonText,
-            buttonUrl: service.buttonUrl,
-          }))}
-        />
-      )}
+      {servicesSection && <ServicesSection data={servicesSection} />}
     </div>
   )
 }

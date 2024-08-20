@@ -46,8 +46,23 @@ export const homePageQuery = groq`
       },
       backgroundColor
     },
+    servicesSection {  // Include the servicesSection in the query
+      title,
+      services[] {
+        image {
+          asset->{
+            url
+          },
+          alt
+        },
+        title,
+        description,
+        buttonText,
+        buttonUrl
+      }
+    }
   }
-`
+`;
 
 export const pagesBySlugQuery = groq`
   *[_type == "page" && slug.current == $slug][0] {
@@ -56,22 +71,6 @@ export const pagesBySlugQuery = groq`
     overview,
     title,
     "slug": slug.current,
-    hero { // Include the hero section
-      heading,
-      subheading,
-      image {
-        asset->{
-          _id,
-          url
-        },
-        alt
-      },
-      optionalText,
-      buttons[]{
-        text,
-        url
-      }
-    },
   }
 `
 
@@ -104,7 +103,7 @@ export const sitemapQuery = groq`
 }
 `;
 export const servicesSectionQuery = groq`
-  *[_type == "home"][0]{
+  *[_type in ["home", "page"]][0]{
     servicesSection {
       title,
       services[] {
