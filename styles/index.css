@@ -23,27 +23,26 @@ ol {
 
 .hero h1{
   font-family: var(--font-roboto);
-  font-size: 3rem;
+  
 }
 .hero h2{
   font-family: var(--font-roboto);
-  font-size: 2rem;
+  
 }
 .hero p {
   font-family: var(--font-roboto);
-  font-size: 1.3rem;
+  
 }
-
-
-
 .hero-img {
-    height: 40rem ;
+    height: 30rem;
+    width: 50rem;
     max-height: '50vh';
   } /* Adjust the height as needed */
   @media (max-width: 768px) {
     .hero-img {
-      height: 40vh; 
-      max-height: 50vh;
+      height: 40rem; 
+      max-height: 30vh;
+      max-width: 100vw;
        /* This limits the height to 50% of the viewport height */
       
     }
@@ -58,6 +57,11 @@ ol {
   .logo-banner-section .marquee-inner {
     display: flex;
     animation: marquee 15s linear infinite; /* Adjust the duration for speed */
+  }
+  @media (max-width: 768px) {
+    .logo-banner-section .marquee-inner {
+      animation: marquee 5s linear infinite; /* Faster speed on mobile */
+    }
   }
   
   @keyframes marquee {

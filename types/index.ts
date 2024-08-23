@@ -40,7 +40,7 @@ export interface HomePagePayload {
       }
       alt?: string
     }
-    optionalText?: string
+    optionalText?: PortableTextBlock[]
     buttons?: Array<{
       text: string
       url: string
@@ -77,7 +77,21 @@ export interface HomePagePayload {
       buttonUrl: string;
     }>;
   };
+  reviewsSection?: {
+    title: string;
+    reviews: Array<{
+      name: string;
+      review:string;
+      image: {
+        asset: {
+          url: string;
+        };
+        alt?: string;
+      };
+    }>;
+  };
 }
+
 
 export interface PagePayload {
   body?: PortableTextBlock[]
@@ -94,27 +108,12 @@ export interface PagePayload {
       }
       alt?: string
     }
-    optionalText?: string
+    optionalText?: PortableTextBlock[]
     buttons?: Array<{
       text: string
       url: string
     }>
   }
-}
-
-export interface ProjectPayload {
-  client?: string
-  coverImage?: Image
-  description?: PortableTextBlock[]
-  duration?: {
-    start?: string
-    end?: string
-  }
-  overview?: PortableTextBlock[]
-  site?: string
-  slug: string
-  tags?: string[]
-  title?: string
 }
 
 export interface SettingsPayload {

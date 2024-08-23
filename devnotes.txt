@@ -1,0 +1,24 @@
+
+#Process of passing data to the components
+
+1. Added global schema to shared folder in sanity.lib
+  a. add the schema to the home or page schema via import
+2. Update Queries, if needed on multiple pages, create its own query and always include in the page query
+3. Added types to homepage and pagepayloads, as well as component type 
+4. Update Homepage props and jsx properties {servicesSection && <ServicesSection data={servicesSection} />}
+
+#Things needed 
+
+1. Homepage components
+  a. servicesSection, fix logos, Testimonials section, Schedule Call/Meeting Section CTA.
+  b. need to implement portable text in sanity 
+2. Pages - interchangeable components, hero/content/main function/footer
+  a. services, about, contact, partners, reviews/testimonials ~ blog?
+3. Footer - sitemap
+
+Optimize content and layout / QC
+Reveal and Revisions
+SEO Optimization
+Hosting Situation - Domain and Deployment
+Training and handoff
+

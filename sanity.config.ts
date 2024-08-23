@@ -65,4 +65,5 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
   ],
+  revalidate: 60, // revalidate every 60 seconds
 })

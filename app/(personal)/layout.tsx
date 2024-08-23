@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic'
 import { draftMode } from 'next/headers'
 import { toPlainText } from 'next-sanity'
 import { Suspense } from 'react'
-
 import { Footer } from '@/components/global/Footer'
 import { Navbar } from '@/components/global/Navbar'
 import { urlForOpenGraphImage } from '@/sanity/lib/utils'
@@ -50,7 +49,7 @@ export default async function IndexRoute({
           <Navbar />
         </Suspense>
         <Suspense>{/* Body Homepage */}</Suspense>
-        <div className="mt-10 flex-grow px-4">
+        <div className="mt-2 flex-grow">
           <Suspense>{children}</Suspense>
         </div>
         <Suspense>

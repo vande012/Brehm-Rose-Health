@@ -19,40 +19,7 @@ export default defineType({
       description:
         'Used both for the <meta> description tag for SEO, and the personal website subheader.',
       title: 'Description',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          lists: [],
-          marks: {
-            annotations: [
-              {
-                name: 'link',
-                type: 'object',
-                title: 'Link',
-                fields: [
-                  {
-                    name: 'href',
-                    type: 'url',
-                    title: 'Url',
-                  },
-                ],
-              },
-            ],
-            decorators: [
-              {
-                title: 'Italic',
-                value: 'em',
-              },
-              {
-                title: 'Strong',
-                value: 'strong',
-              },
-            ],
-          },
-          styles: [],
-          type: 'block',
-        }),
-      ],
+      type: 'string',
       validation: (rule) => rule.max(155).required(),
     }),
     defineField({
@@ -92,16 +59,48 @@ export default defineType({
         defineField({
           name: 'optionalText',
           title: 'Optional Text',
-          type: 'text',
+          type: 'array',
+          of: [
+            defineArrayMember({
+              lists: [],
+              marks: {
+                annotations: [
+                  {
+                    name: 'link',
+                    type: 'object',
+                    title: 'Link',
+                    fields: [
+                      {
+                        name: 'href',
+                        type: 'url',
+                        title: 'Url',
+                      },
+                    ],
+                  },
+                ],
+                decorators: [
+                  {
+                    title: 'Italic',
+                    value: 'em',
+                  },
+                  {
+                    title: 'Strong',
+                    value: 'strong',
+                  },
+                ],
+              },
+              styles: [],
+              type: 'block',
+            }),
+          ],
+          validation: (rule) => rule.max(155).required(),
         }),
         defineField({
           name: 'buttons',
           title: 'Buttons',
           type: 'array',
           of: [
-            defineField({
-              name: 'button',
-              title: 'Button',
+            defineArrayMember({
               type: 'object',
               fields: [
                 defineField({
@@ -140,26 +139,26 @@ export default defineType({
           title: 'Logos',
           type: 'array',
           of: [
-            {
+            defineArrayMember({
               type: 'image',
               options: {
-                hotspot: true, // Enable hotspot for each image
+                hotspot: true,
               },
               fields: [
-                {
+                defineField({
                   name: 'alt',
                   title: 'Alt Text',
                   type: 'string',
                   description: 'Alternative text for screen readers.',
-                },
-                {
+                }),
+                defineField({
                   name: 'url',
                   title: 'Image URL',
                   type: 'string',
                   description: 'The URL of the image.',
-                },
+                }),
               ],
-            },
+            }),
           ],
         }),
         defineField({
@@ -167,8 +166,8 @@ export default defineType({
           title: 'Background Color',
           type: 'string',
           description: 'Enter a background color in hex format (e.g., #ffffff for white)',
-          validation: (Rule) =>
-            Rule.regex(/^#([0-9a-fA-F]{3}){1,2}$/).warning('Must be a valid hex color code'),
+          validation: (rule) =>
+            rule.regex(/^#([0-9a-fA-F]{3}){1,2}$/).warning('Must be a valid hex color code'),
         }),
       ],
     }),
@@ -181,49 +180,96 @@ export default defineType({
           name: 'title',
           title: 'Section Title',
           type: 'string',
-          validation: (Rule) => Rule.required(),
+          validation: (rule) => rule.required(),
         }),
         defineField({
           name: 'services',
           title: 'Services',
           type: 'array',
           of: [
-            {
+            defineArrayMember({
               type: 'object',
               fields: [
-                {
+                defineField({
                   name: 'image',
                   title: 'Service Image',
                   type: 'image',
                   options: { hotspot: true },
-                  validation: (Rule) => Rule.required(),
-                },
-                {
+                  validation: (rule) => rule.required(),
+                }),
+                defineField({
                   name: 'title',
                   title: 'Service Title',
                   type: 'string',
-                  validation: (Rule) => Rule.required(),
-                },
-                {
+                  validation: (rule) => rule.required(),
+                }),
+                defineField({
                   name: 'description',
                   title: 'Service Description',
                   type: 'text',
-                  validation: (Rule) => Rule.required(),
-                },
-                {
+                  validation: (rule) => rule.required(),
+                }),
+                defineField({
                   name: 'buttonText',
                   title: 'Button Text',
                   type: 'string',
-                  validation: (Rule) => Rule.required(),
-                },
-                {
+                  validation: (rule) => rule.required(),
+                }),
+                defineField({
                   name: 'buttonUrl',
                   title: 'Button URL',
                   type: 'url',
-                  validation: (Rule) => Rule.required(),
-                },
+                  validation: (rule) => rule.required(),
+                }),
               ],
-            },
+            }),
+          ],
+        }),
+      ],
+    }),
+    defineField({
+      name: 'reviewsSection',
+      title: 'Reviews Section',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'title',
+          title: 'Title',
+          type: 'string',
+        }),
+        defineField({
+          name: 'reviews',
+          title: 'Reviews',
+          type: 'array',
+          of: [
+            defineArrayMember({
+              type: 'object',
+              fields: [
+                defineField({
+                  name: 'name',
+                  title: 'Name',
+                  type: 'string',
+                }),
+                defineField({
+                  name: 'review',
+                  title: 'Review',
+                  type: 'text',
+                }),
+                defineField({
+                  name: 'image',
+                  title: 'Profile Picture',
+                  type: 'image',
+                  options: { hotspot: true },
+                  fields: [
+                    defineField({
+                      name: 'alt',
+                      title: 'Alternative Text',
+                      type: 'string',
+                    }),
+                  ],
+                }),
+              ],
+            }),
           ],
         }),
       ],

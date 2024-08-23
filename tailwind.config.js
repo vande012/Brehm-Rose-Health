@@ -12,13 +12,13 @@ module.exports = {
     extend: {
       colors: {
         custom: {
-        'light': '#D8E5E4',
-        'dark': '#272a2f',
-        'white': '#FFFFFF',
-        'blue': '#004FAA',
-        'teal': '#1AACAC',
-        'green': '#80ED99',
-        'mint': '#C7F9CC',
+          light: '#F3F4F6',     // Light gray for background
+          dark: '#1F2937',      // Deep slate gray for dark elements
+          white: '#FFFFFF',     // Pure white
+          blue: '#015d9d',      // Deep blue from the logo
+          teal: '#14B8A6',      // Balanced teal for accents
+          green: '#01b26c',     // Vibrant green from the logo
+          mint: '#D1FAE5',      // Soft mint for light backgrounds
       },
     },
   },
