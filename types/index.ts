@@ -77,11 +77,26 @@ export interface HomePagePayload {
       buttonUrl: string;
     }>;
   };
+  partnersSection?: {
+    title: string;
+    buttonText: string;
+    buttonUrl: string;
+    partners: Array<{
+      name: string;
+      image: {
+        asset: {
+          url: string;
+        };
+        alt?: string;
+      };
+      description: PortableTextBlock[];
+    }>;
+  };
   reviewsSection?: {
     title: string;
     reviews: Array<{
       name: string;
-      review:string;
+      review: string;
       image: {
         asset: {
           url: string;
@@ -91,6 +106,7 @@ export interface HomePagePayload {
     }>;
   };
 }
+
 
 
 export interface PagePayload {
@@ -134,4 +150,12 @@ export interface Logo {
       };
     };
   };
+}
+export interface FormData {
+  name: string
+  email: string
+  phone?: string
+  message: string
+  subject: string
+  file?: File
 }

@@ -67,7 +67,25 @@ export const homePageQuery = groq`
           alt
         }
       }
-    }
+    },
+    partnersSection {
+      title,
+      buttonText,
+      buttonUrl,
+      partners[] {
+        name,
+        image {
+          asset-> {
+            _id,
+            url
+          },
+          alt
+        },
+        description[] {
+          ... // Include Portable Text fields
+        }
+      }
+    },
   }
 `
 export const pagesBySlugQuery = groq`
@@ -119,4 +137,15 @@ export const sitemapQuery = groq`
     },
   }
 `
+export const formQuery = groq`
+  *[_type == "formBuilder"][0] {
+    formFields[] {
+      required,
+      fieldName,
+      placeholder,
+      fieldId,
+      inputType
+    }
+  }
+`;
 

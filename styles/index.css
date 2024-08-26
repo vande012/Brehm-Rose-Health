@@ -56,11 +56,11 @@ ol {
   
   .logo-banner-section .marquee-inner {
     display: flex;
-    animation: marquee 15s linear infinite; /* Adjust the duration for speed */
+    animation: marquee 20s linear infinite; /* Adjust the duration for speed */
   }
   @media (max-width: 768px) {
     .logo-banner-section .marquee-inner {
-      animation: marquee 5s linear infinite; /* Faster speed on mobile */
+      animation: marquee 15s linear infinite; /* Faster speed on mobile */
     }
   }
   

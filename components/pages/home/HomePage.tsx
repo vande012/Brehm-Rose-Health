@@ -13,9 +13,9 @@ export interface HomePageProps {
 
 export function HomePage({ data }: HomePageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { hero, logoBanner, servicesSection, reviewsSection } = data ?? {}
-  
- 
+  const { hero, logoBanner, servicesSection, reviewsSection, partnersSection } =
+    data ?? {}
+
   return (
     <div className="space-y-6 py-8 bg-gray-100">
       {/* Hero Section */}
@@ -76,13 +76,13 @@ export function HomePage({ data }: HomePageProps) {
       {/* Logo Banner Section */}
       {logoBanner && (
         <motion.section
-          className="logo-banner-section py-4"
+          className="logo-banner-section py-4 "
           style={{ backgroundColor: logoBanner.backgroundColor }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="container mx-auto py-8 overflow-hidden">
+          <div className="overflow-hidden">
             <h2 className="text-center text-3xl font-bold mb-4 text-custom-blue">
               {logoBanner.header}
             </h2>
@@ -108,13 +108,18 @@ export function HomePage({ data }: HomePageProps) {
                     key={`duplicate-${index}`}
                     src={logo.asset?.url}
                     alt={logo.asset?.alt || `Logo ${index + 1}`}
-                    className="h-40 w-auto object-contain bg-white"
+                    className="h-32 w-auto object-contain bg-white"
                     style={{
-                      maxHeight: '4rem',
+                      maxHeight: '6rem',
                     }}
-                    initial={{ x: 100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    initial={{ x: 100 }}
+                    animate={{ x: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: index * 0.1,
+                      repeat: Infinity,
+                      repeatType: 'loop',
+                    }}
                   />
                 ))}
               </div>
@@ -162,60 +167,109 @@ export function HomePage({ data }: HomePageProps) {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="container mx-auto py-8 overflow-hidden">
-            <h2 className="text-center text-3xl font-bold mb-4 text-custom-blue">
-              {reviewsSection.title}
+          <h2 className="text-center text-3xl font-bold mb-4 text-custom-blue">
+            {reviewsSection.title}
+          </h2>
+          <div className="marquee overflow-x-auto">
+            <div className="marquee-inner flex space-x-8 pt-6">
+              {reviewsSection.reviews.map((review, index) => (
+                <motion.div
+                  key={index}
+                  className="testimonial-card p-6 border border-gray-200 bg-white rounded-lg shadow-md"
+                  style={{
+                    maxWidth: '30rem',
+                    minWidth: '20rem',
+                  }}
+                  initial={{ x: -100, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <p className="text-gray-700 mb-4">{review.review}</p>
+                  <p className="text-xs font-light italic">{review.name}</p>
+                  {review.image?.asset?.url && (
+                    <img
+                      src={review.image.asset.url}
+                      alt={review.name}
+                      className="w-12 h-12 rounded-full mt-4"
+                    />
+                  )}
+                </motion.div>
+              ))}
+              {/* Duplicate reviews for continuous effect */}
+              {reviewsSection.reviews.map((review, index) => (
+                <motion.div
+                  key={`duplicate-${index}`}
+                  className="testimonial-card p-6 border border-gray-200 bg-white rounded-lg shadow-md"
+                  style={{
+                    maxWidth: '30rem',
+                    minWidth: '20rem',
+                  }}
+                  initial={{ x: 100, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <p className="text-gray-700 mb-4">{review.review}</p>
+                  <p className="text-xs font-light italic">{review.name}</p>
+                  {review.image?.asset?.url && (
+                    <img
+                      src={review.image.asset.url}
+                      alt={review.name}
+                      className="w-12 h-12 rounded-full mt-4"
+                    />
+                  )}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+      )}
+      ,
+      {partnersSection && (
+        <motion.section
+          className="partners-section bg-white py-12"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-8 text-center">
+              {partnersSection.title}
             </h2>
-            <div className="marquee">
-              <div className="marquee-inner flex space-x-8 pt-6">
-                {reviewsSection.reviews.map((review, index) => (
-                  <motion.div
-                    key={index}
-                    className="testimonial-card p-6 border border-gray-200 bg-white rounded-lg shadow-md"
-                    style={{
-                      maxWidth: '30rem',
-                    }}
-                    initial={{ x: -100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                    <p className="text-gray-700 mb-4">{review.review}
-                    
-                    </p>
-                    <p className="text-xs font-light italic">{review.name}</p>
-                    {review.image?.asset?.url && (
-                      <img
-                        src={review.image.asset.url}
-                        alt={review.name}
-                        className="w-12 h-12 rounded-full mt-4"
-                      />
-                    )}
-                  </motion.div>
-                ))}
-                {/* Duplicate reviews for continuous effect */}
-                {reviewsSection.reviews.map((review, index) => (
-                  <motion.div
-                    key={`duplicate-${index}`}
-                    className="testimonial-card p-6 border border-gray-200 bg-white rounded-lg shadow-md"
-                    style={{
-                      maxWidth: '30rem',
-                    }}
-                    initial={{ x: 100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                    <p className="text-gray-700 mb-4">{review.review}</p>
-                    <p className="text-xs font-light italic">{review.name}</p>
-                    {review.image?.asset?.url && (
-                      <img
-                        src={review.image.asset.url}
-                        alt={review.name}
-                        className="w-12 h-12 rounded-full mt-4"
-                      />
-                    )}
-                  </motion.div>
-                ))}
-              </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+              {partnersSection.partners.slice(0, 4).map((partner, index) => (
+                <motion.div
+                  key={index}
+                  className="partner-card p-6 border border-gray-200 bg-white rounded-lg shadow-md"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  {partner.image?.asset?.url && (
+                    <img
+                      src={partner.image.asset.url}
+                      alt={partner.image.alt || 'Partner Logo'}
+                      className="w-full h-32 object-contain mb-4 rounded-md"
+                    />
+                  )}
+                  <h3 className="text-xl font-semibold mb-2 text-center">
+                    {partner.name}
+                  </h3>
+                  {partner.description && (
+                    <CustomPortableText
+                      paragraphClasses="text-center text-gray-700 text-base"
+                      value={partner.description}
+                    />
+                  )}
+                </motion.div>
+              ))}
+            </div>
+            <div className="flex justify-center mt-4">
+              <Link href={partnersSection?.buttonUrl}>
+                <span className="text-center mt-auto px-6 py-2 text-white bg-custom-blue hover:bg-custom-green rounded">
+                  {partnersSection?.buttonText}
+                </span>
+              </Link>
             </div>
           </div>
         </motion.section>

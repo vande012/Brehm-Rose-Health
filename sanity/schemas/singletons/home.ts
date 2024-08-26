@@ -274,6 +274,94 @@ export default defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'partnersSection',
+      title: 'Partners Section',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'title',
+          title: 'Title',
+          type: 'string',
+          validation: (rule) => rule.required(),
+        }),
+        defineField({
+          name: 'buttonText',
+          title: 'Button Text',
+          type: 'string',
+          validation: (rule) => rule.required(),
+        }),
+        defineField({
+          name: 'buttonUrl',
+          title: 'Button URL',
+          type: 'url',
+          validation: (rule) => rule.required(),
+        }),
+        defineField({
+          name: 'partners',
+          title: 'Partners',
+          type: 'array',
+          of: [
+            defineArrayMember({
+              type: 'object',
+              fields: [
+                defineField({
+                  name: 'name',
+                  title: 'Name',
+                  type: 'string',
+                  validation: (rule) => rule.required(),
+                }),
+                defineField({
+                  name: 'image',
+                  title: 'Logo',
+                  type: 'image',
+                  options: { hotspot: true },
+                  fields: [
+                    defineField({
+                      name: 'alt',
+                      title: 'Alternative Text',
+                      type: 'string',
+                    }),
+                  ],
+                }),
+                defineField({
+                  name: 'description',
+                  title: 'Description',
+                  type: 'array',
+                  of: [
+                    defineArrayMember({
+                      type: 'block',
+                      lists: [], // Disable list types if not needed
+                      marks: {
+                        annotations: [
+                          {
+                            name: 'link',
+                            type: 'object',
+                            title: 'Link',
+                            fields: [
+                              {
+                                name: 'href',
+                                type: 'url',
+                                title: 'URL',
+                              },
+                            ],
+                          },
+                        ],
+                        decorators: [
+                          { title: 'Italic', value: 'em' },
+                          { title: 'Strong', value: 'strong' },
+                        ],
+                      },
+                      styles: [], // Disable custom styles if not needed
+                    }),
+                  ],
+                }),
+              ],
+            }),
+          ],
+        }),
+      ],
+    }),
   ],
   preview: {
     select: {

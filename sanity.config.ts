@@ -19,6 +19,8 @@ import timeline from '@/sanity/schemas/objects/timeline'
 import home from '@/sanity/schemas/singletons/home'
 import settings from '@/sanity/schemas/singletons/settings'
 import { assist } from '@sanity/assist'
+import contact from './sanity/schemas/objects/contact'
+
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
@@ -41,7 +43,7 @@ export default defineConfig({
       // Objects
       milestone,
       timeline,
-      // References
+      contact, // custom contact form schema
     ],
   },
   plugins: [
