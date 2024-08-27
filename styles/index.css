@@ -4,8 +4,12 @@ html {
   overflow-x: hidden;
 }
 
-h1, h2, p, a {
-  font-family: var(--font-roboto), sans-serif;
+h1, h2{
+  font-family: var(--font-news), sans-serif;
+  
+}
+ p {
+  font-family: var(--font-news), serif;
 }
 
 p:not(:last-child) {
@@ -21,17 +25,12 @@ ol {
   list-style-type: disc;
 }
 
-.hero h1{
-  font-family: var(--font-roboto);
-  
-}
 .hero h2{
-  font-family: var(--font-roboto);
-  
+  font-family: var(--font-news);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
 }
 .hero p {
-  font-family: var(--font-roboto);
-  
+  font-family: var(--font-news);
 }
 .hero-img {
     height: 30rem;
@@ -48,7 +47,6 @@ ol {
     }
   }  
   .logo-banner-section .marquee {
-    display: flex;
     overflow: hidden;
     width: 100%;
     white-space: nowrap;
@@ -56,11 +54,12 @@ ol {
   
   .logo-banner-section .marquee-inner {
     display: flex;
-    animation: marquee 20s linear infinite; /* Adjust the duration for speed */
+    width: max-content; /* Adjusts width to the content */
+    animation: marquee 30s linear infinite; /* Adjust the duration for speed */
   }
   @media (max-width: 768px) {
     .logo-banner-section .marquee-inner {
-      animation: marquee 15s linear infinite; /* Faster speed on mobile */
+      animation: marquee 20s linear infinite; /* Faster speed on mobile */
     }
   }
   
