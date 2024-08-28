@@ -2,19 +2,20 @@
 
 import type { PortableTextBlock } from 'next-sanity'
 import { resolveHref } from '@/sanity/lib/utils'
-import type { HomePagePayload } from '@/types'
+import type { HomePagePayload, SettingsPayload } from '@/types'
 import { urlForImage } from '@/sanity/lib/utils'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
 export interface HomePageProps {
   data: HomePagePayload | null
+  settings: SettingsPayload | null
 }
-
-export function HomePage({ data }: HomePageProps) {
+export function HomePage({ data, settings }: HomePageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const { hero, logoBanner, servicesSection, reviewsSection, partnersSection } =
     data ?? {}
+  const { phoneNumber } = settings ?? {}
 
   return (
     <div className="space-y-6 py-8 bg-white">
@@ -240,6 +241,10 @@ export function HomePage({ data }: HomePageProps) {
           <p className="text-lg text-white">
             Want to get in touch with us? Send us a message or give us a call!
           </p>
+          <p className="text-sm md:text-lg font-bold text-white sm:text-sm">
+              {' '}
+              &nbsp;{phoneNumber}
+            </p>
         </div>
         <div className="contact-button my-4 flex items-center justify-center md:w-1/2">
           <motion.div
@@ -275,3 +280,4 @@ export function HomePage({ data }: HomePageProps) {
 }
 
 export default HomePage
+

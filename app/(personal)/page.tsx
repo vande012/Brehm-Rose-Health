@@ -3,20 +3,23 @@ import { draftMode } from 'next/headers'
 import Link from 'next/link'
 
 import { HomePage } from '@/components/pages/home/HomePage'
+import { loadHomePage, loadSettings } from '@/sanity/loader/loadQuery'
 import { studioUrl } from '@/sanity/lib/api'
-import { loadHomePage } from '@/sanity/loader/loadQuery'
 const HomePagePreview = dynamic(
   () => import('@/components/pages/home/HomePagePreview'),
 )
 
 export default async function IndexRoute() {
-  const initial = await loadHomePage()
+  const [homeInitial, settingsInitial] = await Promise.all([
+    loadHomePage(),
+    loadSettings(),
+  ])
 
   if (draftMode().isEnabled) {
-    return <HomePagePreview initial={initial} />
+    return <HomePagePreview initial={homeInitial} />
   }
 
-  if (!initial.data) {
+  if (!homeInitial.data) {
     return (
       <div className="text-center">
         You don&rsquo;t have a homepage yet,{' '}
@@ -28,5 +31,7 @@ export default async function IndexRoute() {
     )
   }
 
-  return <HomePage data={initial.data} />
+  return <HomePage data={homeInitial.data} settings={settingsInitial.data} />
 }
+
+

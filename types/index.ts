@@ -137,6 +137,7 @@ export interface SettingsPayload {
   menuItems?: MenuItem[]
   ogImage?: Image
   title?: string
+  phoneNumber?: string
 }
 
 export interface Logo {

@@ -123,6 +123,7 @@ export const settingsQuery = groq`
     },
     ogImage,
     title,
+    phoneNumber,
   }
 `
 export const sitemapQuery = groq`

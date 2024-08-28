@@ -16,7 +16,6 @@ export function CustomPortableText({
   paragraphClasses?: string
   value: PortableTextBlock[] | undefined // Allow for undefined values
 }) {
-  console.log('CustomPortableText value:', JSON.stringify(value, null, 2))
   if (!Array.isArray(value)) {
     console.error(
       'Invalid value prop passed to CustomPortableText component. Expected an array of PortableTextBlock objects.',
@@ -73,7 +72,7 @@ export function CustomPortableText({
       },
     },
   }
-  console.log('CustomPortableText value:', JSON.stringify(value, null, 2))
+
   // Render only if value is defined and is an array
   if (!value || !Array.isArray(value)) return null
 
