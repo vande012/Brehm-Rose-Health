@@ -1,13 +1,76 @@
-'use client';
+'use client'
 
 import { useState } from 'react'
+
+interface FormField {
+  required: boolean
+  fieldName: string
+  placeholder: string
+  fieldId: string
+  inputType: 'text' | 'email' | 'tel' | 'textarea' | 'select'
+  isRequiredWhenMultiSelect: boolean
+  type: { title: string; value: string }[]
+}
 
 interface ContactFormData {
   name: string
   email: string
   phone: string
   message: string
+  type: string
 }
+
+const formFields: FormField[] = [
+  {
+    required: true,
+    fieldName: 'Name',
+    placeholder: 'Your Name',
+    fieldId: 'name',
+    inputType: 'text',
+    isRequiredWhenMultiSelect: false,
+    type: [],
+  },
+  {
+    required: true,
+    fieldName: 'Email',
+    placeholder: 'Your Email',
+    fieldId: 'email',
+    inputType: 'email',
+    isRequiredWhenMultiSelect: false,
+    type: [],
+  },
+  {
+    required: false,
+    fieldName: 'Phone',
+    placeholder: 'Your Phone',
+    fieldId: 'phone',
+    inputType: 'tel',
+    isRequiredWhenMultiSelect: false,
+    type: [],
+  },
+  {
+    required: true,
+    fieldName: 'Message',
+    placeholder: 'Your Message',
+    fieldId: 'message',
+    inputType: 'textarea',
+    isRequiredWhenMultiSelect: false,
+    type: [],
+  },
+  {
+    required: true,
+    fieldName: 'Type',
+    placeholder: 'Type',
+    fieldId: 'type',
+    inputType: 'select',
+    isRequiredWhenMultiSelect: true,
+    type: [
+      { title: 'Short Term Coverage', value: 'Short Term Coverage' },
+      { title: 'Group Coverage', value: 'Group Coverage' },
+      { title: 'Personal Coverage', value: 'Personal Coverage' },
+    ],
+  },
+]
 
 export default function ContactForm() {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -15,6 +78,7 @@ export default function ContactForm() {
     email: '',
     phone: '',
     message: '',
+    type: '',
   })
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState<boolean | null>(null)
@@ -34,6 +98,7 @@ export default function ContactForm() {
           email: formData.email,
           phone: formData.phone || '',
           message: formData.message,
+          type: formData.type,
         }),
       })
 
@@ -44,6 +109,7 @@ export default function ContactForm() {
           email: '',
           phone: '',
           message: '',
+          type: '',
         })
       } else {
         setSuccess(false)
@@ -60,58 +126,51 @@ export default function ContactForm() {
       onSubmit={handleSubmit}
       className="flex flex-col w-full max-w-md mx-auto p-4 bg-white rounded-md shadow-md"
     >
-      <div className="mb-4">
-        <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">
-          Name
-        </label>
-        <input
-          id="name"
-          type="text"
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          required
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        />
-      </div>
-      <div className="mb-4">
-        <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
-          Email
-        </label>
-        <input
-          id="email"
-          type="email"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          required
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        />
-      </div>
-      <div className="mb-4">
-        <label htmlFor="phone" className="block text-gray-700 text-sm font-bold mb-2">
-          Phone
-        </label>
-        <input
-          id="phone"
-          type="tel"
-          value={formData.phone}
-          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        />
-      </div>
-      <div className="mb-4">
-        <label htmlFor="message" className="block text-gray-700 text-sm font-bold mb-2">
-          Message
-        </label>
-        <textarea
-          id="message"
-          value={formData.message}
-          onChange={(e) =>
-            setFormData({ ...formData, message: e.target.value })
-          }
-          required
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        />
-      </div>
+      {formFields.map((field) => (
+        <div key={field.fieldId} className="mb-4">
+          <label
+            htmlFor={field.fieldId}
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            {field.fieldName}
+          </label>
+          {field.inputType === 'select' ? (
+            <select
+              id={field.fieldId}
+              value={formData[field.fieldId as keyof ContactFormData]}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  [field.fieldId as keyof ContactFormData]: e.target.value,
+                })
+              }
+              required={field.required}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            >
+              {field.type.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.title}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <input
+              id={field.fieldId}
+              type={field.inputType}
+              value={formData[field.fieldId as keyof ContactFormData]}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  [field.fieldId as keyof ContactFormData]: e.target.value,
+                })
+              }
+              required={field.required}
+              placeholder={field.placeholder}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          )}
+        </div>
+      ))}
       <button
         type="submit"
         disabled={loading}
@@ -127,5 +186,3 @@ export default function ContactForm() {
     </form>
   )
 }
-
-

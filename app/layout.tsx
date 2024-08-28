@@ -25,7 +25,7 @@ const robo = Roboto({
   weight: ['400', '700'],
 })
 const news = Newsreader({
-  variable: '--font-news',
+  variable: '--font-newsreader',
   subsets: ['latin'],
   weight: ['400', '700'],
 })

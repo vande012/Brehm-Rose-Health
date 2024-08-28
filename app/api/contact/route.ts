@@ -8,19 +8,18 @@ import nodemailer from 'nodemailer';
 
 export async function POST(request: Request) {
     try {
-      const { name, email, phone, message } = await request.json();
+      const { name, email, phone, message, type } = await request.json();
       const clientWithWriteToken = client.withConfig({ token: writeToken })
-
       const result = await clientWithWriteToken.create({
         _type: 'contact',
         name,
         email,
         phone,
         message,
+        type,
       });
   
       console.log('Sanity create result:', result);
-
       // Send email
     const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com', //use email service ie. outlook gmail yahoo
@@ -36,7 +35,7 @@ export async function POST(request: Request) {
         from: process.env.EMAIL_USER,
         to: process.env.EMAIL_TO,
         subject: 'New contact form submission',
-        text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,
+        text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}\nType: ${type}`,
       };
   
       await transporter.sendMail(mailOptions);

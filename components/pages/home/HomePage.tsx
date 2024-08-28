@@ -38,7 +38,7 @@ export function HomePage({ data }: HomePageProps) {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="font-extrabold leading-snug font-news text-blue text-4xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-center text-custom-blue">
+            <h1 className="font-extrabold leading-snug text-blue text-4xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-center text-custom-blue">
               {hero.heading}
             </h1>
             <h2 className="my-4 leading-snug text-custom-blue text-xl sm:text-base md:text-lg lg:text-2xl lg:text-center">
@@ -47,7 +47,7 @@ export function HomePage({ data }: HomePageProps) {
             {hero?.optionalText ? (
               <div className=" md:block lg:ml-28 lg:mt-12">
                 <CustomPortableText
-                  paragraphClasses="font-serif max-w-3xl text-gray-600 text-2xl"
+                  paragraphClasses="max-w-3xl text-gray-600 text-2xl"
                   value={hero.optionalText}
                 />
               </div>

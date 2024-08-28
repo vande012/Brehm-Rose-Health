@@ -151,11 +151,17 @@ export interface Logo {
     };
   };
 }
-export interface FormData {
-  name: string
-  email: string
-  phone?: string
-  message: string
-  subject: string
-  file?: File
+export interface FormField {
+  required: boolean
+  fieldName: string
+  placeholder: string
+  fieldId: string
+  inputType: string
+  isRequiredWhenMultiSelect: boolean
+  type: Array<{ title: string; value: string }>
 }
+
+export interface FormFieldsPayload {
+  formFields: FormField[]
+}
+

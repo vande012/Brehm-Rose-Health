@@ -144,7 +144,12 @@ export const formQuery = groq`
       fieldName,
       placeholder,
       fieldId,
-      inputType
+      inputType,
+      isRequiredWhenMultiSelect,
+      type[] {
+        title,
+        value
+      }
     }
   }
 `;

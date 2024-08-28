@@ -28,7 +28,7 @@ module.exports = {
     sans: 'var(--font-sans)',
     serif: 'var(--font-serif)',
     robo: 'var(--font-roboto)',
-    news: 'var(--font-news)',
+    news: 'var(--font-newsreader)',
   },
   },
   

@@ -24,6 +24,26 @@ export default defineType({
             title: 'Phone Number',
             validation: Rule => Rule.required().regex(/^\+\d{1,2}\s\d{3,4}\s\d{3,4}\s\d{4}$/),
           }),
+        defineField({
+            name: 'type',
+            title: 'Type',
+            type: 'array',
+            of: [
+              {
+                type: 'string',
+                title: 'Contact Type',
+                options: {
+                  list: [
+                    { title: "Short Term Coverage", value: "Short Term Coverage" },
+                    { title: "Group Coverage", value: "Group Coverage" },
+                    { title: "Personal Coverage", value: "Personal Coverage" },
+                  ],
+                  layout: 'radio',
+                },
+              },
+            ],
+            validation: Rule => Rule.required(),
+          }),
       defineField({
         name: 'message',
         type: 'text',
@@ -32,4 +52,3 @@ export default defineType({
         }),
     ],
   });
-  

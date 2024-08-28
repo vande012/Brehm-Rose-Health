@@ -22,9 +22,10 @@ import { assist } from '@sanity/assist'
 import contact from './sanity/schemas/objects/contact'
 
 
+
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
-  'Next.js Personal Website with Sanity.io'
+  'Brehm Rose Health'
 
 export default defineConfig({
   basePath: studioUrl,
@@ -37,6 +38,7 @@ export default defineConfig({
       // Singletons
       home,
       settings,
+      
       // Documents
       duration,
       page,
