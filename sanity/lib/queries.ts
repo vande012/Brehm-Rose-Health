@@ -155,3 +155,31 @@ export const formQuery = groq`
   }
 `;
 
+export const faqQuery = groq`
+  *[_type == "faq"][0] {
+    sections[] {
+      title,
+      questions[] {
+        question,
+        answer[] {
+          _type == 'block' => {
+            children[] {
+              _type == 'span' => {
+                text
+              }
+            },
+            markDefs[] {
+              _type == 'link' => {
+                href
+              }
+            }
+          },
+          _type == 'string' => {
+            text
+          }
+        }
+      }
+    }
+  }
+`;
+

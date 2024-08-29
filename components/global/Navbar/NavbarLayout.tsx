@@ -42,13 +42,13 @@ export default function Navbar(props: NavbarProps) {
     <>
       <div
         className={`sticky top-0 z-10 flex flex-wrap items-center justify-between px-4 py-4 backdrop-blur transition-all duration-300 ${
-          isScrolled ? 'bg-gray-100 shadow-lg' : 'bg-white'
+          isScrolled ? 'bg-custom-light shadow-lg' : 'bg-white'
         } md:px-16 md:py-5 lg:px-32`}
       >
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
             <img src={logo.src} alt="Logo" />
-            <img src={name.src} alt="Name" className="pl-3 w-52" />
+            <img src={name.src} alt="Name" className="pl-5 w-44  lg:w-64" />
           </Link>
         </div>
         <div className="flex md:hidden">
@@ -149,11 +149,7 @@ export default function Navbar(props: NavbarProps) {
       <div className="flex-col py-2 bg-custom-blue">
         <div className="flex justify-center">
           <p className="flex row text-sm md:text-lg font-medium text-white">
-            Call Now for a Free Consultation:
-            <p className="text-sm md:text-lg font-bold text-white sm:text-sm">
-              {' '}
-              &nbsp;{data?.phoneNumber}
-            </p>
+            Call Now for a Free Consultation: &nbsp;{data?.phoneNumber}
           </p>
         </div>
       </div>

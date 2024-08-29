@@ -49,7 +49,7 @@ export default async function IndexRoute({
           <Navbar />
         </Suspense>
         <Suspense>{/* Body Homepage */}</Suspense>
-        <div className="mt-2 flex-grow">
+        <div className="flex-grow">
           <Suspense>{children}</Suspense>
         </div>
         <Suspense>

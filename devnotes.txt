@@ -9,11 +9,8 @@
 
 #Things needed 
 
-1. Homepage components
-  a. servicesSection, fix logos, Testimonials section, Schedule Call/Meeting Section CTA.
-  b. need to implement portable text in sanity 
 2. Pages - interchangeable components, hero/content/main function/footer
-  a. services, about, contact, partners, reviews/testimonials ~ blog?
+  a. services, about, contact, partners, reviews/testimonials ~ blog faq
 3. Footer - sitemap
 
 Optimize content and layout / QC

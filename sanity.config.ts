@@ -20,7 +20,7 @@ import home from '@/sanity/schemas/singletons/home'
 import settings from '@/sanity/schemas/singletons/settings'
 import { assist } from '@sanity/assist'
 import contact from './sanity/schemas/objects/contact'
-
+import faq from './sanity/schemas/documents/faq'
 
 
 const title =
@@ -42,10 +42,12 @@ export default defineConfig({
       // Documents
       duration,
       page,
+      faq,
       // Objects
       milestone,
       timeline,
       contact, // custom contact form schema
+      
     ],
   },
   plugins: [

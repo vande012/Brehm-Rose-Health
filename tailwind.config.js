@@ -12,7 +12,7 @@ module.exports = {
     extend: {
       colors: {
         custom: {
-          light: '#F3F4F6',     // Light gray for background
+          light: '#cdcdcd',     // Light gray for background
           dark: '#1F2937',      // Deep slate gray for dark elements
           white: '#FFFFFF',     // Pure white
           blue: '#015d9d',      // Deep blue from the logo

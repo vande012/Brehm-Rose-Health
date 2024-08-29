@@ -1,9 +1,6 @@
 'use client'
 
-import type { PortableTextBlock } from 'next-sanity'
-import { resolveHref } from '@/sanity/lib/utils'
 import type { HomePagePayload, SettingsPayload } from '@/types'
-import { urlForImage } from '@/sanity/lib/utils'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
@@ -18,7 +15,7 @@ export function HomePage({ data, settings }: HomePageProps) {
   const { phoneNumber } = settings ?? {}
 
   return (
-    <div className="space-y-6 py-8 bg-white">
+    <div className=" bg-white">
       {/* Hero Section */}
       {hero && (
         <motion.section
@@ -71,7 +68,6 @@ export function HomePage({ data, settings }: HomePageProps) {
           </motion.div>
         </motion.section>
       )}
-
       {/* Logo Banner Section */}
       {logoBanner && (
         <motion.section
@@ -132,7 +128,9 @@ export function HomePage({ data, settings }: HomePageProps) {
                   <h3 className="text-2xl font-semibold text-custom-light mb-2 py-4">
                     {service.title}
                   </h3>
-                  <p className="text-custom-light text-xl py-2">{service.description}</p>
+                  <p className="text-custom-light text-xl py-2">
+                    {service.description}
+                  </p>
                   <Link href={service.buttonUrl} key={service.buttonUrl}>
                     <span className="inline-block mt-auto px-6 py-2 bg-custom-light text-custom-blue hover:text-custom-green rounded">
                       {service.buttonText}
@@ -144,42 +142,6 @@ export function HomePage({ data, settings }: HomePageProps) {
           </div>
         </section>
       )}
-      {/* Reviews Section */}
-      {reviewsSection && (
-        <motion.section
-          className="reviews-section py-4 flex flex-wrap justify-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="w-full text-center text-3xl font-bold mb-4 text-custom-blue">
-            {reviewsSection.title}
-          </h2>
-          <div className="w-full flex flex-wrap justify-center">
-            {reviewsSection.reviews.map((review, index) => (
-              <motion.div
-                key={index}
-                className="testimonial-card p-6 border border-gray-200 bg-white rounded-lg shadow-md m-4 w-full md:w-1/2 lg:w-1/3 xl:w-1/4"
-                initial={{ x: -100, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -6 }}
-              >
-                <p className="text-gray-700 mb-4 text-lg">{review.review}</p>
-                <p className="text-xs font-light italic">{review.name}</p>
-                {review.image?.asset?.url && (
-                  <img
-                    src={review.image.asset.url}
-                    alt={review.name}
-                    className="w-12 h-12 rounded-full mt-4"
-                  />
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
-      )}
-      ,
       {partnersSection && (
         <motion.section
           className="partners-section bg-custom-light py-12"
@@ -192,7 +154,7 @@ export function HomePage({ data, settings }: HomePageProps) {
               {partnersSection.title}
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-8">
               {partnersSection.partners.slice(0, 4).map((partner, index) => (
                 <motion.div
                   key={index}
@@ -230,6 +192,42 @@ export function HomePage({ data, settings }: HomePageProps) {
           </div>
         </motion.section>
       )}
+      {/* Reviews Section */}
+      {reviewsSection && (
+        <motion.section
+          className="reviews-section py-4 flex flex-wrap justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="w-full text-center text-3xl font-bold mb-4 text-custom-blue">
+            {reviewsSection.title}
+          </h2>
+          <div className="w-full flex flex-wrap justify-center">
+            {reviewsSection.reviews.map((review, index) => (
+              <motion.div
+                key={index}
+                className="testimonial-card p-6 border border-gray-200 bg-white rounded-lg shadow-md m-4 w-full md:w-1/2 lg:w-1/3 xl:w-1/4"
+                initial={{ x: -100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -6 }}
+              >
+                <p className="text-gray-700 mb-4 text-lg">{review.review}</p>
+                <p className="text-xs font-light italic">{review.name}</p>
+                {review.image?.asset?.url && (
+                  <img
+                    src={review.image.asset.url}
+                    alt={review.name}
+                    className="w-12 h-12 rounded-full mt-4"
+                  />
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+      )}
+      ,
       <motion.section
         className="contact relative flex flex-col md:flex-row bg-custom-blue py-6"
         initial={{ opacity: 0 }}
@@ -239,12 +237,10 @@ export function HomePage({ data, settings }: HomePageProps) {
         <div className="contact-text flex flex-col text-center md:w-1/2">
           <h2 className="text-3xl font-semibold mb-4 text-white">Contact Us</h2>
           <p className="text-lg text-white">
-            Want to get in touch with us? Send us a message or give us a call!
+            Lets get you covered, send us a message or give us a call!
+            -&nbsp;{phoneNumber}
           </p>
-          <p className="text-sm md:text-lg font-bold text-white sm:text-sm">
-              {' '}
-              &nbsp;{phoneNumber}
-            </p>
+          
         </div>
         <div className="contact-button my-4 flex items-center justify-center md:w-1/2">
           <motion.div
@@ -280,4 +276,3 @@ export function HomePage({ data, settings }: HomePageProps) {
 }
 
 export default HomePage
-

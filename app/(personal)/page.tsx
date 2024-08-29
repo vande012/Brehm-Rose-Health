@@ -9,6 +9,7 @@ const HomePagePreview = dynamic(
   () => import('@/components/pages/home/HomePagePreview'),
 )
 
+
 export default async function IndexRoute() {
   const [homeInitial, settingsInitial] = await Promise.all([
     loadHomePage(),

@@ -166,3 +166,12 @@ export interface FormFieldsPayload {
   formFields: FormField[]
 }
 
+export interface Faq {
+  sections: {
+    title: string
+    questions: {
+      question: string
+      answer: PortableTextBlock[]
+    }[]
+  }[]
+}
