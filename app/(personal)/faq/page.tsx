@@ -5,7 +5,6 @@ import { client } from '@/sanity/lib/client'
 import { Faq as FaqType } from '@/types'
 import { PortableText } from 'next-sanity'
 
-
 // GROQ query to fetch FAQ data from Sanity
 const faqQuery = groq`
   *[_type == "faq"][0]{
@@ -28,13 +27,13 @@ export default async function FaqPage() {
         Frequently Asked Questions
       </h1>
       <p className="faq-description text-lg md:text-xl text-center text-gray-700 mb-12">
-        At DoggieLawn, we believe that human and pet comfort should never be
-        mutually exclusive...
+        Here are some frequently asked questions about different health
+        insurance coverage..
       </p>
       {faqData?.sections.map((section, index) => (
         <div key={index} className="faq-section-container mb-6 md:mb-10">
           <details className="faq-section">
-            <summary className="faq-section-title text-2xl md:text-3xl font-semibold text-green-600 mb-4">
+            <summary className="faq-section-title text-2xl md:text-3xl font-semibold text-custom-blue mb-4">
               {section.title}
             </summary>
             <ul className="faq-questions-list">
@@ -42,7 +41,7 @@ export default async function FaqPage() {
                 <li key={questionIndex} className="faq-question-container mb-4">
                   <details className="faq-question">
                     <summary className="faq-question-title text-xl md:text-2xl font-medium cursor-pointer flex items-center">
-                    <span className="faq-toggle-icon mr-5">+</span>
+                      <span className="faq-toggle-icon mr-5">+</span>
                       {question.question}
                     </summary>
                     <div className="faq-answer-container mt-2 text-gray-700 text-lg md:text-xl">
@@ -57,5 +56,4 @@ export default async function FaqPage() {
       ))}
     </div>
   )
-
 }

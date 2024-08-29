@@ -85,7 +85,7 @@ export default function Navbar(props: NavbarProps) {
             return (
               <Link
                 key={key}
-                className={`block text-lg font-bold hover:text-gray-700 md:ml-4 md:text-xl ${
+                className={`block text-lg font-bold hover:text-custom-green md:ml-4 md:text-xl ${
                   menuItem?._type === 'home'
                     ? 'font-extrabold text-black'
                     : 'text-custom-blue'
@@ -104,7 +104,7 @@ export default function Navbar(props: NavbarProps) {
         >
           {isMobileMenuOpen && (
             <div className="flex justify-center py-2">
-              <h2 className="text-3xl py-4 font-bold text-gray-700">
+              <h2 className="text-3xl py-4 font-bold text-custom-blue">
                 <span className="flex justify-center">Welcome to</span>
                 {data?.title}
               </h2>
