@@ -168,10 +168,10 @@ export interface FormFieldsPayload {
 
 export interface Faq {
   sections: {
-    title: string
+    title: string;
     questions: {
-      question: string
-      answer: PortableTextBlock[]
-    }[]
-  }[]
+      question: string;
+      answer: PortableTextBlock[]; // Adjust the type based on the actual structure of the answer
+    }[];
+  }[];
 }

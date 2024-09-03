@@ -120,11 +120,10 @@ export default function ContactForm() {
       setLoading(false)
     }
   }
-
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col w-full max-w-md mx-auto p-4 bg-white rounded-md shadow-md"
+      className="flex flex-col w-full max-w-md mx-auto p-4 m-6 bg-white rounded-md shadow-md"
     >
       {formFields.map((field) => (
         <div key={field.fieldId} className="mb-4">
@@ -134,6 +133,7 @@ export default function ContactForm() {
           >
             {field.fieldName}
           </label>
+          
           {field.inputType === 'select' ? (
             <select
               id={field.fieldId}
@@ -151,9 +151,12 @@ export default function ContactForm() {
                 <option key={option.value} value={option.value}>
                   {option.title}
                 </option>
+                
               ))}
             </select>
+            
           ) : (
+            
             <input
               id={field.fieldId}
               type={field.inputType}
@@ -168,9 +171,11 @@ export default function ContactForm() {
               placeholder={field.placeholder}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
+            
           )}
         </div>
       ))}
+      
       <button
         type="submit"
         disabled={loading}
@@ -180,9 +185,12 @@ export default function ContactForm() {
       </button>
       {success !== null && (
         <p className="mt-4 text-green-600">
-          {success ? 'Message sent successfully!' : 'Failed to send message.'}
+          {success
+            ? 'Message sent successfully, we will be in touch soon!'
+            : 'Failed to send message, please try again.'}
         </p>
       )}
     </form>
   )
 }
+
