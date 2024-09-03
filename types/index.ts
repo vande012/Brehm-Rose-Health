@@ -115,22 +115,14 @@ export interface PagePayload {
   overview?: PortableTextBlock[]
   title?: string
   slug?: string
-  hero?: {
-    heading?: string
-    subheading?: string
-    image?: {
-      asset: {
-        url: string
-      }
-      alt?: string
-    }
-    optionalText?: PortableTextBlock[]
-    buttons?: Array<{
-      text: string
-      url: string
-    }>
+  image?: {
+    asset: {
+      url: string;
+    };
+    alt?: string
   }
 }
+
 
 export interface SettingsPayload {
   footer?: PortableTextBlock[]

@@ -95,22 +95,13 @@ export const pagesBySlugQuery = groq`
     overview,
     title,
     "slug": slug.current,
-    hero {
-      heading,
-      subheading,
-      image {
+    image {
         asset-> {
           _id,
           url
         },
         alt
       },
-      optionalText,
-      buttons[] {
-        text,
-        url
-      }
-    },
   }
 `
 export const settingsQuery = groq`

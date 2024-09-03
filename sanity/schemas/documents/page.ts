@@ -8,7 +8,6 @@ export default defineType({
   title: 'Page',
   icon: DocumentIcon,
   fields: [
-    
     defineField({
       type: 'string',
       name: 'title',
@@ -66,40 +65,68 @@ export default defineType({
       validation: (rule) => rule.max(155).required(),
     }),
     defineField({
-      name: 'hero',
-      title: 'Hero Section',
-      type: 'object',
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+      icon: ImageIcon,
+      options: {
+        hotspot: true,
+      },
       fields: [
         defineField({
-          name: 'heading',
-          title: 'Heading',
+          name: 'alt',
+          title: 'Alt Text',
           type: 'string',
+          description: 'Alternative text for screen readers.',
           validation: (rule) => rule.required(),
         }),
-        defineField({
-          name: 'subheading',
-          title: 'Subheading',
-          type: 'string',
-        }),
-        defineField({
-          name: 'image',
-          title: 'Image',
-          type: 'image',
-          icon: ImageIcon,
-          options: {
-            hotspot: true,
-          },
-          fields: [
-            defineField({
-              name: 'alt',
-              title: 'Alt Text',
-              type: 'string',
-              description: 'Alternative text for screen readers.',
-              validation: (rule) => rule.required(),
-            }),
+      ],
+    }),
+    defineField({
+      name: 'body',
+      description:
+        'Page body text and links',
+      title: 'Body',
+      type: 'array',
+      of: [
+        // Paragraphs
+        defineArrayMember({
+          lists: [],
+          marks: {
+            annotations: [{
+              name: 'link',
+              type: 'object',
+              title: 'Link',
+              fields: [
+                {
+                  name: 'href',
+                  type: 'url',
+                  title: 'Url',
+                },
+              ],
+            },
           ],
+            decorators: [
+              {
+                title: 'Italic',
+                value: 'em',
+              },
+              {
+                title: 'Strong',
+                value: 'strong',
+              },
+            ],
+          },
+          styles: [
+            { title: 'Normal', value: 'normal' },
+            { title: 'H2', value: 'h2' },
+            { title: 'H3', value: 'h3' },
+            { title: 'Quote', value: 'blockquote' },
+          ],
+          type: 'block',
         }),
       ],
+      validation: (rule) => rule.max(155).required(),
     }),
   ],
   preview: {
