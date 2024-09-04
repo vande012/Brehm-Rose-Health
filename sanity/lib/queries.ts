@@ -174,3 +174,36 @@ export const faqQuery = groq`
   }
 `;
 
+export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][0]{
+  title,
+  slug,
+  content[]{
+    ...,
+    _type == 'image' => {
+      ...,
+      asset->{
+        _id,
+        url
+      }
+    }
+  },
+  excerpt,
+  coverImage{
+    asset->{
+      _id,
+      url
+    },
+    alt
+  },
+  date,
+  author->{
+    name,
+    picture{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    }
+  }
+}`

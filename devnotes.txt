@@ -1,3 +1,7 @@
+#Prompt
+Please analyze these files in my next.js sanity project with typescript. It is app router with dynamic page slugs, custom page folders for specific pages like faq and contact for functionality and uses tailwind
+
+
 
 #Process of passing data to the components
 

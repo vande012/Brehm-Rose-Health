@@ -167,3 +167,45 @@ export interface Faq {
     }[];
   }[];
 }
+
+export interface PostsPayload {
+  title: string
+  slug?: string
+  content: Array<
+    | {
+        _type: 'block'
+        children: Array<{
+          _type: 'span'
+          text: string
+        }>
+      }
+    | {
+        _type: 'image'
+        image?: {
+          asset: {
+            url: string;
+          };
+          alt?: string
+        }
+        caption?: string
+        alt?: string
+      }
+  >
+  excerpt?: string
+  coverimage?: {
+    asset: {
+      url: string;
+    };
+    alt?: string
+  }
+  date: string
+  author: {
+    name: string
+    picture?: {
+      asset: {
+        url: string
+      }
+      alt?: string
+    }
+  }
+}

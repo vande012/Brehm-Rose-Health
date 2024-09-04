@@ -8,12 +8,14 @@ import {
   homePageQuery,
   pagesBySlugQuery,
   settingsQuery,
+  postBySlugQuery,
 } from '@/sanity/lib/queries'
 import { token } from '@/sanity/lib/token'
 import {
   HomePagePayload,
   PagePayload,
   SettingsPayload,
+  PostsPayload,
 } from '@/types'
 
 const serverClient = client.withConfig({
@@ -81,5 +83,13 @@ export function loadPage(slug: string) {
     pagesBySlugQuery,
     { slug },
     { next: { tags: [`page:${slug}`] } },
+  )
+}
+
+export function loadPost(slug: string) {
+  return loadQuery<PostsPayload | null>(
+    postBySlugQuery, // This should be defined in your queries
+    { slug },
+    { next: { tags: [`post:${slug}`] } },
   )
 }

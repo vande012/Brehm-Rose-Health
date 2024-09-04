@@ -21,7 +21,8 @@ import settings from '@/sanity/schemas/singletons/settings'
 import { assist } from '@sanity/assist'
 import contact from './sanity/schemas/objects/contact'
 import faq from './sanity/schemas/documents/faq'
-
+import post from '@/sanity/schemas/documents/post'
+import author from '@/sanity/schemas/objects/author'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
@@ -43,17 +44,18 @@ export default defineConfig({
       duration,
       page,
       faq,
+      post,
       // Objects
       milestone,
       timeline,
       contact, // custom contact form schema
-      
+      author,
     ],
   },
   plugins: [
     assist(), //ai assistant tool
     structureTool({
-      structure: pageStructure([home, settings]),
+      structure: pageStructure([home, settings, post]),
     }),
     presentationTool({
       resolve,
