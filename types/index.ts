@@ -191,3 +191,9 @@ export interface PostsPayload {
     }
   }
 }
+
+export interface SitemapResponse {
+  homePage?: { slug: string };
+  pages?: { slug: string }[];
+  posts?: { slug: string }[];
+}

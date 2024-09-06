@@ -9,6 +9,7 @@ import {
   pagesBySlugQuery,
   settingsQuery,
   postBySlugQuery,
+  sitemapQuery,
 } from '@/sanity/lib/queries'
 import { token } from '@/sanity/lib/token'
 import {
@@ -16,6 +17,7 @@ import {
   PagePayload,
   SettingsPayload,
   PostsPayload,
+  SitemapResponse,
 } from '@/types'
 
 const serverClient = client.withConfig({
@@ -93,3 +95,13 @@ export function loadPost(slug: string) {
     { next: { tags: [`post:${slug}`] } },
   )
 }
+
+export function loadSitemap() {
+  return loadQuery<SitemapResponse>(
+    sitemapQuery,
+    {},
+    { next: { tags: ['sitemap'] } },
+  )
+}
+
+

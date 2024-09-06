@@ -122,6 +122,13 @@ export const settingsQuery = groq`
     phoneNumber,
   }
 `
+
+interface SitemapResponse {
+  homePages: { slug: string } | null;
+  pages: { slug: string }[];
+  posts: { slug: string }[];
+}
+
 export const sitemapQuery = groq`
   {
     // Fetch the homepage slug
@@ -138,6 +145,7 @@ export const sitemapQuery = groq`
     },
   }
 `
+
 export const formQuery = groq`
   *[_type == "formBuilder"][0] {
     formFields[] {
