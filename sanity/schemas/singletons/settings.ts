@@ -32,6 +32,9 @@ export default defineType({
             {
               type: 'page',
             },
+            {
+              type: 'post',
+            }
           ],
         },
       ],
@@ -82,6 +85,17 @@ export default defineType({
         hotspot: true,
       },
     }),
+    defineField({
+      name: 'posts',
+      title: 'Posts',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'post' }],
+        },
+      ],
+    }),
   ],
   preview: {
     select: {
@@ -94,4 +108,3 @@ export default defineType({
     },
   },
 })
-

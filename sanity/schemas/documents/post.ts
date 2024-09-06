@@ -1,9 +1,11 @@
-import { defineType, defineField } from 'sanity';
+import { defineType, defineField, defineArrayMember } from 'sanity';
+import { DocumentIcon, ImageIcon } from '@sanity/icons';
 
 export default defineType({
   name: 'post',
   title: 'Post',
   type: 'document',
+  icon: DocumentIcon,
   fields: [
     defineField({
       name: 'title',
@@ -26,7 +28,7 @@ export default defineType({
       title: 'Content',
       type: 'array',
       of: [
-        {
+        defineArrayMember({
           type: 'block',
           marks: {
             decorators: [{ title: 'Strong', value: 'strong' }],
@@ -41,19 +43,19 @@ export default defineType({
               },
             ],
           },
-        },
-        {
+        }),
+        defineArrayMember({
           type: 'image',
           options: {
             hotspot: true,
           },
-        },
+        }),
         // Add other custom Portable Text types if needed
       ],
     }),
     defineField({
       name: 'excerpt',
-      title: 'Excerpt',
+      title: 'Excerpt - Used for the <meta> description tag for SEO',
       type: 'text',
       validation: Rule => Rule.required(),
     }),
@@ -61,9 +63,19 @@ export default defineType({
       name: 'coverImage',
       title: 'Cover Image',
       type: 'image',
+      icon: ImageIcon,
       options: {
         hotspot: true, // Enables the hotspot feature
       },
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string',
+          description: 'Alternative text for screen readers.',
+          validation: Rule => Rule.required(),
+        }),
+      ],
     }),
     defineField({
       name: 'date',
@@ -79,5 +91,16 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      media: 'coverImage',
+    },
+    prepare({ title, media }) {
+      return {
+        title,
+        media,
+      };
+    },
+  },
 });
-

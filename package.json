@@ -9,7 +9,8 @@
     "lint:fix": "npm run format && npm run lint -- --fix",
     "start": "next start",
     "type-check": "tsc --noEmit",
-    "test": "jest"
+    "test": "jest",
+    "postbuild": "next sitemap"
   },
   "prettier": {
     "semi": false,
@@ -32,6 +33,7 @@
     "date-fns": "3.6.0",
     "next": "14.2.4",
     "next-sanity": "9.3.10",
+    "next-sitemap": "^4.2.3",
     "nodemailer": "^6.9.14",
     "react": "18.3.1",
     "react-dom": "18.3.1",

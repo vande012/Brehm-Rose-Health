@@ -28,5 +28,5 @@ export default function HomePagePreview(props: Props) {
     )
   }
 
-  return <HomePage data={data} />
+  return <HomePage data={data} settings={null} />
 }

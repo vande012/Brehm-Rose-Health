@@ -48,7 +48,7 @@ export default function Navbar(props: NavbarProps) {
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
             <img src={logo.src} alt="Logo" />
-            <img src={name.src} alt="Name" className="pl-5 w-44  lg:w-64" />
+            <img src={name.src} alt="Name" className="pl-5 w-44 lg:w-64" />
           </Link>
         </div>
         <div className="flex md:hidden">
@@ -96,6 +96,12 @@ export default function Navbar(props: NavbarProps) {
               </Link>
             )
           })}
+          <Link
+            className="block text-lg font-bold hover:text-custom-green md:ml-4 md:text-xl text-custom-blue"
+            href="/posts"
+          >
+            Blog
+          </Link>
         </div>
         <motion.div
           initial={{ height: 0 }}
@@ -136,6 +142,12 @@ export default function Navbar(props: NavbarProps) {
                 </motion.div>
               )
             })}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.1 * menuItems.length }}
+            >
+            </motion.div>
           </div>
         </motion.div>
 

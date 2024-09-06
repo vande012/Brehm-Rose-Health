@@ -1,6 +1,6 @@
 'use client'
 
-import type { HomePagePayload, SettingsPayload } from '@/types'
+import type { HomePagePayload, SettingsPayload} from '@/types'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { CustomPortableText } from '@/components/shared/CustomPortableText'

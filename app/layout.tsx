@@ -24,7 +24,7 @@ const robo = Roboto({
   subsets: ['latin'],
   weight: ['400', '700'],
 })
-const news = Newsreader({
+const newsreader = Newsreader({
   variable: '--font-newsreader',
   subsets: ['latin'],
   weight: ['400', '700'],
@@ -37,7 +37,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${mono.variable} ${sans.variable} ${serif.variable} ${robo.variable} ${news.variable}`}
+      className={`${mono.variable} ${sans.variable} ${serif.variable} ${robo.variable} ${newsreader.variable}`}
     >
       <body>{children}</body>
     </html>

@@ -113,6 +113,11 @@ export const settingsQuery = groq`
       title
     },
     ogImage,
+    posts[] -> {
+      _type,
+      "slug": slug.current,
+      title
+    },
     title,
     phoneNumber,
   }
@@ -125,6 +130,10 @@ export const sitemapQuery = groq`
     },
     // Fetch all pages with slugs
     "pages": *[_type == "page" && defined(slug.current)] {
+      "slug": slug.current
+    },
+    // Fetch all posts with slugs
+    "posts": *[_type == "post" && defined(slug.current)] {
       "slug": slug.current
     },
   }
@@ -207,3 +216,25 @@ export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][
     }
   }
 }`
+
+export const allPostsQuery = groq`*[_type == "post"] | order(date desc) {
+  title,
+  slug,
+  excerpt,
+  coverImage {
+    asset->{
+      url
+    },
+    alt
+  },
+  date,
+  author->{
+    name,
+    picture{
+      asset->{
+        url
+      },
+      alt
+    }
+  }
+}`;

@@ -130,6 +130,7 @@ export interface SettingsPayload {
   ogImage?: Image
   title?: string
   phoneNumber?: string
+  posts?: PostsPayload[]
 }
 
 export interface Logo {
@@ -171,28 +172,9 @@ export interface Faq {
 export interface PostsPayload {
   title: string
   slug?: string
-  content: Array<
-    | {
-        _type: 'block'
-        children: Array<{
-          _type: 'span'
-          text: string
-        }>
-      }
-    | {
-        _type: 'image'
-        image?: {
-          asset: {
-            url: string;
-          };
-          alt?: string
-        }
-        caption?: string
-        alt?: string
-      }
-  >
+  content: PortableTextBlock[]
   excerpt?: string
-  coverimage?: {
+  coverImage?: {
     asset: {
       url: string;
     };

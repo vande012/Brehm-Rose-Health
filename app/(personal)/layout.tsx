@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       images: ogImage ? [ogImage] : [],
     },
-    themeColor: '#000', 
+    themeColor: '#000' as Viewport['themeColor'], 
   }
 }
 export default async function IndexRoute({
