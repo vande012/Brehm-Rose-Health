@@ -1,5 +1,3 @@
-const withSitemap = require('next-sitemap');
-
 /** @type {import('next').NextConfig} */
 const config = {
   images: {
@@ -13,7 +11,7 @@ const config = {
     ignoreBuildErrors: process.env.VERCEL_ENV === 'production',
   },
   eslint: {
-    // Set this to false if you want production builds to abort if there's lint errors
+    /// Set this to false if you want production builds to abort if there's lint errors
     ignoreDuringBuilds: process.env.VERCEL_ENV === 'production',
   },
   logging: {
@@ -24,6 +22,6 @@ const config = {
   experimental: {
     taint: true,
   },
-};
+}
 
-module.exports = withSitemap(config);
+export default config
