@@ -6,7 +6,6 @@ import logo from '/app/logo.png'
 import name from '/app/name.png'
 import { resolveHref } from '@/sanity/lib/utils'
 
-
 interface FooterProps {
   data: SettingsPayload
 }
@@ -25,6 +24,7 @@ export default function Footer(props: FooterProps) {
               <img src={logo.src} alt="Logo" className="w-12 h-12" />
               <img src={name.src} alt="Name" className="pl-3 w-52" />
             </Link>
+            <div className="text-custom-blue">{data?.phoneNumber}</div>
             {footer && (
               <div className="mt-4 md:mt-6 md:max-w-md text-center md:text-left">
                 <CustomPortableText
@@ -59,26 +59,35 @@ export default function Footer(props: FooterProps) {
                 )
               })}
               <Link
-            className="block text-sm md:text-base font-bold text-gray-600 hover:text-gray-300"
-            href="/posts"
-          >
-            Blog
-          </Link>
+                className="block text-sm md:text-base font-bold text-gray-600 hover:text-gray-300"
+                href="/posts"
+              >
+                Blog
+              </Link>
             </div>
-
           </nav>
-          
         </div>
         <div className="mt-8 text-center text-gray-500 text-sm">
-          &copy; {new Date().getFullYear()} Brehm-Rose Health LLC. All rights reserved.
-          <Link
-            className="block text-sm md:text-base font-bold text-gray-600 hover:text-gray-300"
-            href="/sitemap"
-          >
-            Sitemap
-          </Link>
+          &copy; {new Date().getFullYear()} Brehm-Rose Health LLC. All rights
+          reserved.
+          <div className="flex space-x-4 justify-center">
+            <Link
+              className="block text-sm md:text-base font-bold text-gray-600 hover:text-gray-300"
+              href="/sitemap"
+            >
+              Sitemap
+            </Link>
+            <Link
+              className="block text-sm md:text-base font-bold text-gray-600 hover:text-gray-300"
+              href="/terms-and-conditions"
+            >
+              Terms & Conditions
+            </Link>
+          </div>
+          <div className="mt-8 text-center text-gray-500 text">
+            <p>Website by Ryan Vandehey</p>
+          </div>
         </div>
-        
       </div>
     </footer>
   )

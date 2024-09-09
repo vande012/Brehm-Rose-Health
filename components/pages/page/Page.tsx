@@ -27,7 +27,7 @@ export function Page({ data }: PageProps) {
         centered={true}
       />
       {/* Other content sections could be rendered below */}
-      <div className="container mx-auto px-4 mt-6 md:max-w-3xl">
+      <div className="page-container mx-auto px-4 mt-6 md:max-w-3xl">
         {body && <CustomPortableText value={body} />}
       </div>
     </div>

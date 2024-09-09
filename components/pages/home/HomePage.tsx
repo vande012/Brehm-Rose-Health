@@ -25,7 +25,7 @@ export function HomePage({ data, settings }: HomePageProps) {
           transition={{ duration: 0.5 }}
         >
           <div
-            className="hero-img w-full h-64 md:h-auto md:w-1/2 bg-cover bg-center"
+            className="hero-img w-full h-64 md:h-auto md:w-1/2 bg-cover bg-center mt-6"
             style={
               hero.image && { backgroundImage: `url(${hero.image.asset.url})` }
             }
@@ -36,7 +36,7 @@ export function HomePage({ data, settings }: HomePageProps) {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="mt-8 font-extrabold leading-snug text-blue text-4xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-center text-custom-blue">
+            <h1 className="mt-8 pb-6 font-extrabold leading-snug text-blue text-4xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-center text-custom-blue">
               {hero.heading}
             </h1>
             <h2 className="scroll-m-20 border-b pb-3 text-3xl font-semibold tracking-tight first:mt-0 text-custom-blue sm:text-base md:text-lg lg:text-2xl lg:text-center">
@@ -78,7 +78,7 @@ export function HomePage({ data, settings }: HomePageProps) {
           transition={{ duration: 0.5 }}
         >
           <div className="overflow-hidden">
-            <h2 className="text-center text-3xl font-bold pb-12 text-custom-blue">
+            <h2 className="text-center text-4xl font-bold pb-12 text-custom-blue">
               {logoBanner.header}
             </h2>
             <div className="marquee">
@@ -125,14 +125,14 @@ export function HomePage({ data, settings }: HomePageProps) {
                       className="w-full h-48 object-cover mb-4 rounded-md"
                     />
                   )}
-                  <h3 className="text-2xl font-semibold text-custom-light mb-2 py-4">
+                  <h3 className="text-3xl font-semibold text-custom-light mb-2 py-4">
                     {service.title}
                   </h3>
                   <p className="text-custom-light text-xl py-2">
                     {service.description}
                   </p>
                   <Link href={service.buttonUrl} key={service.buttonUrl}>
-                    <span className="inline-block mt-auto px-6 py-2 bg-custom-light text-custom-blue hover:text-custom-green rounded">
+                    <span className="inline-block mt-auto px-6 py-2 bg-custom-light text-custom-blue hover:bg-custom-green rounded">
                       {service.buttonText}
                     </span>
                   </Link>

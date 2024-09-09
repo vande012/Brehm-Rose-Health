@@ -48,7 +48,7 @@ export default function Navbar(props: NavbarProps) {
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
             <img src={logo.src} alt="Logo" />
-            <img src={name.src} alt="Name" className="pl-5 w-44 lg:w-64" />
+            <img src={name.src} alt="Name" className="pl-5 w-48 lg:w-72" />
           </Link>
         </div>
         <div className="flex md:hidden">
@@ -142,12 +142,17 @@ export default function Navbar(props: NavbarProps) {
                 </motion.div>
               )
             })}
+            <Link
+              className="block py-2 px-4 text-xl font-bold text-gray-700"
+              href="/posts"
+            >
+              Blog
+            </Link>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.1 * menuItems.length }}
-            >
-            </motion.div>
+            ></motion.div>
           </div>
         </motion.div>
 
