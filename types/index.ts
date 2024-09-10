@@ -171,7 +171,9 @@ export interface Faq {
 
 export interface PostsPayload {
   title: string
-  slug?: string
+  slug: {
+    current: string;
+  }
   content: PortableTextBlock[]
   excerpt?: string
   coverImage?: {

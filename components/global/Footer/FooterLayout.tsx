@@ -83,6 +83,12 @@ export default function Footer(props: FooterProps) {
             >
               Terms & Conditions
             </Link>
+            <Link
+              className="block text-sm md:text-base font-bold text-gray-600 hover:text-gray-300"
+              href="/privacy-policy"
+            >
+              Privacy Policy
+            </Link>
           </div>
           <div className="mt-8 text-center text-gray-500 text">
             <p>Website by Ryan Vandehey</p>

@@ -123,12 +123,6 @@ export const settingsQuery = groq`
   }
 `
 
-interface SitemapResponse {
-  homePages: { slug: string } | null;
-  pages: { slug: string }[];
-  posts: { slug: string }[];
-}
-
 export const sitemapQuery = groq`
   {
     // Fetch the homepage slug
@@ -140,7 +134,7 @@ export const sitemapQuery = groq`
       "slug": slug.current
     },
     // Fetch all posts with slugs
-    "posts": *[_type == "post" && defined(slug.current)] {
+    "posts": *[_type == "post"] []{
       "slug": slug.current
     },
   }
@@ -225,9 +219,12 @@ export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][
   }
 }`
 
-export const allPostsQuery = groq`*[_type == "post"] | order(date desc) {
+export const allPostsQuery = groq`
+*[_type == "post"] {
   title,
-  slug,
+  slug {
+    current
+  },
   excerpt,
   coverImage {
     asset->{
@@ -245,4 +242,5 @@ export const allPostsQuery = groq`*[_type == "post"] | order(date desc) {
       alt
     }
   }
-}`;
+}
+`

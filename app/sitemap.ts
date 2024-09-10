@@ -12,45 +12,60 @@ type SitemapEntry = {
     homePage?: { slug: string }
 };
 
-export default async function sitemap(): Promise<SitemapResponse[]> {
+function isSlugObject(slug: string | { current: string }): slug is { current: string } {
+  return typeof slug === 'object' && 'current' in slug;
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  try {
     // Fetch data using the sitemapQuery
     const response = await loadSitemap();
     console.log('Sitemap Response:', response);
-    
-   
-    const pages = response.data.pages || [];
-    const posts = response.data.posts || [];
-    
+
+    const pages = response?.data?.pages || [];
+    const posts = response?.data?.posts || [];
+
+    console.log('Pages Data:', pages);
+    console.log('Posts Data:', posts);
+
     // Base URL of your site
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com';
-    
-      // Always include the homepage URL
-      const homePageUrl: SitemapEntry[] = [{
-        url: `${baseUrl}/`,
-        lastModified: new Date(),
-        changeFrequency: 'yearly',
-        priority: 1,
-      }];
-    
+
+    // Always include the homepage URL
+    const homePageUrl: MetadataRoute.Sitemap = [{
+      url: `${baseUrl}`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 1,
+    }];
+
     // Map through pages and posts to generate URLs
-    const pageUrls: SitemapEntry[] = pages.map((page: { slug: string }) => ({
+    const pageUrls: MetadataRoute.Sitemap = pages.map((page: { slug: string }) => ({
       url: `${baseUrl}/${page.slug}`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     }));
+
+    const postUrls: MetadataRoute.Sitemap = posts.map((post: { slug: string | { current: string } }) => {
+      const slugValue = isSlugObject(post.slug) ? post.slug.current : post.slug;
     
-    const postUrls: SitemapEntry[] = posts.map((post: { slug: string }) => ({
-      url: `${baseUrl}/posts/${post.slug}`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.5,
-    }));
-    
+      console.log('Post Slug:', slugValue);
+      return {
+        url: `${baseUrl}/posts/${slugValue}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.5,
+      };
+    });
     // Return all URLs, including static ones
     return [
-      ...homePageUrl, // Home page
-      ...pageUrls, // Dynamic pages
-      ...postUrls, // Dynamic posts
+      ...homePageUrl,
+      ...pageUrls,
+      ...postUrls,
     ];
+  } catch (error) {
+    console.error('Error generating sitemap:', error);
+    return [];
+  }
 }

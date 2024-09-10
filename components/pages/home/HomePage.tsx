@@ -43,7 +43,7 @@ export function HomePage({ data, settings }: HomePageProps) {
               {hero.subheading}
             </h2>
             {hero?.optionalText ? (
-              <div className="pt-4 md:block lg:ml-28 lg:mt-12">
+              <div className="pt-2 md:block lg:ml-20 lg:mt-8 text-center">
                 <CustomPortableText
                   paragraphClasses="max-w-3xl text-gray-600 text-2xl"
                   value={hero.optionalText}
@@ -53,7 +53,7 @@ export function HomePage({ data, settings }: HomePageProps) {
               <p className="hidden md:block">No optional text available</p>
             )}
             <motion.div
-              className="hero-button lg:text-center py-6"
+              className="hero-button text-center py-6"
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5 }}

@@ -1,25 +1,12 @@
 import { PortableText, PortableTextComponents } from 'next-sanity'
-import { PostsPayload } from '@/types'
+import { PostsPayload } from '@/types'  // Make sure this points to the correct location
 
 interface PostContentProps {
   content: PostsPayload['content']
   title: string
-  author: {
-    name: string
-    picture?: {
-      asset: {
-        url: string
-      }
-      alt?: string
-    }
-  }
+  author: PostsPayload['author']
   date: string
-  coverImage?: {
-    asset: {
-      url: string
-    }
-    alt?: string
-  }
+  coverImage?: PostsPayload['coverImage']
 }
 
 const components: PortableTextComponents = {
@@ -56,7 +43,7 @@ const PostContent = ({ content, title, author, date, coverImage }: PostContentPr
         )}
         <h1 className="text-4xl font-bold mb-2">{title}</h1>
         <div className="text-gray-600">
-          <span>By {author?.name}</span> | <span>{new Date(date).toLocaleDateString()}</span>
+          <span>By {author.name}</span> | <span>{new Date(date).toLocaleDateString()}</span>
         </div>
       </header>
 

@@ -125,10 +125,29 @@ export default defineType({
           ],
           type: 'block',
         }),
+        defineArrayMember({
+          type: 'image',
+          icon: ImageIcon,
+          fields: [
+            defineField({
+              name: 'alt',
+              title: 'Alt Text',
+              type: 'string',
+              description: 'Alternative text for screen readers.',
+              validation: (rule) => rule.required(),
+            }),
+          ],
+          options: {
+            hotspot: true,
+          },
+        }),
       ],
+      
       validation: (rule) => rule.max(155).required(),
     }),
+    
   ],
+  
   preview: {
     select: {
       title: 'title',

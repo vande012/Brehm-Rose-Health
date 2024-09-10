@@ -1,41 +1,38 @@
 import { client } from '@/sanity/lib/client';
 import { allPostsQuery } from '@/sanity/lib/queries';
 import Link from 'next/link';
-
-// Define a type for the fetched posts
-export interface Post {
-  title: string;
-  slug: {
-    current: string;
-  }
-  excerpt: string;
-  coverImage?: {
-    asset: {
-      url: string;
-    };
-    alt?: string;
-  };
-  date: string;
-  author: {
-    name: string;
-    picture?: {
-      asset: {
-        url: string;
-      };
-      alt?: string;
-    };
-  };
-}
+import { PostsPayload } from '@/types'; // Update this import path as needed
 
 // Fetch all the posts
-export async function getPosts() {
-  const posts = await client.fetch(allPostsQuery);
-  return posts;
+export async function getPosts(): Promise<PostsPayload[]> {
+  try {
+    console.log('Fetching posts from Sanity...');
+    const rawResponse = await client.fetch(allPostsQuery);
+    console.log('Raw Sanity response:', JSON.stringify(rawResponse, null, 2));
+
+    const posts: PostsPayload[] = rawResponse;
+    console.log('Total number of posts fetched:', posts.length);
+
+    posts.forEach((post, index) => {
+      console.log(`\n--- Post ${index + 1} ---`);
+      console.log('Title:', post.title);
+      console.log('Slug:', post.slug ? JSON.stringify(post.slug) : 'undefined');
+      console.log('Date:', post.date);
+      console.log('Excerpt:', post.excerpt);
+      console.log('Author:', post.author ? post.author.name : 'No author');
+      console.log('Cover Image:', post.coverImage ? 'Present' : 'No cover image');
+    });
+
+    return posts;
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    throw error;
+  }
 }
 
 // Posts Page Component
 export default async function PostsPage() {
-  const posts: Post[] = await getPosts();
+  const posts: PostsPayload[] = await getPosts();
 
   return (
     <div className="container mx-auto px-4 m-2 mb-4">

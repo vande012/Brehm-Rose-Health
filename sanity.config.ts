@@ -55,7 +55,7 @@ export default defineConfig({
   plugins: [
     assist(), //ai assistant tool
     structureTool({
-      structure: pageStructure([home, settings, post]),
+      structure: pageStructure([home, settings]),
     }),
     presentationTool({
       resolve,
@@ -73,5 +73,5 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
   ],
-  revalidate: 60, // revalidate every 60 seconds
+  revalidate: 10, // revalidate every 10 seconds
 })
