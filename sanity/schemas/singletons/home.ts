@@ -253,8 +253,29 @@ export default defineType({
                 defineField({
                   name: 'review',
                   title: 'Review',
-                  type: 'text',
-                }),
+                  type: 'array',
+          of: [
+            defineArrayMember({
+              lists: [],
+              marks: {
+                annotations: [],
+                decorators: [
+                  {
+                    title: 'Italic',
+                    value: 'em',
+                  },
+                  {
+                    title: 'Strong',
+                    value: 'strong',
+                  },
+                ],
+              },
+              styles: [],
+              type: 'block',
+            }),
+          ],
+          validation: (rule) => rule.max(155).required(),
+        }),
                 defineField({
                   name: 'image',
                   title: 'Profile Picture',

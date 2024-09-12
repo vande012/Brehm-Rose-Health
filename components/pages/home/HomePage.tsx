@@ -213,14 +213,19 @@ export function HomePage({ data, settings }: HomePageProps) {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -6 }}
               >
-                <p className="text-gray-700 mb-4 text-lg">{review.review}</p>
-                <p className="text-xs font-light italic">{review.name}</p>
+                <CustomPortableText
+                  paragraphClasses="max-w-3xl text-gray-600 text-xl"
+                  value={review.review}
+                />
+                <p className="text-md font-light italic text-end">{review.name}</p>
                 {review.image?.asset?.url && (
+                  <div className='flex justify-center'>
                   <img
                     src={review.image.asset.url}
                     alt={review.name}
-                    className="w-12 h-12 rounded-full mt-4"
+                    className="w-42 h-32 rounded-full mt-4"
                   />
+                  </div>
                 )}
               </motion.div>
             ))}

@@ -96,7 +96,7 @@ export interface HomePagePayload {
     title: string;
     reviews: Array<{
       name: string;
-      review: string;
+      review: PortableTextBlock[];
       image: {
         asset: {
           url: string;
