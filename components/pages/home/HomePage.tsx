@@ -1,6 +1,6 @@
 'use client'
 
-import type { HomePagePayload, SettingsPayload} from '@/types'
+import type { HomePagePayload, SettingsPayload } from '@/types'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
@@ -43,7 +43,7 @@ export function HomePage({ data, settings }: HomePageProps) {
               {hero.subheading}
             </h2>
             {hero?.optionalText ? (
-              <div className="pt-2 md:block lg:ml-20 lg:mt-8 text-center">
+              <div className="pt-2 md:block lg:ml-20 lg:mt-8">
                 <CustomPortableText
                   paragraphClasses="max-w-3xl text-gray-600 text-2xl"
                   value={hero.optionalText}
@@ -217,14 +217,16 @@ export function HomePage({ data, settings }: HomePageProps) {
                   paragraphClasses="max-w-3xl text-gray-600 text-xl"
                   value={review.review}
                 />
-                <p className="text-md font-light italic text-end">{review.name}</p>
+                <p className="text-md font-light italic text-end">
+                  {review.name}
+                </p>
                 {review.image?.asset?.url && (
-                  <div className='flex justify-center'>
-                  <img
-                    src={review.image.asset.url}
-                    alt={review.name}
-                    className="w-42 h-32 rounded-full mt-4"
-                  />
+                  <div className="flex justify-center">
+                    <img
+                      src={review.image.asset.url}
+                      alt={review.name}
+                      className="w-42 h-32 rounded-full mt-4"
+                    />
                   </div>
                 )}
               </motion.div>
@@ -242,10 +244,9 @@ export function HomePage({ data, settings }: HomePageProps) {
         <div className="contact-text flex flex-col text-center md:w-1/2">
           <h2 className="text-3xl font-semibold mb-4 text-white">Contact Us</h2>
           <p className="text-lg text-white">
-            Lets get you covered, send us a message or give us a call!
-            -&nbsp;{phoneNumber}
+            Lets get you covered, send us a message or give us a call! -&nbsp;
+            {phoneNumber}
           </p>
-          
         </div>
         <div className="contact-button my-4 flex items-center justify-center md:w-1/2">
           <motion.div
