@@ -271,7 +271,7 @@ export function HomePage({ data, settings }: HomePageProps) {
             </svg>
           </motion.div>
           <Link href="/contact">
-            <span className="text-center mt-auto px-6 py-4 text-white bg-custom-teal hover:bg-custom-green rounded">
+            <span className="text-center text-lg mt-auto px-6 py-4 text-custom-blue bg-white hover:bg-custom-green rounded hover:text-white">
               Send us a message
             </span>
           </Link>

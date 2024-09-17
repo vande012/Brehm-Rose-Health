@@ -47,11 +47,11 @@ export default function Navbar(props: NavbarProps) {
       >
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
-            <img src={logo.src} alt="Logo" height={90} width={90}/>
+            <img src={logo.src} alt="Logo" height={90} width={90} />
             <img src={name.src} alt="Name" className="pl-5 w-48 lg:w-72" />
           </Link>
         </div>
-        <div className="flex md:hidden">
+        <div className="flex md:hidden" aria-label="Open Navigation Menu">
           <button
             onClick={toggleMobileMenu}
             className="text-blue focus:outline-none"
@@ -130,12 +130,13 @@ export default function Navbar(props: NavbarProps) {
                   transition={{ delay: 0.1 * key }}
                 >
                   <Link
-                    className={`block py-2 px-4 text-xl font-bold text-gray-700 ${
+                    className={`block text-lg md:text-base font-bold hover:text-gray-300 text-gray-600 p-4 ${
                       menuItem?._type === 'home'
                         ? 'font-extrabold text-black'
                         : 'text-gray-600'
                     }`}
                     href={href}
+                    style={{ minWidth: '44px', minHeight: '44px' }}
                   >
                     {menuItem.title}
                   </Link>
@@ -143,8 +144,9 @@ export default function Navbar(props: NavbarProps) {
               )
             })}
             <Link
-              className="block py-2 px-4 text-xl font-bold text-gray-700"
+              className="block text-lg md:text-base font-bold hover:text-gray-300 text-gray-600 p-4" 
               href="/posts"
+              style={{ minWidth: '44px', minHeight: '44px' }}
             >
               Blog
             </Link>

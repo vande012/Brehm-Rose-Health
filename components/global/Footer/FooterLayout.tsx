@@ -16,7 +16,7 @@ export default function Footer(props: FooterProps) {
   const menuItems = data?.menuItems || ([] as MenuItem[])
 
   return (
-    <footer className="bg-custom-light text-white py-12 md:py-20">
+    <footer className=" bg-gray-100 text-white py-12 md:py-20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-col items-center md:items-start md:w-1/3">
