@@ -25,7 +25,7 @@ export function HomePage({ data, settings }: HomePageProps) {
           transition={{ duration: 0.1 }}
         >
           <div
-            className="hero-img w-full h-64 md:h-auto md:w-1/2 bg-cover bg-center mt-6"
+            className="hero-img w-full h-64 md:h-auto md:w-1/2 bg-cover bg-center mt-6 transform-none"
             style={
               hero.image && { backgroundImage: `url(${hero.image.asset.url})` }
             }
@@ -36,10 +36,10 @@ export function HomePage({ data, settings }: HomePageProps) {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.2 }}
           >
-            <h1 className="mt-8 pb-6 font-extrabold leading-snug text-blue text-4xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-center text-custom-blue">
+            <h1 className="mt-8 pb-6 text-center font-extrabold leading-snug text-blue text-4xl sm:text-6xl md:text-4xl lg:text-5xl lg:text-center text-custom-blue">
               {hero.heading}
             </h1>
-            <h2 className="scroll-m-20 border-b pb-3 text-3xl font-semibold tracking-tight first:mt-0 text-custom-blue sm:text-base md:text-lg lg:text-2xl lg:text-center">
+            <h2 className="scroll-m-20 border-b pb-3 text-3xl font-semibold tracking-tight text-center first:mt-0 text-custom-blue sm:text-base md:text-lg lg:text-2xl lg:text-center">
               {hero.subheading}
             </h2>
             {hero?.optionalText ? (

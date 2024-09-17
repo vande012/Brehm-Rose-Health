@@ -8,9 +8,17 @@ html {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-monospace);
+h1, h2 {
+  font-family:'Trebuchet MS', sans-serif;
 }
+
+ h3, h4, h5, h6 {
+  font-family: var(--font-dmsans);
+}
+h1, h2 {
+  font-weight: 700;
+}
+
  p {
   font-family: var(--font-newsreader), serif;
 }

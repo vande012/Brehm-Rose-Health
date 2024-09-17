@@ -35,7 +35,7 @@ export default function Footer(props: FooterProps) {
             )}
           </div>
           <nav
-            className="mt-8 md:mt-0 md:mx-auto md:w-1/3"
+            className="mt-8 md:mt-0 md:mx-auto md:w-1/2"
             aria-label="Footer links"
           >
             <div className="flex flex-col md:flex-row md:space-x-6">
@@ -47,7 +47,7 @@ export default function Footer(props: FooterProps) {
                 return (
                   <Link
                     key={key}
-                    className={`block text-sm md:text-base font-bold hover:text-gray-300 ${
+                    className={`block py-2 text-center text-md md:text-lg font-bold hover:text-gray-300 ${
                       menuItem?._type === 'home'
                         ? 'font-extrabold text-white'
                         : 'text-gray-600'
@@ -59,7 +59,7 @@ export default function Footer(props: FooterProps) {
                 )
               })}
               <Link
-                className="block text-sm md:text-base font-bold text-gray-600 hover:text-gray-300"
+                className="block py-2 text-center text-md md:text-lg font-bold text-gray-600 hover:text-gray-300"
                 href="/posts"
               >
                 Blog
