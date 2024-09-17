@@ -5,6 +5,7 @@ export const homePageQuery = groq`
     _id,
     overview,
     title,
+    description,
     hero {
       heading,
       subheading,
