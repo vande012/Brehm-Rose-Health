@@ -51,10 +51,12 @@ export default function Navbar(props: NavbarProps) {
             <img src={name.src} alt="Name" className="pl-5 w-48 lg:w-72" />
           </Link>
         </div>
-        <div className="flex md:hidden" aria-label="Open Navigation Menu">
+        <div className="flex md:hidden">
           <button
             onClick={toggleMobileMenu}
             className="text-blue focus:outline-none"
+            aria-label="Toggle Navigation Menu"
+            aria-expanded={isMobileMenuOpen}
           >
             <svg
               className="w-10 h-10"
@@ -144,7 +146,7 @@ export default function Navbar(props: NavbarProps) {
               )
             })}
             <Link
-              className="block text-lg md:text-base font-bold hover:text-gray-300 text-gray-600 p-4" 
+              className="block text-lg md:text-base font-bold hover:text-gray-300 text-gray-600 p-4"
               href="/posts"
               style={{ minWidth: '44px', minHeight: '44px' }}
             >
@@ -167,7 +169,7 @@ export default function Navbar(props: NavbarProps) {
       </div>
       <div className="flex-col py-2 bg-custom-blue">
         <div className="flex justify-center">
-          <p className="flex row text-sm md:text-lg font-medium text-white">
+          <p className="flex row text-sm md:text-lg text-white font-bold">
             Call Now for a Free Consultation: &nbsp;{data?.phoneNumber}
           </p>
         </div>

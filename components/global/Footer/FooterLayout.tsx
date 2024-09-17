@@ -16,7 +16,7 @@ export default function Footer(props: FooterProps) {
   const menuItems = data?.menuItems || ([] as MenuItem[])
 
   return (
-    <footer className=" bg-gray-100 text-white py-12 md:py-20">
+    <footer className=" bg-gray-100 py-12 md:py-20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-col items-center md:items-start md:w-1/3">
@@ -24,7 +24,7 @@ export default function Footer(props: FooterProps) {
               <img src={logo.src} alt="Logo" className="w-12 h-12" />
               <img src={name.src} alt="Name" className="pl-3 w-52" />
             </Link>
-            <div className="text-custom-blue">{data?.phoneNumber}</div>
+            <div className="text-black font-bold">{data?.phoneNumber}</div>
             {footer && (
               <div className="mt-4 md:mt-6 md:max-w-md text-center md:text-left">
                 <CustomPortableText
@@ -67,10 +67,10 @@ export default function Footer(props: FooterProps) {
             </div>
           </nav>
         </div>
-        <div className="mt-8 text-center text-gray-500 text-sm">
+        <div className="mt-8 text-center text-black font-semibold">
           &copy; {new Date().getFullYear()} Brehm-Rose Health LLC. All rights
           reserved.
-          <div className="flex space-x-4 justify-center">
+          <div className="flex space-x-4 justify-center mt-4">
             <Link
               className="block text-sm md:text-base font-bold text-gray-600 hover:text-gray-300"
               href="/sitemap"
@@ -90,7 +90,7 @@ export default function Footer(props: FooterProps) {
               Privacy Policy
             </Link>
           </div>
-          <div className="mt-8 text-center text-gray-500 text">
+          <div className="mt-8 text-center text-black font-semibold">
             <p>Website by Ryan Vandehey</p>
           </div>
         </div>
