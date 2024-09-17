@@ -21,20 +21,25 @@ export async function generateMetadata(): Promise<Metadata> {
   ])
 
   const ogImage = urlForOpenGraphImage(settings?.ogImage)
+  const title = homePage?.title ? homePage.title : 'Personal website'
+  const description =
+    homePage?.description || 'Default description for the personal website'
+
   return {
-    title: homePage?.title
-      ? {
-          template: `%s | ${homePage.title}`,
-          default: homePage.title || 'Personal website',
-        }
-      : undefined,
-    description: homePage?.overview
-      ? toPlainText(homePage.overview)
-      : undefined,
+    title: title,
+    description: description,
     openGraph: {
+      title: title,
+      description: description,
       images: ogImage ? [ogImage] : [],
     },
-    themeColor: '#000' as Viewport['themeColor'], 
+    twitter: {
+      title: title,
+      description: description,
+      card: 'summary_large_image',
+      images: ogImage ? [ogImage] : [],
+    },
+    themeColor: '#000',
   }
 }
 export default async function IndexRoute({

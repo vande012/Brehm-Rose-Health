@@ -22,7 +22,7 @@ export function HomePage({ data, settings }: HomePageProps) {
           className="hero relative flex flex-col md:flex-row"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.1 }}
         >
           <div
             className="hero-img w-full h-64 md:h-auto md:w-1/2 bg-cover bg-center mt-6"
@@ -34,7 +34,7 @@ export function HomePage({ data, settings }: HomePageProps) {
             className="relative px-4 py-4 sm:px-6 sm:py-4 md:w-1/2"
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.2 }}
           >
             <h1 className="mt-8 pb-6 font-extrabold leading-snug text-blue text-4xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-center text-custom-blue">
               {hero.heading}
@@ -56,7 +56,7 @@ export function HomePage({ data, settings }: HomePageProps) {
               className="hero-button text-center py-6"
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.2 }}
             >
               <Link
                 href="/about-us"
@@ -75,7 +75,7 @@ export function HomePage({ data, settings }: HomePageProps) {
           style={{ backgroundColor: logoBanner.backgroundColor }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.2 }}
         >
           <div className="overflow-hidden">
             <h2 className="text-center text-4xl font-bold pb-12 text-custom-blue">
@@ -147,7 +147,7 @@ export function HomePage({ data, settings }: HomePageProps) {
           className="partners-section bg-custom-light py-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.2 }}
         >
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold mb-8 text-center text-custom-blue">
@@ -161,7 +161,7 @@ export function HomePage({ data, settings }: HomePageProps) {
                   className="partner-card p-6 border border-gray-200 bg-white rounded-lg shadow-xl transition duration-300 ease-in-out hover:shadow-lg hover:scale-105"
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.2, delay: index * 0.1 }}
                 >
                   {partner.image?.asset?.url && (
                     <img
@@ -198,7 +198,7 @@ export function HomePage({ data, settings }: HomePageProps) {
           className="reviews-section py-4 flex flex-wrap justify-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.2 }}
         >
           <h2 className="w-full text-center text-3xl font-bold mb-4 text-custom-blue">
             {reviewsSection.title}
@@ -210,7 +210,7 @@ export function HomePage({ data, settings }: HomePageProps) {
                 className="testimonial-card p-6 border border-gray-200 bg-white rounded-lg shadow-md m-4 w-full md:w-1/2 lg:w-1/3 xl:w-1/4"
                 initial={{ x: -100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.2, delay: index * 0.1 }}
                 whileHover={{ y: -6 }}
               >
                 <CustomPortableText
@@ -239,7 +239,7 @@ export function HomePage({ data, settings }: HomePageProps) {
         className="contact relative flex flex-col md:flex-row bg-custom-blue py-6 px-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.2 }}
       >
         <div className="contact-text flex flex-col text-center md:w-1/2">
           <h2 className="text-3xl font-semibold mb-4 text-white">Contact Us</h2>

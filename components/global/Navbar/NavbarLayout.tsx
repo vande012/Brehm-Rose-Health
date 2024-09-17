@@ -47,7 +47,7 @@ export default function Navbar(props: NavbarProps) {
       >
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
-            <img src={logo.src} alt="Logo" />
+            <img src={logo.src} alt="Logo" height={90} width={90}/>
             <img src={name.src} alt="Name" className="pl-5 w-48 lg:w-72" />
           </Link>
         </div>

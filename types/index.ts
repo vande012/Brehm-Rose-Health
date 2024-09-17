@@ -31,6 +31,7 @@ export interface HomePagePayload {
   footer?: PortableTextBlock[]
   overview?: PortableTextBlock[]
   title?: string
+  description?: string
   hero?: {
     heading?: string
     subheading?: string
