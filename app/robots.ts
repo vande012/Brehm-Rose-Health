@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
@@ -7,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: '/sitemap.xml',
+    sitemap: 'https://nextjs-sanity-app-chi.vercel.app/sitemap.xml',
   }
 }
