@@ -203,57 +203,59 @@ export function HomePage({ data, settings }: HomePageProps) {
       )}
       {whySection && (
         <motion.section
-        className="why-section py-16 bg-custom-blue"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-      >
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-              {whySection.heading}
-            </h2>
-            {whySection.subheading && (
-              <h3 className="text-xl md:text-2xl font-medium text-white opacity-90">
-                {whySection.subheading}
-              </h3>
-            )}
-          </div>
-          
-          <div className="text-center text-white mb-12">
-            <p className="text-xl md:text-2xl leading-relaxed mb-4">
-              At Brehm-Rose Health, we stand out in the crowded insurance landscape by offering a truly personalized experience.
-            </p>
-            <p className="text-2xl md:text-3xl font-semibold pt-2">
-              Here's how we differ:
-            </p>
-          </div>
-      
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-            <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-lg">
-              <CustomPortableText
-                paragraphClasses="text-white text-lg leading-relaxed mb-4"
-                value={whySection.blockLeft}
-              />
+          className="why-section py-16 bg-custom-blue"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+                {whySection.heading}
+              </h2>
+              {whySection.subheading && (
+                <h3 className="text-xl md:text-2xl font-medium text-white opacity-90">
+                  {whySection.subheading}
+                </h3>
+              )}
             </div>
-            <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-lg">
-              <CustomPortableText
-                paragraphClasses="text-white text-lg leading-relaxed mb-4"
-                value={whySection.blockRight}
-              />
+
+            <div className="text-center text-white mb-12">
+              <p className="text-xl md:text-2xl leading-relaxed mb-4">
+                At Brehm-Rose Health, we stand out in the crowded insurance
+                landscape by offering a truly personalized experience.
+              </p>
+              <p className="text-2xl md:text-3xl font-semibold pt-2">
+                Here's how we differ:
+              </p>
+            </div>
+
+            <div className="why-list grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+              <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-lg">
+                <CustomPortableText
+                  paragraphClasses="text-white leading-relaxed mb-4"
+                  value={whySection.blockLeft}
+                />
+              </div>
+              <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-lg">
+                <CustomPortableText
+                  paragraphClasses="text-white text-lg leading-relaxed mb-4"
+                  value={whySection.blockRight}
+                />
+              </div>
+            </div>
+
+            <div className="text-center text-white">
+              <p className="text-xl md:text-2xl leading-relaxed mb-4">
+                Choose Brehm-Rose Health for a helpful, personalized insurance
+                experience that puts your needs first.
+              </p>
+              <p className="text-xl md:text-2xl leading-relaxed">
+                Let us simplify your insurance journey today!
+              </p>
             </div>
           </div>
-          
-          <div className="text-center text-white">
-            <p className="text-xl md:text-2xl leading-relaxed mb-4">
-              Choose Brehm-Rose Health for a helpful, personalized insurance experience that puts your needs first.
-            </p>
-            <p className="text-xl md:text-2xl leading-relaxed">
-              Let us simplify your insurance journey today!
-            </p>
-          </div>
-        </div>
-      </motion.section>
+        </motion.section>
       )}
       {/* Reviews Section */}
       {reviewsSection && (

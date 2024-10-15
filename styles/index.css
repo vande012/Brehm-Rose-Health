@@ -13,14 +13,11 @@ h1, h2 {
   font-family:'Trebuchet MS', sans-serif;
 }
 
- h3, h4, h5, h6 {
+h3, h4, h5, h6 {
   font-family: var(--font-dmsans);
 }
-h1, h2 {
-  font-weight: 700;
-}
 
- p {
+p {
   font-family: var(--font-newsreader), serif;
 }
 
@@ -37,7 +34,7 @@ ol {
   list-style-type: disc;
 }
 
-.hero h2{
+.hero h2 {
   font-family: var(--font-news);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
 }
@@ -82,7 +79,7 @@ ol {
     }
   }
 
-.list-disc li {
+.why-list li {
   color: white;
 }
 
@@ -90,6 +87,3 @@ ol {
   transform: rotate(180deg);
 }
 
-.page-container h2,h3{
-  font-size: x-large;
-}

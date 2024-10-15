@@ -91,7 +91,7 @@ export default defineType({
       of: [
         // Paragraphs
         defineArrayMember({
-          lists: [],
+          lists: [{title: 'Bullet', value: 'bullet'},],
           marks: {
             annotations: [{
               name: 'link',

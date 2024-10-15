@@ -1,6 +1,14 @@
 import './globals.css'
 
-import { IBM_Plex_Mono, Inter, PT_Serif, Roboto, Newsreader, DM_Sans} from 'next/font/google'
+import {
+  IBM_Plex_Mono,
+  Inter,
+  PT_Serif,
+  Roboto,
+  Newsreader,
+  DM_Sans,
+} from 'next/font/google'
+import OrganizationSchema from '@/components/global/StructuredData/OrganizationsSchema'
 
 const serif = PT_Serif({
   variable: '--font-serif',
@@ -44,7 +52,10 @@ export default async function RootLayout({
       lang="en"
       className={`${mono.variable} ${sans.variable} ${serif.variable} ${robo.variable} ${newsreader.variable} ${dmsans.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <OrganizationSchema />
+        {children}
+      </body>
     </html>
   )
 }
