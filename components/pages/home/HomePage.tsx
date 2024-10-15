@@ -10,8 +10,15 @@ export interface HomePageProps {
 }
 export function HomePage({ data, settings }: HomePageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { hero, logoBanner, servicesSection, reviewsSection, partnersSection } =
-    data ?? {}
+  console.log('Home page data:', data)
+  const {
+    hero,
+    logoBanner,
+    servicesSection,
+    reviewsSection,
+    partnersSection,
+    whySection,
+  } = data ?? {}
   const { phoneNumber } = settings ?? {}
 
   return (
@@ -36,14 +43,14 @@ export function HomePage({ data, settings }: HomePageProps) {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.2 }}
           >
-            <h1 className="mt-8 pb-6 text-center font-extrabold leading-snug text-blue text-4xl sm:text-6xl md:text-4xl lg:text-5xl lg:text-center text-custom-blue">
+            <h1 className="mt-4 pb-6 text-center font-extrabold leading-snug text-blue text-4xl sm:text-6xl md:text-4xl lg:text-5xl lg:text-center text-custom-blue">
               {hero.heading}
             </h1>
-            <h2 className="scroll-m-20 border-b pb-3 text-3xl font-semibold tracking-tight text-center first:mt-0 text-custom-blue sm:text-base md:text-lg lg:text-2xl lg:text-center">
+            <h2 className="scroll-m-20 border-b pb-3 text-xl font-semibold tracking-tight text-center first:mt-0 text-custom-blue sm:text-base md:text-lg lg:text-2xl lg:text-center">
               {hero.subheading}
             </h2>
             {hero?.optionalText ? (
-              <div className="pt-2 md:block lg:ml-20 lg:mt-8">
+              <div className="pt-4 md:block lg:ml-20 lg:mt-8">
                 <CustomPortableText
                   paragraphClasses="max-w-3xl text-gray-600 text-2xl"
                   value={hero.optionalText}
@@ -114,10 +121,10 @@ export function HomePage({ data, settings }: HomePageProps) {
       {/* Services Section */}
       {servicesSection && (
         <section className="bg-custom-blue">
-          <div className="container mx-auto py-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="container mx-auto py-12 px-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {servicesSection.services.map((service, index) => (
-                <div key={index} className="p-6">
+                <div key={index} className="p-6 bg-white rounded-lg shadow-md">
                   {service.image.asset?.url && (
                     <img
                       src={service.image.asset.url}
@@ -125,17 +132,19 @@ export function HomePage({ data, settings }: HomePageProps) {
                       className="w-full h-48 object-cover mb-4 rounded-md"
                     />
                   )}
-                  <h3 className="text-3xl font-semibold text-custom-light mb-2 py-4">
+                  <h3 className="text-2xl font-semibold text-custom-blue mb-2 py-2 text-center">
                     {service.title}
                   </h3>
-                  <p className="text-custom-light text-xl py-2">
+                  <p className="text-gray-700 text-lg py-2">
                     {service.description}
                   </p>
-                  <Link href={service.buttonUrl} key={service.buttonUrl}>
-                    <span className="inline-block mt-auto px-6 py-2 bg-custom-light text-custom-blue hover:bg-custom-green rounded">
-                      {service.buttonText}
-                    </span>
-                  </Link>
+                  <div className="flex justify-center mt-4">
+                    <Link href={service.buttonUrl} key={service.buttonUrl}>
+                      <span className="inline-block px-6 py-2 bg-custom-blue text-white hover:bg-custom-green rounded transition duration-300 ease-in-out">
+                        {service.buttonText}
+                      </span>
+                    </Link>
+                  </div>
                 </div>
               ))}
             </div>
@@ -191,6 +200,60 @@ export function HomePage({ data, settings }: HomePageProps) {
             </div>
           </div>
         </motion.section>
+      )}
+      {whySection && (
+        <motion.section
+        className="why-section py-16 bg-custom-blue"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+              {whySection.heading}
+            </h2>
+            {whySection.subheading && (
+              <h3 className="text-xl md:text-2xl font-medium text-white opacity-90">
+                {whySection.subheading}
+              </h3>
+            )}
+          </div>
+          
+          <div className="text-center text-white mb-12">
+            <p className="text-xl md:text-2xl leading-relaxed mb-4">
+              At Brehm-Rose Health, we stand out in the crowded insurance landscape by offering a truly personalized experience.
+            </p>
+            <p className="text-2xl md:text-3xl font-semibold pt-2">
+              Here's how we differ:
+            </p>
+          </div>
+      
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+            <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-lg">
+              <CustomPortableText
+                paragraphClasses="text-white text-lg leading-relaxed mb-4"
+                value={whySection.blockLeft}
+              />
+            </div>
+            <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-lg">
+              <CustomPortableText
+                paragraphClasses="text-white text-lg leading-relaxed mb-4"
+                value={whySection.blockRight}
+              />
+            </div>
+          </div>
+          
+          <div className="text-center text-white">
+            <p className="text-xl md:text-2xl leading-relaxed mb-4">
+              Choose Brehm-Rose Health for a helpful, personalized insurance experience that puts your needs first.
+            </p>
+            <p className="text-xl md:text-2xl leading-relaxed">
+              Let us simplify your insurance journey today!
+            </p>
+          </div>
+        </div>
+      </motion.section>
       )}
       {/* Reviews Section */}
       {reviewsSection && (

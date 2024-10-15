@@ -383,6 +383,106 @@ export default defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'whySection',
+      title: 'Why Section',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'heading',
+          title: 'Heading',
+          type: 'string',
+          validation: (rule) => rule.required(),
+        }),
+        defineField({
+          name: 'subheading',
+          title: 'Subheading',
+          type: 'string',
+        }),
+        defineField({
+          name: 'blockLeft',
+          title: 'Block Left',
+          type: 'array',
+          of: [
+            defineArrayMember({
+              type: 'block',
+              lists: [
+                {title: 'Bullet', value: 'bullet'},
+              ], // Disable list types if not needed
+              marks: {
+                annotations: [
+                  {
+                    name: 'link',
+                    type: 'object',
+                    title: 'Link',
+                    fields: [
+                      {
+                        name: 'href',
+                        type: 'url',
+                        title: 'URL',
+                      },
+                    ],
+                  },
+                ],
+                decorators: [
+                  { title: 'Italic', value: 'em' },
+                  { title: 'Strong', value: 'strong' },
+                ],
+              },
+              styles: [ 
+                {title: 'Normal', value: 'normal'},
+                {title: 'H1', value: 'h1'},
+                {title: 'H2', value: 'h2'},
+                {title: 'H3', value: 'h3'},
+                {title: 'H4', value: 'h4'},
+                {title: 'Quote', value: 'blockquote'},
+              ], 
+            }),
+          ],
+        }),
+        defineField({
+          name: 'blockRight',
+          title: 'Block Right',
+          type: 'array',
+          of: [
+            defineArrayMember({
+              type: 'block',
+              lists: [
+                {title: 'Bullet', value: 'bullet'},
+              ], // Disable list types if not needed
+              marks: {
+                annotations: [
+                  {
+                    name: 'link',
+                    type: 'object',
+                    title: 'Link',
+                    fields: [
+                      {
+                        name: 'href',
+                        type: 'url',
+                        title: 'URL',
+                      },
+                    ],
+                  },
+                ],
+                decorators: [
+                  { title: 'Italic', value: 'em' },
+                  { title: 'Strong', value: 'strong' },
+                ],
+              },
+              styles: [ 
+                {title: 'Normal', value: 'normal'},
+                {title: 'H1', value: 'h1'},
+                {title: 'H2', value: 'h2'},
+                {title: 'H3', value: 'h3'},
+                {title: 'H4', value: 'h4'},
+                {title: 'Quote', value: 'blockquote'},
+              ], 
+            }),
+          ],
+        }),
+      ],
+    }),
   ],
   preview: {
     select: {

@@ -49,7 +49,7 @@ export default async function PostsPage() {
                 />
               )}
               <h2 className="text-2xl font-bold">{post.title}</h2>
-              <p className="text-gray-500">By {post.author.name} on {new Date(post.date).toLocaleDateString()}</p>
+              <p className="text-gray-500 pt-3">By {post.author.name} on {new Date(post.date).toLocaleDateString()}</p>
               <p className="mt-2">{post.excerpt}</p>
             </Link>
           </article>

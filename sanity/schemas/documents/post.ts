@@ -31,7 +31,9 @@ export default defineType({
         defineArrayMember({
           type: 'block',
           marks: {
-            decorators: [{ title: 'Strong', value: 'strong' }],
+            decorators: [
+              { title: 'Strong', value: 'strong' },
+            ],
             annotations: [
               {
                 name: 'link',

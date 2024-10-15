@@ -12,6 +12,11 @@ module.exports = {
     extend: {
       colors: {
         custom: {
+        'custom-blue': '#1E3A8A',
+        'custom-teal': '#2DD4BF',
+        'custom-orange': '#F97316',
+        'custom-light': '#F3F4F6',
+        'custom-dark': '#1F2937',
           light: '#E5E4E2',     // Light gray for background
           dark: '#1F2937',      // Deep slate gray for dark elements
           white: '#FFFFFF',     // Pure white

@@ -20,9 +20,10 @@ import home from '@/sanity/schemas/singletons/home'
 import settings from '@/sanity/schemas/singletons/settings'
 import { assist } from '@sanity/assist'
 import contact from './sanity/schemas/objects/contact'
-import faq from './sanity/schemas/documents/faq'
 import post from '@/sanity/schemas/documents/post'
 import author from '@/sanity/schemas/objects/author'
+import { healthSherpaTool } from './sanity/components/healthSherpaTool'
+import healthSherpa from './sanity/schemas/singletons/healthSherpa'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
@@ -39,11 +40,9 @@ export default defineConfig({
       // Singletons
       home,
       settings,
-      
       // Documents
       duration,
       page,
-      faq,
       post,
       // Objects
       milestone,
@@ -53,6 +52,7 @@ export default defineConfig({
     ],
   },
   plugins: [
+    healthSherpaTool(),
     assist(), //ai assistant tool
     structureTool({
       structure: pageStructure([home, settings]),
@@ -72,6 +72,7 @@ export default defineConfig({
     // Vision lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
+    
   ],
   revalidate: 10, // revalidate every 10 seconds
 })

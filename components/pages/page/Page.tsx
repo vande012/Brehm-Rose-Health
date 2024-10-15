@@ -14,8 +14,11 @@ export function Page({ data }: PageProps) {
   const { body, overview, title, image } = data ?? {}
 
   return (
-    <div>
-      {/* Render the Header with title and image */}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
       <Header
         title={title}
         description={overview}
@@ -26,11 +29,18 @@ export function Page({ data }: PageProps) {
         }
         centered={true}
       />
-      {/* Other content sections could be rendered below */}
-      <div className="page-container mx-auto px-4 mt-6 md:max-w-3xl">
-        {body && <CustomPortableText value={body} />}
-      </div>
-    </div>
+      <main className="page-container mx-auto px-4 mt-8 md:mt-12 md:max-w-3xl">
+        {body && (
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
+            <CustomPortableText value={body} />
+          </motion.div>
+        )}
+      </main>
+    </motion.div>
   )
 }
 

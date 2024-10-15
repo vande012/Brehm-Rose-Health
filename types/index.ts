@@ -106,6 +106,12 @@ export interface HomePagePayload {
       };
     }>;
   };
+  whySection?: {
+    heading?: string
+    subheading?: string
+    blockLeft?: PortableTextBlock[]
+    blockRight?: PortableTextBlock[]
+  };
 }
 
 
@@ -158,16 +164,6 @@ export interface FormField {
 
 export interface FormFieldsPayload {
   formFields: FormField[]
-}
-
-export interface Faq {
-  sections: {
-    title: string;
-    questions: {
-      question: string;
-      answer: PortableTextBlock[]; // Adjust the type based on the actual structure of the answer
-    }[];
-  }[];
 }
 
 export interface PostsPayload {

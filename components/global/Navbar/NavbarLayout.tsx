@@ -23,13 +23,13 @@ export default function Navbar(props: NavbarProps) {
     setIsMobileMenuOpen(!isMobileMenuOpen)
   }
 
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false)
+  }
+
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
+      setIsScrolled(window.scrollY > 0)
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -43,7 +43,7 @@ export default function Navbar(props: NavbarProps) {
       <div
         className={`sticky top-0 z-10 flex flex-wrap items-center justify-between px-4 py-4 backdrop-blur transition-all duration-300 ${
           isScrolled ? 'bg-custom-light shadow-lg' : 'bg-white'
-        } md:px-16 md:py-5 lg:px-32`}
+        } md:px-16 md:py-2 lg:px-32`}
       >
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
@@ -61,7 +61,7 @@ export default function Navbar(props: NavbarProps) {
             <svg
               className="w-10 h-10"
               fill="none"
-              stroke="#015d9d" //hamburger color
+              stroke="#015d9d"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -69,16 +69,12 @@ export default function Navbar(props: NavbarProps) {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
-                d={
-                  isMobileMenuOpen
-                    ? 'M6 18L18 6M6 6l12 12'
-                    : 'M4 6h16M4 12h16m-7 6h7'
-                }
+                d={isMobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'}
               />
             </svg>
           </button>
         </div>
-        <div className="hidden md:flex md:flex-grow md:items-center md:justify-center lg:mr-20 text-indigo-600">
+        <div className="hidden md:flex md:flex-grow md:items-end md:justify-end mr-8 text-indigo-600">
           {menuItems.map((menuItem, key) => {
             const href = resolveHref(menuItem?._type, menuItem?.slug)
             if (!href) {
@@ -87,10 +83,8 @@ export default function Navbar(props: NavbarProps) {
             return (
               <Link
                 key={key}
-                className={`block text-lg font-bold hover:text-custom-green md:ml-4 md:text-xl ${
-                  menuItem?._type === 'home'
-                    ? 'font-extrabold text-black'
-                    : 'text-custom-blue'
+                className={`block text-lg font-bold hover:text-custom-green md:ml-8 md:text-xl ${
+                  menuItem?._type === 'home' ? 'font-extrabold text-black' : 'text-custom-blue'
                 }`}
                 href={href}
               >
@@ -99,7 +93,7 @@ export default function Navbar(props: NavbarProps) {
             )
           })}
           <Link
-            className="block text-lg font-bold hover:text-custom-green md:ml-4 md:text-xl text-custom-blue"
+            className="block text-lg font-bold hover:text-custom-green md:ml-8 md:text-xl text-custom-blue"
             href="/posts"
           >
             Blog
@@ -133,12 +127,11 @@ export default function Navbar(props: NavbarProps) {
                 >
                   <Link
                     className={`block text-lg md:text-base font-bold hover:text-gray-300 text-gray-600 p-4 ${
-                      menuItem?._type === 'home'
-                        ? 'font-extrabold text-black'
-                        : 'text-gray-600'
+                      menuItem?._type === 'home' ? 'font-extrabold text-black' : 'text-gray-600'
                     }`}
                     href={href}
                     style={{ minWidth: '44px', minHeight: '44px' }}
+                    onClick={closeMobileMenu}
                   >
                     {menuItem.title}
                   </Link>
@@ -149,22 +142,19 @@ export default function Navbar(props: NavbarProps) {
               className="block text-lg md:text-base font-bold hover:text-gray-300 text-gray-600 p-4"
               href="/posts"
               style={{ minWidth: '44px', minHeight: '44px' }}
+              onClick={closeMobileMenu}
             >
               Blog
             </Link>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.1 * menuItems.length }}
-            ></motion.div>
           </div>
         </motion.div>
 
         <Link
           href="/contact"
           className="hidden md:block py-3 px-4 items-center gap-x-2 text-md font-medium rounded-lg border border-transparent bg-custom-blue text-white hover:bg-green-500 focus:outline-none focus:bg-green-700 disabled:opacity-50 disabled:pointer-events-none"
+          onClick={closeMobileMenu}
         >
-          Contact
+          Contact Us
         </Link>
       </div>
       <div className="flex-col py-2 bg-custom-blue">

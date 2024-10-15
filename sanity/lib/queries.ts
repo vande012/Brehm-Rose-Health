@@ -87,6 +87,12 @@ export const homePageQuery = groq`
         }
       }
     },
+    whySection {
+      heading,
+      subheading,
+      blockLeft,
+      blockRight,
+    },
   }
 `
 export const pagesBySlugQuery = groq`
