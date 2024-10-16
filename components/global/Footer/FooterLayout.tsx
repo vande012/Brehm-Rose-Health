@@ -38,10 +38,10 @@ export default function Footer(props: FooterProps) {
 
           {/* Navigation Links */}
           <nav
-            className="flex flex-col items-center md:items-start"
+            className="flex flex-col items-center"
             aria-label="Footer links"
           >
-            <h3 className="font-bold text-lg mb-4 md:ml-10">Site Links</h3>
+            <h3 className="font-bold text-lg mb-2 md:ml-10">Site Links</h3>
             {menuItems.map((menuItem, key) => {
               const href = resolveHref(menuItem?._type, menuItem?.slug)
               if (!href) {
@@ -67,7 +67,7 @@ export default function Footer(props: FooterProps) {
 
           {/* Legal Links */}
           <div className="flex flex-col items-center md:items-start">
-            <h3 className="font-bold text-lg mb-4">Legal</h3>
+            <h3 className="font-bold text-lg mb-2">Legal</h3>
             <Link
               className="py-1 text-md text-gray-600 hover:text-gray-900"
               href="/sitemap"

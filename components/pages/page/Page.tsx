@@ -29,7 +29,7 @@ export function Page({ data }: PageProps) {
         }
         centered={true}
       />
-      <main className="mx-auto px-4 sm:px-6 lg:px-8 mt-8 md:mt-12 max-w-4xl lg:max-w-6xl">
+      <main className="pages mx-auto px-4 sm:px-6 lg:px-8 mt-8 md:my-12 max-w-4xl lg:max-w-6xl text-lg">
         {body && (
           <motion.div
             initial={{ y: 20, opacity: 0 }}
