@@ -66,8 +66,18 @@ const formFields: FormField[] = [
     isRequiredWhenMultiSelect: true,
     type: [
       { title: 'Short Term Coverage', value: 'Short Term Coverage' },
-      { title: 'Group Coverage', value: 'Group Coverage' },
-      { title: 'Personal Coverage', value: 'Personal Coverage' },
+      {
+        title: 'Employee Benefit Group Insurance Coverage',
+        value: 'Employee Benefit Group Insurance Coverage',
+      },
+      {
+        title: 'Individual Insurance Coverage',
+        value: 'Individual Insurance Coverage',
+      },
+      {
+        title: 'Medicare and Senior Coverage',
+        value: 'Medicare and Senior Coverage',
+      },
     ],
   },
 ]
@@ -133,7 +143,7 @@ export default function ContactForm() {
           >
             {field.fieldName}
           </label>
-          
+
           {field.inputType === 'select' ? (
             <select
               id={field.fieldId}
@@ -151,12 +161,9 @@ export default function ContactForm() {
                 <option key={option.value} value={option.value}>
                   {option.title}
                 </option>
-                
               ))}
             </select>
-            
           ) : (
-            
             <input
               id={field.fieldId}
               type={field.inputType}
@@ -171,11 +178,10 @@ export default function ContactForm() {
               placeholder={field.placeholder}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
-            
           )}
         </div>
       ))}
-      
+
       <button
         type="submit"
         disabled={loading}
@@ -193,4 +199,3 @@ export default function ContactForm() {
     </form>
   )
 }
-

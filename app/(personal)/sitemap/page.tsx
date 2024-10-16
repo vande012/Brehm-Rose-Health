@@ -8,55 +8,54 @@ const Sitemap = async () => {
   const sitemapData: SitemapResponse = await client.fetch(sitemapQuery)
   console.log('Fetched Sitemap Data:', sitemapData) // Log the fetched data
   return (
-    <div className="text-center font-sans mt-4">
-      <h1 className="text-4xl mb-12">Sitemap</h1>
+    <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <h1 className="text-3xl md:text-4xl font-bold text-center mb-8">Sitemap</h1>
 
-      {/* Homepage link centered */}
-      <div className="my-4">
-        <a
-          href={process.env.NEXT_PUBLIC_SITE_URL}
-          className="text-blue-500 no-underline hover:underline text-2xl block mb-4"
-        >
-          Home
-        </a>
-      </div>
-
-      {/* Pages and Posts in two columns */}
-      <div className="grid grid-cols-2 gap-8">
-        {/* Pages column */}
-        <div className="text-center">
-          <span className="font-bold block mb-2 underline">Pages</span>
-          <ul className="list-none pl-4">
-            {sitemapData.pages?.map((page) => (
-              <li key={page.slug} className="my-2">
-                <a
-                  href={`${process.env.NEXT_PUBLIC_SITE_URL}/${page.slug}`}
-                  className="text-blue-500 no-underline hover:underline"
-                >
-                  {page.slug}
-                </a>
+      <div className="flex justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
+          {/* Main Pages */}
+          <div className="text-center">
+            <h2 className="text-2xl font-semibold mb-4">Main Pages</h2>
+            <ul className="space-y-2 text-left">
+              <li>
+                <Link href="/" className="text-blue-600 hover:underline">
+                  Home
+                </Link>
               </li>
-            ))}
-          </ul>
-        </div>
+              {sitemapData.pages?.map((page) => (
+                <li key={page.slug}>
+                  <Link 
+                    href={`/${page.slug}`}
+                    className="text-blue-600 hover:underline capitalize"
+                  >
+                    {page.slug.replace(/-/g, ' ')}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        {/* Posts column */}
-        <div className="text-center">
-          <Link className="font-bold block mb-2 underline" href="/posts">
-            Blog
-          </Link>
-          <ul className="list-none pl-4">
-            {sitemapData.posts?.map((post) => (
-              <li key={post.slug} className="my-2">
-                <a
-                  href={`${process.env.NEXT_PUBLIC_SITE_URL}/posts/${post.slug}`}
-                  className="text-blue-500 no-underline hover:underline"
-                >
-                  {post.slug}
-                </a>
+          {/* Blog Posts */}
+          <div className="text-center">
+            <h2 className="text-2xl font-semibold mb-4">Blog Posts</h2>
+            <ul className="space-y-2 text-left">
+              <li>
+                <Link href="/posts" className="text-blue-600 hover:underline">
+                  All Posts
+                </Link>
               </li>
-            ))}
-          </ul>
+              {sitemapData.posts?.map((post) => (
+                <li key={post.slug}>
+                  <Link 
+                    href={`/posts/${post.slug}`}
+                    className="text-blue-600 hover:underline"
+                  >
+                    {post.slug.replace(/-/g, ' ')}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </div>

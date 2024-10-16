@@ -16,83 +16,88 @@ export default function Footer(props: FooterProps) {
   const menuItems = data?.menuItems || ([] as MenuItem[])
 
   return (
-    <footer className="bg-gray-100 py-8 md:py-12">
+    <footer className="bg-gray-100 py-12">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col items-center md:flex-row md:justify-between md:items-start">
-          <div className="flex flex-col items-center md:items-start md:w-1/3 mb-8 md:mb-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Logo and Contact Info */}
+          <div className="flex flex-col items-center">
             <Link href="/" className="flex items-center mb-4">
               <img src={logo.src} alt="Logo" className="w-12 h-12" />
               <img src={name.src} alt="Name" className="pl-3 w-52" />
             </Link>
-            <div className="text-black font-bold text-center md:text-left">{data?.phoneNumber}</div>
+            <div className="text-black font-bold mb-2">
+              {data?.phoneNumber}
+            </div>
             {footer && (
-              <div className="mt-4 md:mt-6 md:max-w-md text-center md:text-left">
+              <div className="mt-4 text-center">
                 <CustomPortableText
-                  paragraphClasses="text-lg text-gray-600"
+                  paragraphClasses="text-md text-gray-600"
                   value={footer}
                 />
               </div>
             )}
           </div>
+
+          {/* Navigation Links */}
           <nav
-            className="w-full md:w-1/2 mb-8 md:mb-0"
+            className="flex flex-col items-center md:items-start"
             aria-label="Footer links"
           >
-            <div className="flex flex-col items-center md:flex-row md:justify-end md:space-x-6">
-              {menuItems.map((menuItem, key) => {
-                const href = resolveHref(menuItem?._type, menuItem?.slug)
-                if (!href) {
-                  return null
-                }
-                return (
-                  <Link
-                    key={key}
-                    className={`block py-2 text-center text-md md:text-lg font-bold hover:text-gray-300 ${
-                      menuItem?._type === 'home'
-                        ? 'font-extrabold text-white'
-                        : 'text-gray-600'
-                    }`}
-                    href={href}
-                  >
-                    {menuItem.title}
-                  </Link>
-                )
-              })}
-              <Link
-                className="block py-2 text-center text-md md:text-lg font-bold text-gray-600 hover:text-gray-300"
-                href="/posts"
-              >
-                Blog
-              </Link>
-            </div>
-          </nav>
-        </div>
-        <div className="mt-8 text-center text-black font-semibold">
-          &copy; {new Date().getFullYear()} Brehm-Rose Health LLC. All rights
-          reserved.
-          <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 justify-center items-center mt-4">
+            <h3 className="font-bold text-lg mb-4 ml-10">Site Links</h3>
+            {menuItems.map((menuItem, key) => {
+              const href = resolveHref(menuItem?._type, menuItem?.slug)
+              if (!href) {
+                return null
+              }
+              return (
+                <Link
+                  key={key}
+                  className="py-1 text-md text-gray-600 hover:text-gray-900 ml-10"
+                  href={href}
+                >
+                  {menuItem.title}
+                </Link>
+              )
+            })}
             <Link
-              className="block text-sm md:text-base font-bold text-gray-600 hover:text-gray-300"
+              className="py-1 text-md text-gray-600 hover:text-gray-900 ml-10"
+              href="/posts"
+            >
+              Blog
+            </Link>
+          </nav>
+
+          {/* Legal Links */}
+          <div className="flex flex-col items-center md:items-start">
+            <h3 className="font-bold text-lg mb-4">Legal</h3>
+            <Link
+              className="py-1 text-md text-gray-600 hover:text-gray-900"
               href="/sitemap"
             >
               Sitemap
             </Link>
             <Link
-              className="block text-sm md:text-base font-bold text-gray-600 hover:text-gray-300"
+              className="py-1 text-md text-gray-600 hover:text-gray-900 "
               href="/terms-and-conditions"
             >
               Terms & Conditions
             </Link>
             <Link
-              className="block text-sm md:text-base font-bold text-gray-600 hover:text-gray-300"
+              className="py-1 text-md text-gray-600 hover:text-gray-900"
               href="/privacy-policy"
             >
               Privacy Policy
             </Link>
           </div>
-          <div className="mt-8 text-center text-black font-semibold">
-            <p>Website by Ryan Vandehey</p>
-          </div>
+        </div>
+
+        {/* Copyright and Attribution */}
+        <div className="mt-12 pt-8 border-t border-gray-200 text-center text-md text-gray-600">
+          <p>
+            &copy; {new Date().getFullYear()} Brehm-Rose Health LLC. All rights
+            reserved.
+          </p>
+          <p className="mt-2">Website by Ryan Vandehey</p>
         </div>
       </div>
     </footer>
