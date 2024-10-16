@@ -25,9 +25,7 @@ export default function Footer(props: FooterProps) {
               <img src={logo.src} alt="Logo" className="w-12 h-12" />
               <img src={name.src} alt="Name" className="pl-3 w-52" />
             </Link>
-            <div className="text-black font-bold mb-2">
-              {data?.phoneNumber}
-            </div>
+            <div className="text-black font-bold mb-2">{data?.phoneNumber}</div>
             {footer && (
               <div className="mt-4 text-center">
                 <CustomPortableText
@@ -43,7 +41,7 @@ export default function Footer(props: FooterProps) {
             className="flex flex-col items-center md:items-start"
             aria-label="Footer links"
           >
-            <h3 className="font-bold text-lg mb-4 ml-10">Site Links</h3>
+            <h3 className="font-bold text-lg mb-4 md:ml-10">Site Links</h3>
             {menuItems.map((menuItem, key) => {
               const href = resolveHref(menuItem?._type, menuItem?.slug)
               if (!href) {
@@ -52,7 +50,7 @@ export default function Footer(props: FooterProps) {
               return (
                 <Link
                   key={key}
-                  className="py-1 text-md text-gray-600 hover:text-gray-900 ml-10"
+                  className="py-1 text-md text-gray-600 hover:text-gray-900 md:ml-10"
                   href={href}
                 >
                   {menuItem.title}
@@ -60,7 +58,7 @@ export default function Footer(props: FooterProps) {
               )
             })}
             <Link
-              className="py-1 text-md text-gray-600 hover:text-gray-900 ml-10"
+              className="py-1 text-md text-gray-600 hover:text-gray-900 md:ml-10"
               href="/posts"
             >
               Blog
