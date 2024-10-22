@@ -10,8 +10,12 @@ import {
 } from 'next/font/google'
 
 import dynamic from 'next/dynamic'
+import Script from 'next/script'
 
-const OrganizationSchema = dynamic(() => import('@/components/global/StructuredData/OrganizationsSchema'), { ssr: false })
+const OrganizationSchema = dynamic(
+  () => import('@/components/global/StructuredData/OrganizationsSchema'),
+  { ssr: false },
+)
 
 const serif = PT_Serif({
   variable: '--font-serif',
@@ -56,9 +60,30 @@ export default function RootLayout({
       lang="en"
       className={`${mono.variable} ${sans.variable} ${serif.variable} ${robo.variable} ${newsreader.variable} ${dmsans.variable}`}
     >
+      <head>
+        {/* GSC verification tag */}
+        <meta
+          name="google-site-verification"
+          content="WiUCrIZFvflApljdic8kFCUa6u_0t2tYZgfmt4w22DM"
+        />
+      </head>
       <body>
         <OrganizationSchema />
         {children}
+
+        {/* Google Analytics tag */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
+          `}
+        </Script>
       </body>
     </html>
   )
