@@ -18,8 +18,9 @@ const components: PortableTextComponents = {
           src={value.asset.url}
           alt={value.alt || 'Image'}
           className="w-full max-w-2xl rounded-md"
-          style={{ objectFit: 'cover' }}
-          sizes="(max-width: 800px) 100vw, 800px"
+          width={800}
+          height={450}
+          layout="responsive"
         />
         {value.caption && (
           <p className="text-sm text-gray-600 text-center mt-2">
@@ -53,8 +54,9 @@ const PostContent = ({
               src={coverImage.asset.url}
               alt={coverImage.alt || 'Cover Image'}
               className="object-cover w-full h-full"
-              style={{ objectFit: 'cover' }}
-              sizes="(max-width: 800px) 100vw, 800px"
+              width={800}
+              height={450}
+              layout="responsive"
             />
           </div>
         )}

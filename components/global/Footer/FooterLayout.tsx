@@ -23,8 +23,8 @@ export default function Footer(props: FooterProps) {
           {/* Logo and Contact Info */}
           <div className="flex flex-col items-center">
             <Link href="/" className="flex items-center mb-4">
-              <Image src={logo.src} alt="Logo" height={90} width={90} className="w-12 h-12" />
-              <Image src={name.src} alt="Name" height={100} width={100} className="pl-3 w-52" />
+              <Image src={logo.src} alt="Logo" height={100} width={200} className="w-24 h-24" />
+              <Image src={name.src} alt="Name" height={100} width={200} className="pl-3 w-64" />
             </Link>
             <div className="text-black font-bold mb-2">{data?.phoneNumber}</div>
             {footer && (

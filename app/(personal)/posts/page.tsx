@@ -13,20 +13,6 @@ async function getPosts(): Promise<PostsPayload[]> {
 
     const posts: PostsPayload[] = rawResponse
     console.log('Total number of posts fetched:', posts.length)
-
-    posts.forEach((post, index) => {
-      console.log(`\n--- Post ${index + 1} ---`)
-      console.log('Title:', post.title)
-      console.log('Slug:', post.slug ? JSON.stringify(post.slug) : 'undefined')
-      console.log('Date:', post.date)
-      console.log('Excerpt:', post.excerpt)
-      console.log('Author:', post.author ? post.author.name : 'No author')
-      console.log(
-        'Cover Image:',
-        post.coverImage ? 'Present' : 'No cover image',
-      )
-    })
-
     return posts
   } catch (error) {
     console.error('Error fetching posts:', error)

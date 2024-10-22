@@ -23,6 +23,8 @@ export function Header(props: HeaderProps) {
           src={image.src}
           alt={image.alt}
           className="object-cover w-full h-full"
+          width={1920}
+          height={1080}
         />
       )}
       {/* Overlay and Title */}

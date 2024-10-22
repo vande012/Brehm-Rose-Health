@@ -42,19 +42,19 @@ export default function Navbar(props: NavbarProps) {
   return (
     <>
       <div
-        className={`sticky top-0 z-10 flex flex-wrap items-center justify-between px-4 py-4 backdrop-blur transition-all duration-300 ${
+        className={`sticky top-0 z-10 flex flex-wrap items-center justify-between px-4 py-4 transition-all duration-300 ${
           isScrolled ? 'bg-custom-light shadow-lg' : 'bg-white'
         } md:px-16 md:py-2 lg:px-32`}
       >
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
-            <Image src={logo.src} alt="Logo" height={100} width={100} />
+            <Image src={logo.src} alt="Logo" height={100} width={200} className="w-24 h-24" />
             <Image
               src={name.src}
               alt="Name"
-              height={150}
-              width={150}
-              className="pl-5 w-48 lg:w-72"
+              height={100}
+              width={200}
+              className="pl-5 w-56 lg:w-72"
             />
           </Link>
         </div>

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
 import type { HomePagePayload, SettingsPayload } from '@/types'
+import { urlForImage } from '@/sanity/lib/utils'
 export interface HomePageProps {
   data: HomePagePayload | null
   settings: SettingsPayload | null
@@ -96,12 +97,9 @@ export function HomePage({ data, settings }: HomePageProps) {
                     key={index}
                     src={logo.asset?.url}
                     alt={logo.asset?.alt || `Logo ${index + 1}`}
-                    className="h-32 w-auto object-contain bg-white px-8"
-                    width={100}
+                    className="h-32 max-h-full max-w-full object-contain bg-white px-8"
+                    width={200}
                     height={100}
-                    style={{
-                      maxHeight: '8rem',
-                    }}
                   />
                 ))}
                 {/* Duplicate logos for continuous effect */}
@@ -110,12 +108,9 @@ export function HomePage({ data, settings }: HomePageProps) {
                     key={`duplicate-${index}`}
                     src={logo.asset?.url}
                     alt={logo.asset?.alt || `Logo ${index + 1}`}
-                    width={100}
+                    width={200}
                     height={100}
-                    className="h-32 w-auto object-contain bg-white px-8"
-                    style={{
-                      maxHeight: '8rem',
-                    }}
+                    className="h-32 max-h-full max-w-full object-contain bg-white px-8"
                   />
                 ))}
               </div>
@@ -134,8 +129,8 @@ export function HomePage({ data, settings }: HomePageProps) {
                     <Image
                       src={service.image.asset.url}
                       alt={service.image.alt || 'Service Image'}
-                      className="w-full h-48 object-cover mb-4 rounded-md"
-                      width={100}
+                      className="w-full h-1/2 object-contain rounded-lg"
+                      width={400}
                       height={100}
                     />
                   )}
@@ -183,8 +178,8 @@ export function HomePage({ data, settings }: HomePageProps) {
                     <Image
                       src={partner.image.asset.url}
                       alt={partner.image.alt || 'Partner Logo'}
-                      className="w-full h-32 object-contain mb-4 rounded-md"
-                      width={100}
+                      className="w-full h-48 object-contain"
+                      width={200}
                       height={100}
                     />
                   )}
