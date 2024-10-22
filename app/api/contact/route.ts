@@ -22,9 +22,7 @@ export async function POST(request: Request) {
       console.log('Sanity create result:', result);
       // Send email
     const transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com', //use email service ie. outlook gmail yahoo
-        port: 587,
-        secure: false, // or 'STARTTLS'
+        service: 'gmail',
         auth: {
             user: process.env.EMAIL_USER, //update in env.
             pass: process.env.EMAIL_PASS,
