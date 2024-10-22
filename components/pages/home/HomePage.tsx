@@ -129,8 +129,8 @@ export function HomePage({ data, settings }: HomePageProps) {
                     <Image
                       src={service.image.asset.url}
                       alt={service.image.alt || 'Service Image'}
-                      className="w-full h-1/2 object-contain rounded-lg"
-                      width={400}
+                      className="w-3/4 h-1/2 object-fill border rounded-lg mx-auto "
+                      width={200}
                       height={100}
                     />
                   )}
