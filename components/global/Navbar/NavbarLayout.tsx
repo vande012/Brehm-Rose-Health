@@ -48,7 +48,13 @@ export default function Navbar(props: NavbarProps) {
       >
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
-            <Image src={logo.src} alt="Logo" height={100} width={200} className="w-24 h-24" />
+            <Image
+              src={logo.src}
+              alt="Logo"
+              height={100}
+              width={200}
+              className="w-24 h-24"
+            />
             <Image
               src={name.src}
               alt="Name"
@@ -160,6 +166,14 @@ export default function Navbar(props: NavbarProps) {
               onClick={closeMobileMenu}
             >
               Blog
+            </Link>
+            {/* Add Contact Us button for mobile view */}
+            <Link
+              href="/contact"
+              className="md:hidden py-4 px-3 text-sm my-2 font-medium rounded-lg border border-transparent bg-custom-blue text-white hover:bg-green-500 focus:outline-none focus:bg-green-700 disabled:opacity-50 disabled:pointer-events-none"
+              onClick={closeMobileMenu}
+            >
+              Contact Us
             </Link>
           </div>
         </motion.div>
