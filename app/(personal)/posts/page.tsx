@@ -39,7 +39,7 @@ export default async function PostsPage() {
                   src={post.coverImage.asset.url}
                   alt={post.coverImage.alt || post.title}
                   className="w-full h-48 object-cover rounded-md mb-4"
-                  width={100}
+                  width={200}
                   height={100}
                 />
               )}
