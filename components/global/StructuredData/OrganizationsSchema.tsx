@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import React from 'react'
 
 const OrganizationSchema = () => {
@@ -20,14 +19,7 @@ const OrganizationSchema = () => {
     ],
   }
 
-  return (
-    <Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
-      />
-    </Head>
-  )
+  return orgSchema
 }
 
 export default OrganizationSchema

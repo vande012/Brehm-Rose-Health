@@ -1,5 +1,5 @@
 import './globals.css'
-
+import { Metadata } from 'next'
 import {
   DM_Sans,
   IBM_Plex_Mono,
@@ -8,14 +8,8 @@ import {
   PT_Serif,
   Roboto,
 } from 'next/font/google'
-
-import dynamic from 'next/dynamic'
 import Script from 'next/script'
-
-const OrganizationSchema = dynamic(
-  () => import('@/components/global/StructuredData/OrganizationsSchema'),
-  { ssr: false },
-)
+import OrganizationSchema from '@/components/global/StructuredData/OrganizationsSchema'
 
 const serif = PT_Serif({
   variable: '--font-serif',
@@ -50,25 +44,34 @@ const dmsans = DM_Sans({
   weight: ['400', '700'],
 })
 
+export const metadata: Metadata = {
+  verification: {
+    google: 'WiUCrIZFvflApljdic8kFCUa6u_0t2tYZgfmt4w22DM',
+  },
+  other: {
+    'google-site-verification': 'WiUCrIZFvflApljdic8kFCUa6u_0t2tYZgfmt4w22DM',
+  },
+}
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const orgSchema = OrganizationSchema()
+
   return (
     <html
       lang="en"
       className={`${mono.variable} ${sans.variable} ${serif.variable} ${robo.variable} ${newsreader.variable} ${dmsans.variable}`}
     >
       <head>
-        {/* GSC verification tag */}
-        <meta
-          name="google-site-verification"
-          content="WiUCrIZFvflApljdic8kFCUa6u_0t2tYZgfmt4w22DM"
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
         />
       </head>
       <body>
-        <OrganizationSchema />
         {children}
 
         {/* Google Analytics tag */}

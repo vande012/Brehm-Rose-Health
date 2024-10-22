@@ -33,12 +33,16 @@ export function HomePage({ data, settings }: HomePageProps) {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.1 }}
         >
-          <div
-            className="hero-img w-full h-64 md:h-auto md:w-1/2 bg-cover bg-center mt-6 transform-none"
-            style={
-              hero.image && { backgroundImage: `url(${hero.image.asset.url})` }
-            }
-          ></div>
+          <div className="hero-img w-full h-64 md:h-auto md:w-1/2 relative mt-6">
+            {hero && hero.image && (
+              <Image
+                src={hero.image.asset.url}
+                alt={hero.image.alt || "Hero image"}
+                fill
+                style={{ objectFit: 'cover' }}
+              />
+            )}
+          </div>
           <motion.div
             className="relative px-4 py-4 sm:px-6 sm:py-4 md:w-1/2"
             initial={{ y: -100, opacity: 0 }}
