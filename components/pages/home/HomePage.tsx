@@ -6,6 +6,12 @@ import Image from 'next/image'
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
 import type { HomePagePayload, SettingsPayload } from '@/types'
 import { urlForImage } from '@/sanity/lib/utils'
+import { ImageLoader } from 'next/image'
+
+const customLoader: ImageLoader = ({ src, width, quality }) => {
+  return `${src}?w=${width}&q=${quality || 75}`
+}
+
 export interface HomePageProps {
   data: HomePagePayload | null
   settings: SettingsPayload | null
@@ -23,6 +29,11 @@ export function HomePage({ data, settings }: HomePageProps) {
   } = data ?? {}
   const { phoneNumber } = settings ?? {}
 
+  const fadeInVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 }
+  }
+
   return (
     <div className=" bg-white">
       {/* Hero Section */}
@@ -36,9 +47,13 @@ export function HomePage({ data, settings }: HomePageProps) {
           <div className="hero-img w-full h-64 md:h-auto md:w-1/2 relative mt-6">
             {hero && hero.image && (
               <Image
+                loader={customLoader}
                 src={hero.image.asset.url}
                 alt={hero.image.alt || "Hero image"}
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+                fetchPriority="high"
                 style={{ objectFit: 'cover' }}
               />
             )}
