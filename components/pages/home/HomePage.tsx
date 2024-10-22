@@ -258,7 +258,7 @@ export function HomePage({ data, settings }: HomePageProps) {
         </motion.section>
       )}
       {/* Reviews Section */}
-      {reviewsSection && (
+      {/*reviewsSection && (
         <motion.section
           className="reviews-section py-4 flex flex-wrap justify-center"
           initial={{ opacity: 0 }}
@@ -298,8 +298,7 @@ export function HomePage({ data, settings }: HomePageProps) {
             ))}
           </div>
         </motion.section>
-      )}
-      ,
+      )} */}
       <motion.section
         className="contact relative flex flex-col md:flex-row bg-custom-blue py-6 px-4"
         initial={{ opacity: 0 }}

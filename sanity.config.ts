@@ -52,8 +52,9 @@ export default defineConfig({
     ],
   },
   plugins: [
-    healthSherpaTool(),
+    
     assist(), //ai assistant tool
+    healthSherpaTool(),
     structureTool({
       structure: pageStructure([home, settings]),
     }),
