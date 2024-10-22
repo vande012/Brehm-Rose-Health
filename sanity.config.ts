@@ -26,8 +26,7 @@ import { healthSherpaTool } from './sanity/components/healthSherpaTool'
 import healthSherpa from './sanity/schemas/singletons/healthSherpa'
 
 const title =
-  process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
-  'Brehm Rose Health'
+  process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Brehm Rose Health'
 
 export default defineConfig({
   basePath: studioUrl,
@@ -52,7 +51,6 @@ export default defineConfig({
     ],
   },
   plugins: [
-    
     assist(), //ai assistant tool
     healthSherpaTool(),
     structureTool({
@@ -73,7 +71,6 @@ export default defineConfig({
     // Vision lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
-    
   ],
   revalidate: 10, // revalidate every 10 seconds
 })

@@ -1,13 +1,14 @@
 import './globals.css'
 
 import {
+  DM_Sans,
   IBM_Plex_Mono,
   Inter,
+  Newsreader,
   PT_Serif,
   Roboto,
-  Newsreader,
-  DM_Sans,
 } from 'next/font/google'
+
 import OrganizationSchema from '@/components/global/StructuredData/OrganizationsSchema'
 
 const serif = PT_Serif({

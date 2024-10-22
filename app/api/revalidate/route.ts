@@ -47,12 +47,12 @@ export async function POST(req: NextRequest) {
     if (body.slug) {
       revalidateTag(`${body._type}:${body.slug}`)
     }
-       // Check if the updated document is a ContactForm
-       if (body._type === 'contactForm') {
-        // Revalidate the contact page
-        revalidateTag('contact')
-      }
-      
+    // Check if the updated document is a ContactForm
+    if (body._type === 'contactForm') {
+      // Revalidate the contact page
+      revalidateTag('contact')
+    }
+
     return NextResponse.json({
       status: 200,
       revalidated: true,

@@ -34,19 +34,20 @@ export default defineType({
         defineArrayMember({
           lists: [],
           marks: {
-            annotations: [{
-              name: 'link',
-              type: 'object',
-              title: 'Link',
-              fields: [
-                {
-                  name: 'href',
-                  type: 'url',
-                  title: 'Url',
-                },
-              ],
-            },
-          ],
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'Link',
+                fields: [
+                  {
+                    name: 'href',
+                    type: 'url',
+                    title: 'Url',
+                  },
+                ],
+              },
+            ],
             decorators: [
               {
                 title: 'Italic',
@@ -84,28 +85,28 @@ export default defineType({
     }),
     defineField({
       name: 'body',
-      description:
-        'Page body text and links',
+      description: 'Page body text and links',
       title: 'Body',
       type: 'array',
       of: [
         // Paragraphs
         defineArrayMember({
-          lists: [{title: 'Bullet', value: 'bullet'},],
+          lists: [{ title: 'Bullet', value: 'bullet' }],
           marks: {
-            annotations: [{
-              name: 'link',
-              type: 'object',
-              title: 'Link',
-              fields: [
-                {
-                  name: 'href',
-                  type: 'url',
-                  title: 'Url',
-                },
-              ],
-            },
-          ],
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'Link',
+                fields: [
+                  {
+                    name: 'href',
+                    type: 'url',
+                    title: 'Url',
+                  },
+                ],
+              },
+            ],
             decorators: [
               {
                 title: 'Italic',
@@ -142,12 +143,11 @@ export default defineType({
           },
         }),
       ],
-      
+
       validation: (rule) => rule.max(155).required(),
     }),
-    
   ],
-  
+
   preview: {
     select: {
       title: 'title',

@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import { draftMode } from 'next/headers'
 import { toPlainText } from 'next-sanity'
 import { Suspense } from 'react'
+
 import { Footer } from '@/components/global/Footer'
 import { Navbar } from '@/components/global/Navbar'
 import { urlForOpenGraphImage } from '@/sanity/lib/utils'

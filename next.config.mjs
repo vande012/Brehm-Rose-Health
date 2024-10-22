@@ -22,6 +22,7 @@ const config = {
   experimental: {
     taint: true,
   },
+  output: 'standalone',
 }
 
 export default config

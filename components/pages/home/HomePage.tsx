@@ -1,9 +1,10 @@
 'use client'
 
-import type { HomePagePayload, SettingsPayload } from '@/types'
-import Link from 'next/link'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
+import Image from 'next/image'
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
+import type { HomePagePayload, SettingsPayload } from '@/types'
 export interface HomePageProps {
   data: HomePagePayload | null
   settings: SettingsPayload | null
@@ -91,7 +92,7 @@ export function HomePage({ data, settings }: HomePageProps) {
             <div className="marquee">
               <div className="marquee-inner">
                 {logoBanner.logos.map((logo, index) => (
-                  <img
+                  <Image
                     key={index}
                     src={logo.asset?.url}
                     alt={logo.asset?.alt || `Logo ${index + 1}`}
@@ -103,7 +104,7 @@ export function HomePage({ data, settings }: HomePageProps) {
                 ))}
                 {/* Duplicate logos for continuous effect */}
                 {logoBanner.logos.map((logo, index) => (
-                  <img
+                  <Image
                     key={`duplicate-${index}`}
                     src={logo.asset?.url}
                     alt={logo.asset?.alt || `Logo ${index + 1}`}
@@ -126,7 +127,7 @@ export function HomePage({ data, settings }: HomePageProps) {
               {servicesSection.services.map((service, index) => (
                 <div key={index} className="p-6 bg-white rounded-lg shadow-md">
                   {service.image.asset?.url && (
-                    <img
+                    <Image
                       src={service.image.asset.url}
                       alt={service.image.alt || 'Service Image'}
                       className="w-full h-48 object-cover mb-4 rounded-md"
@@ -173,7 +174,7 @@ export function HomePage({ data, settings }: HomePageProps) {
                   transition={{ duration: 0.2, delay: index * 0.1 }}
                 >
                   {partner.image?.asset?.url && (
-                    <img
+                    <Image
                       src={partner.image.asset.url}
                       alt={partner.image.alt || 'Partner Logo'}
                       className="w-full h-32 object-contain mb-4 rounded-md"
@@ -226,7 +227,7 @@ export function HomePage({ data, settings }: HomePageProps) {
                 landscape by offering a truly personalized experience.
               </p>
               <p className="text-2xl md:text-3xl font-semibold pt-2">
-                Here's how we differ:
+                Here&apos;s how we differ:
               </p>
             </div>
 

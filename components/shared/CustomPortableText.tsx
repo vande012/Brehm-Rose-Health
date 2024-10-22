@@ -3,11 +3,12 @@ import {
   type PortableTextBlock,
   type PortableTextComponents,
 } from 'next-sanity'
-import type { Image } from 'sanity'
-import ImageBox from '@/components/shared/ImageBox'
-import { TimelineSection } from '@/components/shared/TimelineSection'
 import React from 'react'
 import { FaExternalLinkAlt } from 'react-icons/fa'
+import type { Image } from 'sanity'
+
+import ImageBox from '@/components/shared/ImageBox'
+import { TimelineSection } from '@/components/shared/TimelineSection'
 
 export function CustomPortableText({
   paragraphClasses = 'my-4 leading-relaxed',
@@ -88,7 +89,7 @@ export function CustomPortableText({
         if (!value) return null
 
         return (
-            <figure className="my-8 mx-auto max-w-2xl">
+          <figure className="my-8 mx-auto max-w-2xl">
             <ImageBox
               image={value}
               alt={value.alt || 'Image'}

@@ -1,12 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import logo from '/app/logo.png'
 import name from '/app/name.png'
 import { resolveHref } from '@/sanity/lib/utils'
 import type { MenuItem, SettingsPayload } from '@/types'
-import { motion } from 'framer-motion'
 
 interface NavbarProps {
   data: SettingsPayload
@@ -47,8 +48,14 @@ export default function Navbar(props: NavbarProps) {
       >
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
-            <img src={logo.src} alt="Logo" height={90} width={90} />
-            <img src={name.src} alt="Name" className="pl-5 w-48 lg:w-72" />
+            <Image src={logo.src} alt="Logo" height={90} width={90} />
+            <Image
+              src={name.src}
+              alt="Name"
+              height={90}
+              width={90}
+              className="pl-5 w-48 lg:w-72"
+            />
           </Link>
         </div>
         <div className="flex md:hidden">
@@ -69,7 +76,11 @@ export default function Navbar(props: NavbarProps) {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
-                d={isMobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'}
+                d={
+                  isMobileMenuOpen
+                    ? 'M6 18L18 6M6 6l12 12'
+                    : 'M4 6h16M4 12h16m-7 6h7'
+                }
               />
             </svg>
           </button>
@@ -84,7 +95,9 @@ export default function Navbar(props: NavbarProps) {
               <Link
                 key={key}
                 className={`block text-lg font-bold hover:text-custom-green md:ml-8 md:text-xl ${
-                  menuItem?._type === 'home' ? 'font-extrabold text-black' : 'text-custom-blue'
+                  menuItem?._type === 'home'
+                    ? 'font-extrabold text-black'
+                    : 'text-custom-blue'
                 }`}
                 href={href}
               >
@@ -127,7 +140,9 @@ export default function Navbar(props: NavbarProps) {
                 >
                   <Link
                     className={`block text-lg md:text-base font-bold hover:text-gray-300 text-gray-600 p-4 ${
-                      menuItem?._type === 'home' ? 'font-extrabold text-black' : 'text-gray-600'
+                      menuItem?._type === 'home'
+                        ? 'font-extrabold text-black'
+                        : 'text-gray-600'
                     }`}
                     href={href}
                     style={{ minWidth: '44px', minHeight: '44px' }}

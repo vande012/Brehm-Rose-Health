@@ -162,7 +162,7 @@ export const formQuery = groq`
       }
     }
   }
-`;
+`
 
 export const faqQuery = groq`
   *[_type == "faq"][0] {
@@ -190,7 +190,7 @@ export const faqQuery = groq`
       }
     }
   }
-`;
+`
 
 export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][0]{
   title,

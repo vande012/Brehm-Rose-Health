@@ -45,76 +45,74 @@ export interface HomePagePayload {
     buttons?: Array<{
       text: string
       url: string
-    }>;
-  };
+    }>
+  }
   logoBanner?: {
-    header: string;
+    header: string
     logos: Array<{
       asset: {
-        url: string;
-        alt?: string;
+        url: string
+        alt?: string
         metadata?: {
           dimensions: {
-            width: number;
-            height: number;
-          };
-        };
-      };
-    }>;
-    backgroundColor?: string;
-  };
+            width: number
+            height: number
+          }
+        }
+      }
+    }>
+    backgroundColor?: string
+  }
   servicesSection?: {
-    title: string;
+    title: string
     services: Array<{
       image: {
         asset: {
-          url: string;
-        };
-        alt?: string;
-      };
-      title: string;
-      description: string;
-      buttonText: string;
-      buttonUrl: string;
-    }>;
-  };
+          url: string
+        }
+        alt?: string
+      }
+      title: string
+      description: string
+      buttonText: string
+      buttonUrl: string
+    }>
+  }
   partnersSection?: {
-    title: string;
-    buttonText: string;
-    buttonUrl: string;
+    title: string
+    buttonText: string
+    buttonUrl: string
     partners: Array<{
-      name: string;
+      name: string
       image: {
         asset: {
-          url: string;
-        };
-        alt?: string;
-      };
-      description: PortableTextBlock[];
-    }>;
-  };
+          url: string
+        }
+        alt?: string
+      }
+      description: PortableTextBlock[]
+    }>
+  }
   reviewsSection?: {
-    title: string;
+    title: string
     reviews: Array<{
-      name: string;
-      review: PortableTextBlock[];
+      name: string
+      review: PortableTextBlock[]
       image: {
         asset: {
-          url: string;
-        };
-        alt?: string;
-      };
-    }>;
-  };
+          url: string
+        }
+        alt?: string
+      }
+    }>
+  }
   whySection?: {
     heading?: string
     subheading?: string
     blockLeft?: PortableTextBlock[]
     blockRight?: PortableTextBlock[]
-  };
+  }
 }
-
-
 
 export interface PagePayload {
   body?: PortableTextBlock[]
@@ -124,12 +122,11 @@ export interface PagePayload {
   slug?: string
   image?: {
     asset: {
-      url: string;
-    };
+      url: string
+    }
     alt?: string
   }
 }
-
 
 export interface SettingsPayload {
   footer?: PortableTextBlock[]
@@ -142,15 +139,15 @@ export interface SettingsPayload {
 
 export interface Logo {
   asset: {
-    _id: string;
-    url: string;
+    _id: string
+    url: string
     metadata: {
       dimensions: {
-        width: number;
-        height: number;
-      };
-    };
-  };
+        width: number
+        height: number
+      }
+    }
+  }
 }
 export interface FormField {
   required: boolean
@@ -169,14 +166,14 @@ export interface FormFieldsPayload {
 export interface PostsPayload {
   title: string
   slug: {
-    current: string;
+    current: string
   }
   content: PortableTextBlock[]
   excerpt?: string
   coverImage?: {
     asset: {
-      url: string;
-    };
+      url: string
+    }
     alt?: string
   }
   date: string
@@ -192,7 +189,7 @@ export interface PostsPayload {
 }
 
 export interface SitemapResponse {
-  homePage?: { slug: string };
-  pages?: { slug: string }[];
-  posts?: { slug: string }[];
+  homePage?: { slug: string }
+  pages?: { slug: string }[]
+  posts?: { slug: string }[]
 }

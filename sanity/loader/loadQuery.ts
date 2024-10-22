@@ -103,5 +103,3 @@ export function loadSitemap() {
     { next: { tags: ['sitemap'] } },
   )
 }
-
-

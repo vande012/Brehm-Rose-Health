@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 interface FormField {
   required: boolean
@@ -92,10 +92,18 @@ export default function ContactForm() {
   })
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState<boolean | null>(null)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  useEffect(() => {
+    console.log('ContactForm mounted')
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true)
+    setSuccess(null)
+    setErrorMessage(null)
+    console.log('Form submitted', formData)
 
     try {
       const res = await fetch('/api/contact', {
@@ -103,14 +111,11 @@ export default function ContactForm() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone || '',
-          message: formData.message,
-          type: formData.type,
-        }),
+        body: JSON.stringify(formData),
       })
+
+      const responseData = await res.json()
+      console.log('API response', res.status, responseData)
 
       if (res.ok) {
         setSuccess(true)
@@ -123,13 +128,17 @@ export default function ContactForm() {
         })
       } else {
         setSuccess(false)
+        setErrorMessage(responseData.message || 'An error occurred while submitting the form.')
       }
     } catch (error) {
+      console.error('Error submitting form', error)
       setSuccess(false)
+      setErrorMessage('An unexpected error occurred. Please try again later.')
     } finally {
       setLoading(false)
     }
   }
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -157,12 +166,28 @@ export default function ContactForm() {
               required={field.required}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             >
+              <option value="">Select {field.fieldName}</option>
               {field.type.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.title}
                 </option>
               ))}
             </select>
+          ) : field.inputType === 'textarea' ? (
+            <textarea
+              id={field.fieldId}
+              value={formData[field.fieldId as keyof ContactFormData]}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  [field.fieldId as keyof ContactFormData]: e.target.value,
+                })
+              }
+              required={field.required}
+              placeholder={field.placeholder}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              rows={4}
+            />
           ) : (
             <input
               id={field.fieldId}
@@ -190,10 +215,10 @@ export default function ContactForm() {
         {loading ? 'Sending...' : 'Send'}
       </button>
       {success !== null && (
-        <p className="mt-4 text-green-600">
+        <p className={`mt-4 ${success ? 'text-green-600' : 'text-red-600'}`}>
           {success
             ? 'Message sent successfully, we will be in touch soon!'
-            : 'Failed to send message, please try again.'}
+            : errorMessage || 'Failed to send message, please try again.'}
         </p>
       )}
     </form>

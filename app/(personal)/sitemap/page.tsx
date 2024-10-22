@@ -1,7 +1,8 @@
+import Link from 'next/link'
+
 import { client } from '@/sanity/lib/client'
 import { sitemapQuery } from '@/sanity/lib/queries'
 import { SitemapResponse } from '@/types' // Assuming this is your types file
-import Link from 'next/link'
 
 const Sitemap = async () => {
   // Fetch sitemap data from Sanity
@@ -9,7 +10,9 @@ const Sitemap = async () => {
   console.log('Fetched Sitemap Data:', sitemapData) // Log the fetched data
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
-      <h1 className="text-3xl md:text-4xl font-bold text-center mb-8">Sitemap</h1>
+      <h1 className="text-3xl md:text-4xl font-bold text-center mb-8">
+        Sitemap
+      </h1>
 
       <div className="flex justify-center">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
@@ -24,7 +27,7 @@ const Sitemap = async () => {
               </li>
               {sitemapData.pages?.map((page) => (
                 <li key={page.slug}>
-                  <Link 
+                  <Link
                     href={`/${page.slug}`}
                     className="text-blue-600 hover:underline capitalize"
                   >
@@ -46,7 +49,7 @@ const Sitemap = async () => {
               </li>
               {sitemapData.posts?.map((post) => (
                 <li key={post.slug}>
-                  <Link 
+                  <Link
                     href={`/posts/${post.slug}`}
                     className="text-blue-600 hover:underline"
                   >

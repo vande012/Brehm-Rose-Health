@@ -1,7 +1,6 @@
 import { CogIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
-
 export default defineType({
   name: 'settings',
   title: 'Settings',
@@ -35,7 +34,7 @@ export default defineType({
             },
             {
               type: 'post',
-            }
+            },
           ],
         },
       ],
@@ -74,9 +73,12 @@ export default defineType({
       type: 'string',
       description: 'The phone number to display on the website.',
       validation: (rule) =>
-        rule.error('Please enter a valid phone number in the format of +1 (123) 456-7890')
+        rule
+          .error(
+            'Please enter a valid phone number in the format of +1 (123) 456-7890',
+          )
           .regex(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g),
-        }),
+    }),
     defineField({
       name: 'ogImage',
       title: 'Open Graph Image',

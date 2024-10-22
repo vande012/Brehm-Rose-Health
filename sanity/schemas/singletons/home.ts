@@ -1,5 +1,5 @@
-import { HomeIcon, ImageIcon } from '@sanity/icons';
-import { defineArrayMember, defineField, defineType } from 'sanity';
+import { HomeIcon, ImageIcon } from '@sanity/icons'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'home',
@@ -165,9 +165,12 @@ export default defineType({
           name: 'backgroundColor',
           title: 'Background Color',
           type: 'string',
-          description: 'Enter a background color in hex format (e.g., #ffffff for white)',
+          description:
+            'Enter a background color in hex format (e.g., #ffffff for white)',
           validation: (rule) =>
-            rule.regex(/^#([0-9a-fA-F]{3}){1,2}$/).warning('Must be a valid hex color code'),
+            rule
+              .regex(/^#([0-9a-fA-F]{3}){1,2}$/)
+              .warning('Must be a valid hex color code'),
         }),
       ],
     }),
@@ -254,28 +257,28 @@ export default defineType({
                   name: 'review',
                   title: 'Review',
                   type: 'array',
-          of: [
-            defineArrayMember({
-              lists: [],
-              marks: {
-                annotations: [],
-                decorators: [
-                  {
-                    title: 'Italic',
-                    value: 'em',
-                  },
-                  {
-                    title: 'Strong',
-                    value: 'strong',
-                  },
-                ],
-              },
-              styles: [],
-              type: 'block',
-            }),
-          ],
-          validation: (rule) => rule.max(155).required(),
-        }),
+                  of: [
+                    defineArrayMember({
+                      lists: [],
+                      marks: {
+                        annotations: [],
+                        decorators: [
+                          {
+                            title: 'Italic',
+                            value: 'em',
+                          },
+                          {
+                            title: 'Strong',
+                            value: 'strong',
+                          },
+                        ],
+                      },
+                      styles: [],
+                      type: 'block',
+                    }),
+                  ],
+                  validation: (rule) => rule.max(155).required(),
+                }),
                 defineField({
                   name: 'image',
                   title: 'Profile Picture',
@@ -406,9 +409,7 @@ export default defineType({
           of: [
             defineArrayMember({
               type: 'block',
-              lists: [
-                {title: 'Bullet', value: 'bullet'},
-              ], // Disable list types if not needed
+              lists: [{ title: 'Bullet', value: 'bullet' }], // Disable list types if not needed
               marks: {
                 annotations: [
                   {
@@ -429,14 +430,14 @@ export default defineType({
                   { title: 'Strong', value: 'strong' },
                 ],
               },
-              styles: [ 
-                {title: 'Normal', value: 'normal'},
-                {title: 'H1', value: 'h1'},
-                {title: 'H2', value: 'h2'},
-                {title: 'H3', value: 'h3'},
-                {title: 'H4', value: 'h4'},
-                {title: 'Quote', value: 'blockquote'},
-              ], 
+              styles: [
+                { title: 'Normal', value: 'normal' },
+                { title: 'H1', value: 'h1' },
+                { title: 'H2', value: 'h2' },
+                { title: 'H3', value: 'h3' },
+                { title: 'H4', value: 'h4' },
+                { title: 'Quote', value: 'blockquote' },
+              ],
             }),
           ],
         }),
@@ -447,9 +448,7 @@ export default defineType({
           of: [
             defineArrayMember({
               type: 'block',
-              lists: [
-                {title: 'Bullet', value: 'bullet'},
-              ], // Disable list types if not needed
+              lists: [{ title: 'Bullet', value: 'bullet' }], // Disable list types if not needed
               marks: {
                 annotations: [
                   {
@@ -470,14 +469,14 @@ export default defineType({
                   { title: 'Strong', value: 'strong' },
                 ],
               },
-              styles: [ 
-                {title: 'Normal', value: 'normal'},
-                {title: 'H1', value: 'h1'},
-                {title: 'H2', value: 'h2'},
-                {title: 'H3', value: 'h3'},
-                {title: 'H4', value: 'h4'},
-                {title: 'Quote', value: 'blockquote'},
-              ], 
+              styles: [
+                { title: 'Normal', value: 'normal' },
+                { title: 'H1', value: 'h1' },
+                { title: 'H2', value: 'h2' },
+                { title: 'H3', value: 'h3' },
+                { title: 'H4', value: 'h4' },
+                { title: 'Quote', value: 'blockquote' },
+              ],
             }),
           ],
         }),
@@ -492,7 +491,7 @@ export default defineType({
       return {
         subtitle: 'Home',
         title,
-      };
+      }
     },
   },
-});
+})

@@ -4,7 +4,10 @@ import { LinkIcon } from '@sanity/icons'
 
 const HealthSherpaButton = () => {
   const handleClick = () => {
-    window.open('https://www.healthsherpa.com/?_agent_id=barbara-rose', '_blank')
+    window.open(
+      'https://www.healthsherpa.com/?_agent_id=barbara-rose',
+      '_blank',
+    )
   }
 
   return (

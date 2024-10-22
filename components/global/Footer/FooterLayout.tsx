@@ -1,10 +1,11 @@
-import type { PortableTextBlock } from 'next-sanity'
 import Link from 'next/link'
-import { CustomPortableText } from '@/components/shared/CustomPortableText'
-import type { SettingsPayload, MenuItem } from '@/types'
+import type { PortableTextBlock } from 'next-sanity'
+import Image from 'next/image'
 import logo from '/app/logo.png'
 import name from '/app/name.png'
+import { CustomPortableText } from '@/components/shared/CustomPortableText'
 import { resolveHref } from '@/sanity/lib/utils'
+import type { MenuItem, SettingsPayload } from '@/types'
 
 interface FooterProps {
   data: SettingsPayload
@@ -22,8 +23,8 @@ export default function Footer(props: FooterProps) {
           {/* Logo and Contact Info */}
           <div className="flex flex-col items-center">
             <Link href="/" className="flex items-center mb-4">
-              <img src={logo.src} alt="Logo" className="w-12 h-12" />
-              <img src={name.src} alt="Name" className="pl-3 w-52" />
+              <Image src={logo.src} alt="Logo" height={90} width={90} className="w-12 h-12" />
+              <Image src={name.src} alt="Name" height={90} width={90} className="pl-3 w-52" />
             </Link>
             <div className="text-black font-bold mb-2">{data?.phoneNumber}</div>
             {footer && (
@@ -37,10 +38,7 @@ export default function Footer(props: FooterProps) {
           </div>
 
           {/* Navigation Links */}
-          <nav
-            className="flex flex-col items-center"
-            aria-label="Footer links"
-          >
+          <nav className="flex flex-col items-center" aria-label="Footer links">
             <h3 className="font-bold text-lg mb-2 md:ml-10">Site Links</h3>
             {menuItems.map((menuItem, key) => {
               const href = resolveHref(menuItem?._type, menuItem?.slug)

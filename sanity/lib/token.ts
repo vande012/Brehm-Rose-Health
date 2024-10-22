@@ -14,15 +14,17 @@ if (!token) {
 }
 
 if (writeToken !== undefined) {
-experimental_taintUniqueValue(
-  'Do not pass the sanity API write token to the client.',
-  process,
-  writeToken,
-)}
+  experimental_taintUniqueValue(
+    'Do not pass the sanity API write token to the client.',
+    process,
+    writeToken,
+  )
+}
 
 if (token !== undefined) {
-experimental_taintUniqueValue(
-  'Do not pass the sanity API read token to the client.',
-  process,
-  token,
-)}
+  experimental_taintUniqueValue(
+    'Do not pass the sanity API read token to the client.',
+    process,
+    token,
+  )
+}

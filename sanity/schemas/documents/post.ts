@@ -1,5 +1,5 @@
-import { defineType, defineField, defineArrayMember } from 'sanity';
-import { DocumentIcon, ImageIcon } from '@sanity/icons';
+import { defineType, defineField, defineArrayMember } from 'sanity'
+import { DocumentIcon, ImageIcon } from '@sanity/icons'
 
 export default defineType({
   name: 'post',
@@ -11,7 +11,7 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'slug',
@@ -21,7 +21,7 @@ export default defineType({
         source: 'title',
         maxLength: 96,
       },
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'content',
@@ -31,9 +31,7 @@ export default defineType({
         defineArrayMember({
           type: 'block',
           marks: {
-            decorators: [
-              { title: 'Strong', value: 'strong' },
-            ],
+            decorators: [{ title: 'Strong', value: 'strong' }],
             annotations: [
               {
                 name: 'link',
@@ -59,7 +57,7 @@ export default defineType({
       name: 'excerpt',
       title: 'Excerpt - Used for the <meta> description tag for SEO',
       type: 'text',
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'coverImage',
@@ -75,7 +73,7 @@ export default defineType({
           title: 'Alt Text',
           type: 'string',
           description: 'Alternative text for screen readers.',
-          validation: Rule => Rule.required(),
+          validation: (Rule) => Rule.required(),
         }),
       ],
     }),
@@ -83,14 +81,14 @@ export default defineType({
       name: 'date',
       title: 'Date',
       type: 'datetime',
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'author',
       title: 'Author',
       type: 'reference',
       to: [{ type: 'author' }], // Assuming you have an 'author' schema
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {
@@ -102,7 +100,7 @@ export default defineType({
       return {
         title,
         media,
-      };
+      }
     },
   },
-});
+})

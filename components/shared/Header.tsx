@@ -1,5 +1,5 @@
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
-
+import Image from 'next/image'
 interface HeaderProps {
   centered?: boolean
   description?: any[]
@@ -19,7 +19,7 @@ export function Header(props: HeaderProps) {
     <div className="relative w-full h-60">
       {/* Image */}
       {image && (
-        <img
+        <Image
           src={image.src}
           alt={image.alt}
           className="object-cover w-full h-full"

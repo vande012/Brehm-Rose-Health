@@ -1,7 +1,5 @@
 @tailwind base;
 
-
-
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -9,11 +7,15 @@ html {
   scroll-behavior: smooth;
 }
 
-h1, h2 {
-  font-family:'Trebuchet MS', sans-serif;
+h1,
+h2 {
+  font-family: 'Trebuchet MS', sans-serif;
 }
 
-h3, h4, h5, h6 {
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-dmsans);
 }
 
@@ -34,51 +36,49 @@ ol {
   list-style-type: disc;
 }
 
-
 .hero h2 {
   font-family: var(--font-news);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 .hero-img {
-    height: 30rem;
-    width: 50rem;
-    max-height: '50vh';
-  } /* Adjust the height as needed */
-  @media (max-width: 768px) {
-    .hero-img {
-      height: 40rem; 
-      max-height: 30vh;
-      max-width: 100vw;
-       /* This limits the height to 50% of the viewport height */
-      
-    }
-  }  
-  .logo-banner-section .marquee {
-    overflow: hidden;
-    width: 100%;
-    white-space: nowrap;
+  height: 30rem;
+  width: 50rem;
+  max-height: '50vh';
+} /* Adjust the height as needed */
+@media (max-width: 768px) {
+  .hero-img {
+    height: 40rem;
+    max-height: 30vh;
+    max-width: 100vw;
+    /* This limits the height to 50% of the viewport height */
   }
-  
+}
+.logo-banner-section .marquee {
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.logo-banner-section .marquee-inner {
+  display: flex;
+  width: max-content; /* Adjusts width to the content */
+  animation: marquee 30s linear infinite; /* Adjust the duration for speed */
+}
+@media (max-width: 768px) {
   .logo-banner-section .marquee-inner {
-    display: flex;
-    width: max-content; /* Adjusts width to the content */
-    animation: marquee 30s linear infinite; /* Adjust the duration for speed */
+    animation: marquee 20s linear infinite; /* Faster speed on mobile */
   }
-  @media (max-width: 768px) {
-    .logo-banner-section .marquee-inner {
-      animation: marquee 20s linear infinite; /* Faster speed on mobile */
-    }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0%);
   }
-  
-  @keyframes marquee {
-    from {
-      transform: translateX(0%);
-    }
-    to {
-      transform: translateX(-50%);
-    }
+  to {
+    transform: translateX(-50%);
   }
+}
 
 .why-list li {
   color: white;
@@ -87,4 +87,3 @@ ol {
 .group-open .faq-toggle-icon svg {
   transform: rotate(180deg);
 }
-

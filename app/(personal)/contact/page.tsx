@@ -1,6 +1,11 @@
 import { Suspense } from 'react'
 import ContactForm from '@/components/shared/ContactForm'
 import ErrorBoundary from '@/components/shared/ErrorBoundary'
+import dynamic from 'next/dynamic'
+
+const DynamicContactForm = dynamic(() => import('@/components/shared/ContactForm'), {
+  ssr: false,
+})
 
 export default function ContactPage(): JSX.Element {
   return (
@@ -12,7 +17,7 @@ export default function ContactPage(): JSX.Element {
       </p>
       <Suspense fallback={<div>Loading form...</div>}>
         <ErrorBoundary>
-          <ContactForm />
+          <DynamicContactForm />
         </ErrorBoundary>
       </Suspense>
     </>
