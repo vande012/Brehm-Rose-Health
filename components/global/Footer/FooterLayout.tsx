@@ -22,9 +22,21 @@ export default function Footer(props: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Logo and Contact Info */}
           <div className="flex flex-col items-center">
-            <Link href="/" className="flex items-center mb-4">
-              <Image src={logo.src} alt="Logo" height={100} width={200} className="w-24 h-24" />
-              <Image src={name.src} alt="Name" height={100} width={200} className="pl-3 w-64" />
+            <Link href="/" className="flex items-center mb-4" aria-label="Return to homepage">
+              <Image
+                src={logo.src}
+                alt="Brehm-Rose Health Logo"
+                height={100}
+                width={200}
+                className="w-24 h-24"
+              />
+              <Image
+                src={name.src}
+                alt="Brehm-Rose Health Name"
+                height={100}
+                width={200}
+                className="pl-3 w-64"
+              />
             </Link>
             <div className="text-black font-bold mb-2">{data?.phoneNumber}</div>
             {footer && (

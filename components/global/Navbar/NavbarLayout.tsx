@@ -106,6 +106,7 @@ export default function Navbar(props: NavbarProps) {
                     : 'text-custom-blue'
                 }`}
                 href={href}
+                aria-label={`Navigate to ${menuItem.title} page`}
               >
                 {menuItem.title}
               </Link>

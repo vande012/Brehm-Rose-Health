@@ -31,7 +31,7 @@ export function HomePage({ data, settings }: HomePageProps) {
 
   const fadeInVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1 }
+    visible: { opacity: 1 },
   }
 
   return (
@@ -49,7 +49,7 @@ export function HomePage({ data, settings }: HomePageProps) {
               <Image
                 loader={customLoader}
                 src={hero.image.asset.url}
-                alt={hero.image.alt || "Hero image"}
+                alt={hero.image.alt || 'Hero image'}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 priority
@@ -89,6 +89,7 @@ export function HomePage({ data, settings }: HomePageProps) {
               <Link
                 href="/about-us"
                 className="group relative inline-flex h-12 items-center justify-center rounded-md border border-transparent bg-gradient-to-r from-custom-blue to-custom-green px-6 font-bold text-white transition-all duration-100 [box-shadow:5px_5px_rgb(82_82_82)] hover:translate-x-[3px] hover:translate-y-[3px] hover:[box-shadow:0px_0px_rgb(82_82_82)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom-blue"
+                aria-label="Learn more about our services"
               >
                 Read More
               </Link>
