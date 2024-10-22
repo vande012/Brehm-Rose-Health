@@ -94,6 +94,8 @@ export function CustomPortableText({
               image={value}
               alt={value.alt || 'Image'}
               classesWrapper="relative aspect-[16/9] rounded-lg overflow-hidden max-w-full h-auto"
+              height={100}
+              width={100}
             />
             {value?.caption && (
               <figcaption className="text-center text-sm text-gray-600 mt-2">

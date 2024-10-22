@@ -97,6 +97,8 @@ export function HomePage({ data, settings }: HomePageProps) {
                     src={logo.asset?.url}
                     alt={logo.asset?.alt || `Logo ${index + 1}`}
                     className="h-32 w-auto object-contain bg-white px-8"
+                    width={100}
+                    height={100}
                     style={{
                       maxHeight: '8rem',
                     }}
@@ -108,6 +110,8 @@ export function HomePage({ data, settings }: HomePageProps) {
                     key={`duplicate-${index}`}
                     src={logo.asset?.url}
                     alt={logo.asset?.alt || `Logo ${index + 1}`}
+                    width={100}
+                    height={100}
                     className="h-32 w-auto object-contain bg-white px-8"
                     style={{
                       maxHeight: '8rem',
@@ -131,6 +135,8 @@ export function HomePage({ data, settings }: HomePageProps) {
                       src={service.image.asset.url}
                       alt={service.image.alt || 'Service Image'}
                       className="w-full h-48 object-cover mb-4 rounded-md"
+                      width={100}
+                      height={100}
                     />
                   )}
                   <h3 className="text-2xl font-semibold text-custom-blue mb-2 py-2 text-center">
@@ -178,6 +184,8 @@ export function HomePage({ data, settings }: HomePageProps) {
                       src={partner.image.asset.url}
                       alt={partner.image.alt || 'Partner Logo'}
                       className="w-full h-32 object-contain mb-4 rounded-md"
+                      width={100}
+                      height={100}
                     />
                   )}
                   <h3 className="text-xl font-semibold mb-2 text-center">

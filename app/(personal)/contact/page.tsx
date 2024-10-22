@@ -21,8 +21,8 @@ const ClientErrorBoundary = dynamic(() => import('@/components/shared/ClientErro
 export default function ContactPage() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-4">Contact Us</h1>
-      <p className="mb-4">Please fill out the form below to get in touch with us.</p>
+      <h1 className="text-3xl font-bold mb-4 text-center">Contact Us</h1>
+      <p className="mb-4 text-center">Please fill out the form below to get in touch with us.</p>
       <ClientErrorBoundary>
         <DynamicContactForm />
       </ClientErrorBoundary>
