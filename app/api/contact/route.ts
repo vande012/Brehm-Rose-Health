@@ -1,9 +1,6 @@
 // src/app/api/contact/route.js
-import { validatePreviewUrl } from '@sanity/preview-url-secret'
-import { draftMode } from 'next/headers'
-import { redirect } from 'next/navigation'
-import nodemailer from 'nodemailer'
 
+import nodemailer from 'nodemailer'
 import { client } from '@/sanity/lib/client'
 import { token, writeToken } from '@/sanity/lib/token'
 
@@ -21,13 +18,19 @@ export async function POST(request: Request) {
     })
 
     console.log('Sanity create result:', result)
+    
     // Send email
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: process.env.EMAIL_HOST,
+      port: parseInt(process.env.EMAIL_PORT!) || 587,
+      secure: false, // true for 465, false for other ports
       auth: {
-        user: process.env.EMAIL_USER, //update in env.
+        user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
       },
+      tls: {
+        ciphers: 'SSLv3'
+      }
     })
 
     const mailOptions = {

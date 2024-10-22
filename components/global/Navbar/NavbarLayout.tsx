@@ -54,7 +54,7 @@ export default function Navbar(props: NavbarProps) {
               alt="Name"
               height={100}
               width={200}
-              className="pl-5 w-56 lg:w-72"
+              className="pl-5 w-48 lg:w-72"
             />
           </Link>
         </div>

@@ -124,12 +124,12 @@ export function HomePage({ data, settings }: HomePageProps) {
           <div className="container mx-auto py-12 px-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {servicesSection.services.map((service, index) => (
-                <div key={index} className="p-6 bg-white rounded-lg shadow-md">
+                <div key={index} className="p-6 bg-white rounded-lg shadow-md ">
                   {service.image.asset?.url && (
                     <Image
                       src={service.image.asset.url}
                       alt={service.image.alt || 'Service Image'}
-                      className="w-3/4 h-1/2 object-fill border rounded-lg mx-auto "
+                      className="w-full lg:h-136 lg:w-96 object-contain border rounded-lg mx-auto"
                       width={200}
                       height={100}
                     />
