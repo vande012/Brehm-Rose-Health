@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 interface FormField {
   required: boolean
@@ -94,8 +94,15 @@ export default function ContactForm() {
   const [success, setSuccess] = useState<boolean | null>(null)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
+  const mountedRef = useRef(false)
+
   useEffect(() => {
-    console.log('ContactForm mounted')
+    if (!mountedRef.current) {
+      console.log('ContactForm mounted')
+      console.log('Window object keys:', Object.keys(window))
+      console.log('Document readyState:', document.readyState)
+      mountedRef.current = true
+    }
   }, [])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -137,6 +144,11 @@ export default function ContactForm() {
     } finally {
       setLoading(false)
     }
+  }
+
+  if (!formFields || formFields.length === 0) {
+    console.error('Form fields are not defined or empty')
+    return <p>Error: Unable to load form fields</p>
   }
 
   return (

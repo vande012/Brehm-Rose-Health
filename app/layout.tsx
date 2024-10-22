@@ -9,7 +9,9 @@ import {
   Roboto,
 } from 'next/font/google'
 
-import OrganizationSchema from '@/components/global/StructuredData/OrganizationsSchema'
+import dynamic from 'next/dynamic'
+
+const OrganizationSchema = dynamic(() => import('@/components/global/StructuredData/OrganizationsSchema'), { ssr: false })
 
 const serif = PT_Serif({
   variable: '--font-serif',
@@ -43,7 +45,8 @@ const dmsans = DM_Sans({
   subsets: ['latin'],
   weight: ['400', '700'],
 })
-export default async function RootLayout({
+
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode

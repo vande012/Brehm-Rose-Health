@@ -40,29 +40,24 @@ export async function generateMetadata(): Promise<Metadata> {
       card: 'summary_large_image',
       images: ogImage ? [ogImage] : [],
     },
-    themeColor: '#000',
   }
 }
+
+export const viewport: Viewport = {
+  themeColor: '#000',
+}
+
 export default async function IndexRoute({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <>
-      <div className="flex min-h-screen flex-col bg-white text-black">
-        <Suspense>
-          <Navbar />
-        </Suspense>
-        <Suspense>{/* Body Homepage */}</Suspense>
-        <div className="flex-grow">
-          <Suspense>{children}</Suspense>
-        </div>
-        <Suspense>
-          <Footer />
-        </Suspense>
-      </div>
+    <div className="flex min-h-screen flex-col bg-white text-black">
+      <Navbar />
+      <div className="flex-grow">{children}</div>
+      <Footer />
       {draftMode().isEnabled && <LiveVisualEditing />}
-    </>
+    </div>
   )
 }

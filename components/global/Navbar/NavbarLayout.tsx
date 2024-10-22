@@ -48,12 +48,12 @@ export default function Navbar(props: NavbarProps) {
       >
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
-            <Image src={logo.src} alt="Logo" height={90} width={90} />
+            <Image src={logo.src} alt="Logo" height={100} width={100} />
             <Image
               src={name.src}
               alt="Name"
-              height={90}
-              width={90}
+              height={150}
+              width={150}
               className="pl-5 w-48 lg:w-72"
             />
           </Link>
