@@ -89,7 +89,7 @@ export function HomePage({ data, settings }: HomePageProps) {
               <Link
                 href="/about-us"
                 className="group relative inline-flex h-12 items-center justify-center rounded-md border border-transparent bg-gradient-to-r from-custom-blue to-custom-green px-6 font-bold text-white transition-all duration-100 [box-shadow:5px_5px_rgb(82_82_82)] hover:translate-x-[3px] hover:translate-y-[3px] hover:[box-shadow:0px_0px_rgb(82_82_82)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom-blue"
-                aria-label="Learn more about our services"
+                aria-label="Read More"
               >
                 Read More
               </Link>
@@ -140,32 +140,40 @@ export function HomePage({ data, settings }: HomePageProps) {
       )}
       {/* Services Section */}
       {servicesSection && (
-        <section className="bg-custom-blue">
-          <div className="container mx-auto py-12 px-4">
+        <section className="bg-gradient-to-b from-custom-blue to-custom-light py-16">
+          <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {servicesSection.services.map((service, index) => (
-                <div key={index} className="p-6 bg-white rounded-lg shadow-md ">
-                  {service.image.asset?.url && (
-                    <Image
-                      src={service.image.asset.url}
-                      alt={service.image.alt || 'Service Image'}
-                      className="w-full lg:h-136 lg:w-96 object-contain border rounded-lg mx-auto"
-                      width={200}
-                      height={100}
-                    />
-                  )}
-                  <h3 className="text-2xl font-semibold text-custom-blue mb-2 py-2 text-center">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-700 text-lg py-2">
-                    {service.description}
-                  </p>
-                  <div className="flex justify-center mt-4">
-                    <Link href={service.buttonUrl} key={service.buttonUrl}>
-                      <span className="inline-block px-6 py-2 bg-custom-blue text-white hover:bg-custom-green rounded transition duration-300 ease-in-out">
+                <div
+                  key={index}
+                  className="group bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105"
+                >
+                  <div className="relative">
+                    {service.image.asset?.url && (
+                      <Image
+                        src={service.image.asset.url}
+                        alt={service.image.alt || 'Service Image'}
+                        className="w-full h-64 object-cover transition duration-300 group-hover:opacity-75"
+                        width={400}
+                        height={300}
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold text-custom-blue mb-3">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600 mb-4">{service.description}</p>
+                    <div className="flex justify-center">
+                      <Link
+                        href={service.buttonUrl}
+                        className="inline-block px-6 py-2 bg-custom-blue text-white rounded-full transition duration-300 ease-in-out hover:bg-custom-green hover:shadow-md"
+                        aria-label={`Learn more about ${service.title}`}
+                      >
                         {service.buttonText}
-                      </span>
-                    </Link>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               ))}
