@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://nextjs-sanity-app-chi.vercel.app/sitemap.xml',
+    sitemap: 'https://www.brehmrosehealth.com/sitemap.xml',
   }
 }

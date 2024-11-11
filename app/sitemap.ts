@@ -50,6 +50,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: 'yearly',
         priority: 1,
       },
+      {
+        url: `${baseUrl}/posts`, // Add the parent posts page
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.8,
+      },
     ]
 
     // Map through pages and posts to generate URLs
@@ -67,7 +73,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         const slugValue = isSlugObject(post.slug)
           ? post.slug.current
           : post.slug
-
         console.log('Post Slug:', slugValue)
         return {
           url: `${baseUrl}/posts/${slugValue}`,
