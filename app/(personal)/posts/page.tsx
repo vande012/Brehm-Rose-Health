@@ -7,12 +7,10 @@ import { PostsPayload } from '@/types' // Update this import path as needed
 // Fetch all the posts
 async function getPosts(): Promise<PostsPayload[]> {
   try {
-    console.log('Fetching posts from Sanity...')
     const rawResponse = await client.fetch(allPostsQuery)
-    console.log('Raw Sanity response:', JSON.stringify(rawResponse, null, 2))
 
     const posts: PostsPayload[] = rawResponse
-    console.log('Total number of posts fetched:', posts.length)
+
     return posts
   } catch (error) {
     console.error('Error fetching posts:', error)

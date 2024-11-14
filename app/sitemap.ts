@@ -50,8 +50,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: 'yearly',
         priority: 1,
       },
+    ]
+    
+    const postsParentUrl: MetadataRoute.Sitemap = [
       {
-        url: `${baseUrl}/posts`, // Add the parent posts page
+        url: `${baseUrl}/posts`,
         lastModified: new Date(),
         changeFrequency: 'monthly',
         priority: 0.8,
@@ -74,16 +77,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           ? post.slug.current
           : post.slug
         console.log('Post Slug:', slugValue)
+        
         return {
           url: `${baseUrl}/posts/${slugValue}`,
           lastModified: new Date(),
           changeFrequency: 'weekly',
           priority: 0.5,
+          canonicalUrl: `${baseUrl}/posts/${slugValue}`,  // Add the canonical URL
         }
       },
     )
     // Return all URLs, including static ones
-    return [...homePageUrl, ...pageUrls, ...postUrls]
+    return [...homePageUrl, ...postsParentUrl, ...pageUrls, ...postUrls]
   } catch (error) {
     console.error('Error generating sitemap:', error)
     return []

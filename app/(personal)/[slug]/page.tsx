@@ -24,6 +24,12 @@ export async function generateMetadata(
     description: page?.overview
       ? toPlainText(page.overview)
       : (await parent).description,
+    metadataBase: new URL(
+      process.env.NEXT_PUBLIC_SITE_URL || 'https://www.brehmrosehealth.com',
+    ),
+    alternates: {
+      canonical: `/${params.slug}`,
+    },
   }
 }
 

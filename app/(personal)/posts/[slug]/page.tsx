@@ -1,8 +1,8 @@
-import PostContent from '@/components/posts/PostContent'
-import { client } from '@/sanity/lib/client'
-import { allPostsQuery, postBySlugQuery } from '@/sanity/lib/queries'
-import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
-import { PostsPayload } from '@/types'
+import PostContent from '../../../../components/posts/PostContent'
+import { client } from '../../../../sanity/lib/client'
+import { allPostsQuery, postBySlugQuery } from '../../../../sanity/lib/queries'
+import { generateStaticSlugs } from '../../../../sanity/loader/generateStaticSlugs'
+import { PostsPayload } from '../../../../types'
 
 export async function generateStaticParams() {
   try {
@@ -62,6 +62,10 @@ export async function generateMetadata({
       title: post.title,
       description: post.excerpt || 'Read this amazing post!',
     },
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.brehmrosehealth.com'),
+    alternates: {
+      canonical: `/posts/${post.slug.current}`,
+    }
   }
 }
 
@@ -70,8 +74,6 @@ export default async function PostPage({
 }: {
   params: { slug: string }
 }) {
-  console.log(`Rendering PostPage for slug: ${params.slug}`)
-
   try {
     const post = await getPost(params.slug)
 
@@ -80,7 +82,6 @@ export default async function PostPage({
       return <div>Post not found. Slug: {params.slug}</div>
     }
 
-    console.log(`Rendering PostContent for: ${post.title}`)
     return (
       <PostContent
         content={post.content}
